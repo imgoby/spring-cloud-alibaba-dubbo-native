@@ -1,4 +1,5 @@
 yum install freetype-devel unzip zip gcc
+yum install glibc-static libstdc++-static
 
 1.安装sdk
 curl -s "https://get.sdkman.io" | bash
