@@ -1,0 +1,43 @@
+yum install freetype-devel unzip zip gcc
+
+1.安装sdk
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+2.安装java
+sdk install java 22.3.r17-nik
+sdk use java 22.3.r17-nik
+
+3.编译
+mvn package -DskipTests
+
+参考 sca 项目下的graalvm.adoc
+
+==== 生成 hint 文件
+通过以下命令生成应用中反射、序列化和动态代理所需的hint配置文件：
+mvn -Pnative spring-boot:run
+
+补充：
+多级目录执行：
+ mvn -Pnative spring-boot:run
+
+之后我们的 example 应用会启动，我们需要尽可能完整的测试一遍 example 的所有功能，保证应用的大部分代码都被测试用例覆盖，这样才能确保完整生成应用运行过程中的所有必须的动态属性。 运行完所有测试用例后，我们发现`resource/META-INF/native-image` 目录下会生成以下一些 hint 文件:
+
+- resource-config.json：应用中资源hint文件
+- reflect-config.json：应用中反射定义hint文件
+- serialization-config.json：应用中序列化内容hint文件
+- proxy-config.json：应用中Java代理相关内容hint文件
+- jni-config.json：应用中Java Native Interface（JNI）内容hint文件
+
+注意事项：RocketMQ 应用通过上述命令进行 hint 文件生成过程中，可能会出现配置信息扫描不全问题，可参考 https://github.com/alibaba/spring-cloud-alibaba/issues/3101[相关issue]，Sentinel应用通过上述命令进行 hint 文件生成过程中，可能会遇到如下问题，可参考 https://github.com/alibaba/Sentinel/issues/3012[相关issue]。
+
+==== 构建原生镜像
+以上步骤一切准备就绪后，通过以下命令来构建原生镜像：
+mvn -Pnative native:compile
+
+成功执行后，我们在``/target``目录可以看到我们生成的可执行文件。
+
+==== 启动原生镜像
+与普通可执行文件无异，通过``target/nacos-config-example``启动本example, 可以观察到类似如下的输出:
+
+可以看到，通过原生镜像启动Java应用后，内存占用大大减少。 应用启动后各项功能与通过jar启动无异。
