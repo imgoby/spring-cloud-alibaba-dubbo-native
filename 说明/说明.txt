@@ -36,9 +36,19 @@ mvn -Pnative spring-boot:run
 以上步骤一切准备就绪后，通过以下命令来构建原生镜像：
 mvn -Pnative native:compile
 
+
 成功执行后，我们在``/target``目录可以看到我们生成的可执行文件。
 
 ==== 启动原生镜像
 与普通可执行文件无异，通过``target/nacos-config-example``启动本example, 可以观察到类似如下的输出:
 
 可以看到，通过原生镜像启动Java应用后，内存占用大大减少。 应用启动后各项功能与通过jar启动无异。
+
+
+dubbo-springboot测试
+关闭防火墙：
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+采用最新的zookeeper 3.9.1
+
+mvn clean install -P native native:compile -Dmaven.test.skip=true
