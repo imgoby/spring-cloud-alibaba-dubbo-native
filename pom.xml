@@ -188,6 +188,7 @@
                             <groupId>org.springframework.boot</groupId>
                             <artifactId>spring-boot-maven-plugin</artifactId>
                             <configuration>
+                                <skip>true</skip>
                                 <jvmArguments>
                                     -agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image/
                                 </jvmArguments>
@@ -211,6 +212,7 @@
                             <groupId>org.graalvm.buildtools</groupId>
                             <artifactId>native-maven-plugin</artifactId>
                             <configuration>
+                                <skip>true</skip>
                                 <classesDirectory>${project.build.outputDirectory}</classesDirectory>
                                 <metadataRepository>
                                     <enabled>true</enabled>
