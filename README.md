@@ -19,6 +19,32 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 22.3.r17-nik
 sdk use java 22.3.r17-nik
 ```
+
+这个版本要与后面的这个配置一致。
+```xml
+<plugin>
+	<groupId>org.graalvm.buildtools</groupId>
+	<artifactId>native-maven-plugin</artifactId>
+	<configuration>
+		<classesDirectory>${project.build.outputDirectory}</classesDirectory>
+		<metadataRepository>
+			<enabled>true</enabled>
+		</metadataRepository>
+		<requiredVersion>22.3</requiredVersion>
+	</configuration>
+	<executions>
+		<execution>
+			<id>add-reachability-metadata</id>
+			<goals>
+				<goal>add-reachability-metadata</goal>
+				<!--compile时就触发-->
+				<goal>compile</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+```
+
 二、基于https://github.com/alibaba/spring-cloud-alibaba/releases/tag/2022.0.0.0 的源码改造项目顶层目录：
 
 （1）这部分主要从spring-cloud-alibaba-examples 提取上来。

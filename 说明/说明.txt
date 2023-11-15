@@ -9,6 +9,19 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java 22.3.r17-nik
 sdk use java 22.3.r17-nik
 
+#用这个会报错： 23.1.r21-nik
+#与这个配置一致
+<groupId>org.graalvm.buildtools</groupId>
+<artifactId>native-maven-plugin</artifactId>
+<configuration>
+    <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+    <metadataRepository>
+        <enabled>true</enabled>
+    </metadataRepository>
+    <requiredVersion>22.3</requiredVersion>
+</configuration>
+
+
 3.编译
 mvn package -DskipTests
 
