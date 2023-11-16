@@ -50,7 +50,6 @@
     <modules>
         <module>dubbo-samples-native-image-registry-provider</module>
         <module>dubbo-samples-native-image-registry-consumer</module>
-        <module>spring-cloud-alibaba-examples</module>
         <module>business-service</module>
         <module>storage-service</module>
     </modules>
