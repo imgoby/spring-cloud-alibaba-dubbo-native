@@ -18,6 +18,7 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```bash
 sdk install java 22.3.r17-nik
 sdk use java 22.3.r17-nik
+sdk default java 22.3.r17-nik
 ```
 
 这个版本要与后面的这个配置一致。
