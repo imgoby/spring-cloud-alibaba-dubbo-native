@@ -29,7 +29,7 @@
         <spring.cloud.version>2022.0.0</spring.cloud.version>
 
         <!-- Spring Boot -->
-        <spring-boot.version>3.0.2</spring-boot.version>
+        <spring-boot.version>3.0.5</spring-boot.version>
 
         <curator.version>4.0.1</curator.version>
 
@@ -90,6 +90,55 @@
                 <version>${dubbo.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-remoting-zookeeper-curator5</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-metadata-report-zookeeper</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>dubbo-metrics-prometheus</artifactId>
+                        <groupId>org.apache.dubbo</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-serialization-jdk</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>hessian-lite</artifactId>
+                        <groupId>com.alibaba</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-autoconfigure</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>dubbo</artifactId>
+                        <groupId>org.apache.dubbo</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- dubbo end -->
 
