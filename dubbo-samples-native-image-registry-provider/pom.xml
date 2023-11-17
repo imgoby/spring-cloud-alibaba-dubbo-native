@@ -127,6 +127,15 @@
             <id>native</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <release>17</release>
+                            <fork>true</fork>
+                            <verbose>true</verbose>
+                        </configuration>
+                    </plugin>
 <!--                    <plugin>-->
 <!--                        <groupId>org.springframework.boot</groupId>-->
 <!--                        <artifactId>spring-boot-maven-plugin</artifactId>-->
