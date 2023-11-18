@@ -39,7 +39,6 @@
         <protobuf-java.version>3.19.6</protobuf-java.version>
 
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-        <native-maven-plugin.version>0.9.28</native-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -214,22 +213,9 @@
                     <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
-                        <version>${native-maven-plugin.version}</version>
                         <configuration>
-                            <classesDirectory>${project.build.outputDirectory}</classesDirectory>
-                            <metadataRepository>
-                                <enabled>true</enabled>
-                            </metadataRepository>
-                            <requiredVersion>22.3</requiredVersion>
+                            <skip>false</skip>
                         </configuration>
-                        <executions>
-                            <execution>
-                                <id>add-reachability-metadata</id>
-                                <goals>
-                                    <goal>add-reachability-metadata</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.dubbo</groupId>

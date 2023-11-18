@@ -44,7 +44,7 @@
         <flatten-maven-plugin.version>1.2.7</flatten-maven-plugin.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
         <jacoco.version>0.8.8</jacoco.version>
-        <native-maven-plugin.version>0.9.19</native-maven-plugin.version>
+        <native-maven-plugin.version>0.9.28</native-maven-plugin.version>
         <dubbo.version>3.3.0-beta.1</dubbo.version>
     </properties>
 
@@ -178,30 +178,30 @@
             <build>
                 <pluginManagement>
                     <plugins>
-                        <plugin>
-                            <groupId>org.springframework.boot</groupId>
-                            <artifactId>spring-boot-maven-plugin</artifactId>
-                            <configuration>
-                                <skip>true</skip>
-                                <jvmArguments>
-                                    -agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image/
-                                </jvmArguments>
-                                <image>
-                                    <builder>paketobuildpacks/builder:tiny</builder>
-                                    <env>
-                                        <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-                                    </env>
-                                </image>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>process-aot</id>
-                                    <goals>
-                                        <goal>process-aot</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
+<!--                        <plugin>-->
+<!--                            <groupId>org.springframework.boot</groupId>-->
+<!--                            <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                            <configuration>-->
+<!--                                <skip>true</skip>-->
+<!--                                <jvmArguments>-->
+<!--                                    -agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image/-->
+<!--                                </jvmArguments>-->
+<!--                                <image>-->
+<!--                                    <builder>paketobuildpacks/builder:tiny</builder>-->
+<!--                                    <env>-->
+<!--                                        <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>-->
+<!--                                    </env>-->
+<!--                                </image>-->
+<!--                            </configuration>-->
+<!--                            <executions>-->
+<!--                                <execution>-->
+<!--                                    <id>process-aot</id>-->
+<!--                                    <goals>-->
+<!--                                        <goal>process-aot</goal>-->
+<!--                                    </goals>-->
+<!--                                </execution>-->
+<!--                            </executions>-->
+<!--                        </plugin>-->
                         <plugin>
                             <groupId>org.graalvm.buildtools</groupId>
                             <artifactId>native-maven-plugin</artifactId>
