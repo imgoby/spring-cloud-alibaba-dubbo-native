@@ -119,15 +119,6 @@
                         </execution>
                     </executions>
                 </plugin>
-
-                <!-- example begin -->
-                <plugin>
-                    <groupId>org.graalvm.buildtools</groupId>
-                    <artifactId>native-maven-plugin</artifactId>
-                    <version>${native-maven-plugin.version}</version>
-                </plugin>
-                <!-- example end -->
-
             </plugins>
         </pluginManagement>
         <plugins>
