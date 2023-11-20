@@ -234,6 +234,11 @@
                             </configuration>
                             <executions>
                                 <execution>
+                                    <goals>
+                                        <goal>repackage</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
                                     <id>process-aot</id>
                                     <goals>
                                         <goal>process-aot</goal>
