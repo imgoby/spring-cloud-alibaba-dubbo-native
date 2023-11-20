@@ -64,4 +64,5 @@ systemctl stop firewalld.service
 systemctl disable firewalld.service
 采用最新的zookeeper 3.9.1
 
-mvn clean install -P native native:compile -Dmaven.test.skip=true
+##mvn clean install -P native native:compile -Dmaven.test.skip=true
+mvn clean package native:compile
