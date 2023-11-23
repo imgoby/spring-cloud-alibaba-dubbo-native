@@ -5,12 +5,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-build</artifactId>
-        <version>4.0.0</version>
-        <relativePath/>
-    </parent>
+<!--    <parent>-->
+<!--        <groupId>org.springframework.cloud</groupId>-->
+<!--        <artifactId>spring-cloud-build</artifactId>-->
+<!--        <version>4.0.0</version>-->
+<!--        <relativePath/>-->
+<!--    </parent>-->
 
     <groupId>com.alibaba.cloud</groupId>
     <artifactId>spring-cloud-alibaba</artifactId>
@@ -21,6 +21,7 @@
     <url>https://github.com/alibaba/spring-cloud-alibaba</url>
 
     <properties>
+        <spring-cloud-build.version>4.0.0</spring-cloud-build.version>
         <!-- Project revision -->
         <revision>2022.0.0.0</revision>
         <spring.cloud.alibaba.version>2022.0.0.0</spring.cloud.alibaba.version>
@@ -60,6 +61,14 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-build-dependencies</artifactId>
+                <version>${spring-cloud-build.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <!-- Spring Dependencies -->
             <dependency>
