@@ -55,8 +55,8 @@
         <module>dubbo-samples-spring-boot-consumer</module>
         <module>dubbo-samples-native-image-registry-provider</module>
         <module>dubbo-samples-native-image-registry-consumer</module>
-        <module>business-service</module>
-        <module>storage-service</module>
+        <module>spring-cloud-alibaba-business-service</module>
+        <module>spring-cloud-alibaba-storage-service</module>
     </modules>
 
     <dependencyManagement>
