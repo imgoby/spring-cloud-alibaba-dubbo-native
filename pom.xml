@@ -17,7 +17,7 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
     <name>Spring Cloud Alibaba</name>
-    <description>Spring Cloud Alibaba</description>
+    <description>spring-cloud-alibaba-dubbo-native</description>
     <url>https://github.com/alibaba/spring-cloud-alibaba</url>
 
     <properties>
@@ -57,6 +57,8 @@
         <module>dubbo-samples-native-image-registry-consumer</module>
         <module>spring-cloud-alibaba-business-service</module>
         <module>spring-cloud-alibaba-storage-service</module>
+        <module>spring-cloud-alibaba-consul-dubbo-provider</module>
+        <module>spring-cloud-alibaba-consul-dubbo-consumer</module>
     </modules>
 
     <dependencyManagement>

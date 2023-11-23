@@ -30,7 +30,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
+            <groupId>com.yuhoutian</groupId>
             <artifactId>dubbo-samples-spring-boot-interface</artifactId>
             <version>${revision}</version>
         </dependency>
