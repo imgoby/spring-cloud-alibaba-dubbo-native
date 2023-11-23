@@ -57,6 +57,7 @@
         <module>dubbo-samples-native-image-registry-consumer</module>
         <module>spring-cloud-alibaba-business-service</module>
         <module>spring-cloud-alibaba-storage-service</module>
+        <module>spring-cloud-alibaba-consul-dubbo-api</module>
         <module>spring-cloud-alibaba-consul-dubbo-provider</module>
         <module>spring-cloud-alibaba-consul-dubbo-consumer</module>
     </modules>
