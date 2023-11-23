@@ -12,8 +12,8 @@
 <!--        <relativePath/>-->
 <!--    </parent>-->
 
-    <groupId>com.alibaba.cloud</groupId>
-    <artifactId>spring-cloud-alibaba</artifactId>
+    <groupId>com.yuhoutian</groupId>
+    <artifactId>spring-cloud-alibaba-dubbo-native</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
     <name>Spring Cloud Alibaba</name>
