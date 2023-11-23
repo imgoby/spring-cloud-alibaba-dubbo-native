@@ -1,4 +1,8 @@
-本文档基于 https://github.com/alibaba/spring-cloud-alibaba/blob/2022.x/spring-cloud-alibaba-docs/src/main/asciidoc-zh/graalvm.adoc 测试验证，并作配置优化而来。
+本文档基于 
+https://github.com/alibaba/spring-cloud-alibaba/blob/2022.x/spring-cloud-alibaba-docs/src/main/asciidoc-zh/graalvm.adoc 以及dubbo项目：
+https://github.com/apache/dubbo-samples/tree/master/2-advanced/dubbo-samples-native-image-registry
+
+测试整合验证，并作配置优化而来。
 
 一、安装环境
 
