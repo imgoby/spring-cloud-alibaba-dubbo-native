@@ -26,7 +26,7 @@ spring:
 
 dubbo:
   application:
-    name: dubbo-springboot-demo-provider
+    name: spring-cloud-alibaba-consul-dubbo-provider
   protocol:
     name: tri
     port: 50052
