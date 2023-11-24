@@ -70,7 +70,7 @@ public class DubboGenericServiceFactory {
 		ReferenceBean<GenericService> referenceBean = build(
 				dubboServiceMetadata.getServiceRestMetadata(), dubboTranslatedAttributes);
 
-		return referenceBean == null ? null : referenceBean.get();
+		return referenceBean == null ? null : (GenericService)referenceBean.getReferenceConfig().get();
 	}
 
 	public GenericService create(String serviceName, Class<?> serviceClass,
@@ -79,9 +79,9 @@ public class DubboGenericServiceFactory {
 		ReferenceBean<GenericService> referenceBean = build(interfaceName, version,
 				serviceName, emptyMap());
 		if (DubboMetadataService.class == serviceClass) {
-			referenceBean.setRouter("-default,revisionRouter");
+			referenceBean.getReferenceConfig().setRouter("-default,revisionRouter");
 		}
-		return referenceBean.get();
+		return (GenericService)referenceBean.getReferenceConfig().get();
 	}
 
 	private ReferenceBean<GenericService> build(ServiceRestMetadata serviceRestMetadata,
@@ -102,11 +102,10 @@ public class DubboGenericServiceFactory {
 
 		return cache.computeIfAbsent(key, k -> {
 			ReferenceBean<GenericService> referenceBean = new ReferenceBean<>();
-			referenceBean.setGeneric(true);
-			referenceBean.setInterface(interfaceName);
-			referenceBean.setVersion(version);
-			referenceBean.setGroup(group);
-			referenceBean.setCheck(false);
+			referenceBean.getReferenceConfig().setInterface(interfaceName);
+			referenceBean.getReferenceConfig().setVersion(version);
+			referenceBean.getReferenceConfig().setGroup(group);
+			referenceBean.getReferenceConfig().setCheck(false);
 			bindReferenceBean(referenceBean, dubboTranslatedAttributes);
 			return referenceBean;
 		});
@@ -154,7 +153,7 @@ public class DubboGenericServiceFactory {
 
 		dataBinder.bind(new MutablePropertyValues(dubboTranslatedAttributes));
 
-		registryConfigs.ifAvailable(referenceBean::setRegistries);
+		registryConfigs.ifAvailable(referenceBean.getReferenceConfig()::setRegistries);
 	}
 
 	@PreDestroy
