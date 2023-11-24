@@ -31,4 +31,4 @@ dubbo:
     name: dubbo
     port: -1
   registry:
-    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+    address: consul://129.168.0.211:8500

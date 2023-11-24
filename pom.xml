@@ -50,6 +50,7 @@
     </properties>
 
     <modules>
+        <module>spring-cloud-alibaba-starter-dubbo</module>
         <module>dubbo-samples-spring-boot-interface</module>
         <module>dubbo-samples-spring-boot-provider</module>
         <module>dubbo-samples-spring-boot-consumer</module>

@@ -64,6 +64,11 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-rpc-dubbo</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yuhoutian</groupId>
+            <artifactId>spring-cloud-alibaba-starter-dubbo</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
