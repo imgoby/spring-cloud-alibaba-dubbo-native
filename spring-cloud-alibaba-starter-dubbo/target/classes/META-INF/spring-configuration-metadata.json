@@ -1,0 +1,93 @@
+{
+  "groups": [
+    {
+      "name": "dubbo.cloud",
+      "type": "com.alibaba.cloud.dubbo.env.DubboCloudProperties",
+      "sourceType": "com.alibaba.cloud.dubbo.env.DubboCloudProperties"
+    },
+    {
+      "name": "management.endpoint.dubbo-exported-u-r-ls",
+      "type": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboExportedURLsEndpoint",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboExportedURLsEndpoint"
+    },
+    {
+      "name": "management.endpoint.dubbo-registry-directory",
+      "type": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboDiscoveryEndpoint",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboDiscoveryEndpoint"
+    },
+    {
+      "name": "management.endpoint.dubborestmetadata",
+      "type": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboRestMetadataEndpoint",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboRestMetadataEndpoint"
+    }
+  ],
+  "properties": [
+    {
+      "name": "dubbo.cloud.max-re-subscribe-metadata-times",
+      "type": "java.lang.Integer",
+      "sourceType": "com.alibaba.cloud.dubbo.env.DubboCloudProperties",
+      "defaultValue": 1000
+    },
+    {
+      "name": "dubbo.cloud.re-subscribe-metadata-intervial",
+      "type": "java.lang.Integer",
+      "sourceType": "com.alibaba.cloud.dubbo.env.DubboCloudProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "dubbo.cloud.registry-type",
+      "type": "java.lang.String",
+      "sourceType": "com.alibaba.cloud.dubbo.env.DubboCloudProperties"
+    },
+    {
+      "name": "dubbo.cloud.subscribed-services",
+      "type": "java.lang.String",
+      "description": "The subscribed services, the default value is \"*\". The multiple value will use comma(\",\") as the separator. @see #ALL_DUBBO_SERVICES",
+      "sourceType": "com.alibaba.cloud.dubbo.env.DubboCloudProperties",
+      "defaultValue": "*"
+    },
+    {
+      "name": "management.endpoint.dubbo-exported-u-r-ls.cache.time-to-live",
+      "type": "java.time.Duration",
+      "description": "Maximum time that a response can be cached.",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboExportedURLsEndpoint",
+      "defaultValue": "0ms"
+    },
+    {
+      "name": "management.endpoint.dubbo-exported-u-r-ls.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable the dubboExportedURLs endpoint.",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboExportedURLsEndpoint",
+      "defaultValue": true
+    },
+    {
+      "name": "management.endpoint.dubbo-registry-directory.cache.time-to-live",
+      "type": "java.time.Duration",
+      "description": "Maximum time that a response can be cached.",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboDiscoveryEndpoint",
+      "defaultValue": "0ms"
+    },
+    {
+      "name": "management.endpoint.dubbo-registry-directory.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable the dubboRegistryDirectory endpoint.",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboDiscoveryEndpoint",
+      "defaultValue": true
+    },
+    {
+      "name": "management.endpoint.dubborestmetadata.cache.time-to-live",
+      "type": "java.time.Duration",
+      "description": "Maximum time that a response can be cached.",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboRestMetadataEndpoint",
+      "defaultValue": "0ms"
+    },
+    {
+      "name": "management.endpoint.dubborestmetadata.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable the dubborestmetadata endpoint.",
+      "sourceType": "com.alibaba.cloud.dubbo.actuate.endpoint.DubboRestMetadataEndpoint",
+      "defaultValue": true
+    }
+  ],
+  "hints": []
+}
