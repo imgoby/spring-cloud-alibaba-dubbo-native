@@ -38,7 +38,8 @@ import org.apache.dubbo.rpc.service.GenericService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.cloud.openfeign.FeignContext;
+import org.springframework.cloud.openfeign.FeignClientFactory;
+//import org.springframework.cloud.openfeign.FeignContext;
 import org.springframework.core.env.Environment;
 
 import static java.lang.reflect.Proxy.newProxyInstance;
@@ -64,6 +65,8 @@ class TargeterInvocationHandler implements InvocationHandler {
 
 	private final DubboGenericServiceExecutionContextFactory contextFactory;
 
+	private FeignClientFactory feignClientFactory;
+
 	TargeterInvocationHandler(Object bean, Environment environment,
 			ClassLoader classLoader, DubboServiceMetadataRepository repository,
 			DubboGenericServiceFactory dubboGenericServiceFactory,
@@ -86,7 +89,8 @@ class TargeterInvocationHandler implements InvocationHandler {
 		 * args[0]: FeignClientFactoryBean factory args[1]: Feign.Builder feign args[2]:
 		 * FeignContext context args[3]: Target.HardCodedTarget&lt;T&gt; target
 		 */
-		FeignContext feignContext = cast(args[2]);
+		FeignClientFactory feignClientFactory=cast(args[1]);
+//		FeignContext feignContext = cast(args[2]);
 		Target.HardCodedTarget<?> target = cast(args[3]);
 
 		// Execute Targeter#target method first
@@ -94,14 +98,14 @@ class TargeterInvocationHandler implements InvocationHandler {
 		// Get the default proxy object
 		Object defaultProxy = method.invoke(bean, args);
 		// Create Dubbo Proxy if required
-		return createDubboProxyIfRequired(feignContext, target, defaultProxy);
+		return createDubboProxyIfRequired(feignClientFactory, target, defaultProxy);
 	}
 
-	private Object createDubboProxyIfRequired(FeignContext feignContext, Target target,
+	private Object createDubboProxyIfRequired(FeignClientFactory feignClientFactory, Target target,
 			Object defaultProxy) {
 
 		DubboInvocationHandler dubboInvocationHandler = createDubboInvocationHandler(
-				feignContext, target, defaultProxy);
+				feignClientFactory, target, defaultProxy);
 
 		if (dubboInvocationHandler == null) {
 			return defaultProxy;
@@ -111,7 +115,7 @@ class TargeterInvocationHandler implements InvocationHandler {
 				new Class<?>[] { target.type() }, dubboInvocationHandler);
 	}
 
-	private DubboInvocationHandler createDubboInvocationHandler(FeignContext feignContext,
+	private DubboInvocationHandler createDubboInvocationHandler(FeignClientFactory feignClientFactory,
 			Target target, Object defaultFeignClientProxy) {
 
 		// Service name equals @FeignClient.name()
@@ -119,7 +123,9 @@ class TargeterInvocationHandler implements InvocationHandler {
 		Class<?> targetType = target.type();
 
 		// Get Contract Bean from FeignContext
-		Contract contract = feignContext.getInstance(serviceName, Contract.class);
+//		Contract contract = feignContext.getInstance(serviceName, Contract.class);
+		Contract contract = feignClientFactory.getInstance(serviceName,
+				Contract.class);
 
 		DubboTransportedMethodMetadataResolver resolver = new DubboTransportedMethodMetadataResolver(
 				environment, contract);
