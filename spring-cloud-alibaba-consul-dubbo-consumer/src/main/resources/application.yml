@@ -21,6 +21,18 @@ spring:
     consul:
       host: 192.168.0.211
       port: 8500
+      discovery:
+        enabled: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        prefer-ip-address: true  #表示注册时使用IP而不是hostname
+        register: true # 启用服务注册
+        deregister: true   # 服务停止时取消注册
+        # 执行监控检查的频率
+        health-check-interval: 10s
+        # 设置健康检查失败多长时间后，取消注册
+        health-check-critical-timeout: 3m
+        # 健康检查的路径
+        health-check-path: /actuator/info
   application:
     name: spring-cloud-alibaba-consul-dubbo-consumer
 
