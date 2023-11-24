@@ -31,4 +31,4 @@ dubbo:
     name: dubbo
     port: -1
   registry:
-    address: consul://129.168.0.211:8500
+    address: spring-cloud://localhost

@@ -28,4 +28,4 @@ dubbo:
   application:
     name: spring-cloud-alibaba-consul-dubbo-consumer
   registry:
-    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+    address: spring-cloud://localhost
