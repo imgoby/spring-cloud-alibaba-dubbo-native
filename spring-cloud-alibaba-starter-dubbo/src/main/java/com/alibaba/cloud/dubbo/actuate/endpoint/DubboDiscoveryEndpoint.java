@@ -48,9 +48,10 @@ public class DubboDiscoveryEndpoint {
 
 	@ReadOperation(produces = APPLICATION_JSON_VALUE)
 	public Object get() {
-		DubboCloudRegistry registry = (DubboCloudRegistry) SpringCloudRegistryFactory
-				.getRegistries().stream().filter(o -> o instanceof DubboCloudRegistry)
-				.findFirst().orElse(null);
+		DubboCloudRegistry registry = null;//yuhou.todo
+		// (DubboCloudRegistry) SpringCloudRegistryFactory
+//				.getRegistries().stream().filter(o -> o instanceof DubboCloudRegistry
+//				.findFirst().orElse(null);
 
 		if (registry == null) {
 			return Collections.emptyMap();

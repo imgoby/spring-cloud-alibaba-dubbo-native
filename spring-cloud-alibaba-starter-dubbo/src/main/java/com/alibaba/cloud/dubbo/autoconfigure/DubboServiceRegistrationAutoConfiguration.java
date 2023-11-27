@@ -138,8 +138,8 @@ public class DubboServiceRegistrationAutoConfiguration {
 	@EventListener(ServiceInstancePreRegisteredEvent.class)
 	public void onServiceInstancePreRegistered(ServiceInstancePreRegisteredEvent event) {
 		Registration registration = event.getSource();
-		if (!DubboBootstrap.getInstance().isReady()
-				|| !DubboBootstrap.getInstance().isStarted()) {
+		if (/*!DubboBootstrap.getInstance().isReady() //yuhou.todo
+				|| */!DubboBootstrap.getInstance().isStarted()) {
 			ServiceRegistry<Registration> registry = event.getRegistry();
 			synchronized (registry) {
 				registrations.putIfAbsent(registry, new HashSet<>());
@@ -220,8 +220,8 @@ public class DubboServiceRegistrationAutoConfiguration {
 				return;
 			}
 
-			if (DubboBootstrap.getInstance().isReady()
-					&& DubboBootstrap.getInstance().isStarted()) {
+			if (/*DubboBootstrap.getInstance().isReady()
+					&& */DubboBootstrap.getInstance().isStarted()) {
 				EurekaRegistration eurekaRegistration = (EurekaRegistration) registration;
 				InstanceInfo instanceInfo = eurekaRegistration.getApplicationInfoManager()
 						.getInfo();
