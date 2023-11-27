@@ -35,9 +35,35 @@ spring:
         health-check-path: /actuator/info
   application:
     name: spring-cloud-alibaba-consul-dubbo-consumer
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
 
 dubbo:
+  cloud:
+    # The subscribed services in consumer side
+    subscribed-services: spring-cloud-alibaba-consul-dubbo-provider
+  protocol:
+    name: dubbo
+    port: -1
   application:
-    name: spring-cloud-alibaba-consul-dubbo-consumer
+    qos-enable: false
+    #解决加了jasypt-spring-boot-starter启动报错的问题
+    id: ${spring.application.name}
+    name: ${spring.application.name}
   registry:
     address: spring-cloud://localhost
+
+management:
+  endpoints:
+    promethus:
+      enable: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
