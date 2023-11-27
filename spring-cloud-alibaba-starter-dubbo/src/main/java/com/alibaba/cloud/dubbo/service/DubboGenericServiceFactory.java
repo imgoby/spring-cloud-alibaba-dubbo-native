@@ -32,6 +32,7 @@ import com.alibaba.cloud.dubbo.metadata.DubboRestServiceMetadata;
 import com.alibaba.cloud.dubbo.metadata.ServiceRestMetadata;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.utils.CollectionUtils;
+import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.spring.ReferenceBean;
 import org.apache.dubbo.rpc.service.GenericService;
@@ -102,6 +103,7 @@ public class DubboGenericServiceFactory {
 
 		return cache.computeIfAbsent(key, k -> {
 			ReferenceBean<GenericService> referenceBean = new ReferenceBean<>();
+			referenceBean.setKeyAndReferenceConfig("dubbo",new ReferenceConfig());//yuhou.todo
 			referenceBean.getReferenceConfig().setInterface(interfaceName);
 			referenceBean.getReferenceConfig().setVersion(version);
 			referenceBean.getReferenceConfig().setGroup(group);
