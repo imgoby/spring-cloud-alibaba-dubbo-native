@@ -66,3 +66,6 @@ systemctl disable firewalld.service
 
 ##mvn clean install -P native native:compile -Dmaven.test.skip=true
 mvn clean package native:compile
+
+可参考：
+https://sca.aliyun.com/zh-cn/docs/2022.0.0.0/user-guide/graalvm/quick-start
