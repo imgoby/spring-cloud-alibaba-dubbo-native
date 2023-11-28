@@ -71,7 +71,7 @@ public class DubboGenericServiceFactory {
 		ReferenceBean<GenericService> referenceBean = build(
 				dubboServiceMetadata.getServiceRestMetadata(), dubboTranslatedAttributes);
 
-		return referenceBean == null ? null : (GenericService)referenceBean.getReferenceConfig().get();
+		return referenceBean == null ? null : (GenericService)referenceBean.getObject();
 	}
 
 	public GenericService create(String serviceName, Class<?> serviceClass,
@@ -104,6 +104,14 @@ public class DubboGenericServiceFactory {
 		return cache.computeIfAbsent(key, k -> {
 			ReferenceBean<GenericService> referenceBean = new ReferenceBean<>();
 			referenceBean.setKeyAndReferenceConfig("dubbo",new ReferenceConfig());//yuhou.todo
+			referenceBean.getReferenceConfig().setGeneric("true");
+			referenceBean.setInterfaceName(interfaceName);
+			try {
+				System.out.println("interfaceName="+interfaceName);
+				referenceBean.setInterfaceClass(Class.forName(interfaceName));
+			}catch (Exception e){
+				e.printStackTrace();
+			}
 			referenceBean.getReferenceConfig().setInterface(interfaceName);
 			referenceBean.getReferenceConfig().setVersion(version);
 			referenceBean.getReferenceConfig().setGroup(group);
