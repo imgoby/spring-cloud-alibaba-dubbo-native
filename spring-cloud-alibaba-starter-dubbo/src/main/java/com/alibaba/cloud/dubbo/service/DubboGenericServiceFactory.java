@@ -71,7 +71,7 @@ public class DubboGenericServiceFactory {
 		ReferenceBean<GenericService> referenceBean = build(
 				dubboServiceMetadata.getServiceRestMetadata(), dubboTranslatedAttributes);
 
-		return referenceBean == null ? null : (GenericService)referenceBean.getObject();
+		return referenceBean == null ? null : (GenericService)referenceBean.getReferenceConfig().get();
 	}
 
 	public GenericService create(String serviceName, Class<?> serviceClass,
@@ -82,7 +82,7 @@ public class DubboGenericServiceFactory {
 		if (DubboMetadataService.class == serviceClass) {
 			referenceBean.getReferenceConfig().setRouter("-default,revisionRouter");
 		}
-		return (GenericService)referenceBean.getObject();
+		return (GenericService)referenceBean.getReferenceConfig().get();
 	}
 
 	private ReferenceBean<GenericService> build(ServiceRestMetadata serviceRestMetadata,
@@ -103,19 +103,19 @@ public class DubboGenericServiceFactory {
 
 		return cache.computeIfAbsent(key, k -> {
 			ReferenceBean<GenericService> referenceBean = new ReferenceBean<>();
-			referenceBean.setKeyAndReferenceConfig("dubbo",new ReferenceConfig());//yuhou.todo
-			referenceBean.getReferenceConfig().setGeneric("true");
+			ReferenceConfig referenceConfig=new ReferenceConfig();
+			referenceConfig.setGeneric("true");
+			referenceConfig.setInterface(interfaceName);
+			referenceConfig.setVersion(version);
+			referenceConfig.setGroup(group);
+			referenceConfig.setCheck(false);
+			referenceBean.setKeyAndReferenceConfig(referenceBean.getId(),referenceConfig);//yuhou.todo
 			referenceBean.setInterfaceName(interfaceName);
 			try {
-				System.out.println("interfaceName="+interfaceName);
 				referenceBean.setInterfaceClass(Class.forName(interfaceName));
 			}catch (Exception e){
 				e.printStackTrace();
 			}
-			referenceBean.getReferenceConfig().setInterface(interfaceName);
-			referenceBean.getReferenceConfig().setVersion(version);
-			referenceBean.getReferenceConfig().setGroup(group);
-			referenceBean.getReferenceConfig().setCheck(false);
 			bindReferenceBean(referenceBean, dubboTranslatedAttributes);
 			return referenceBean;
 		});
