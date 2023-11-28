@@ -97,7 +97,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.14</version>
+            <version>${zookeeper.version}</version>
             <optional>true</optional>
             <exclusions>
                 <exclusion>
@@ -110,7 +110,6 @@
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
-            <version>${curator.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -171,7 +170,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <version>${servlet_version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -179,7 +178,6 @@
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-jaxrs2</artifactId>
-            <version>9.7.0</version>
         </dependency>
 
         <!-- Testing -->

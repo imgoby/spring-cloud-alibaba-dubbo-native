@@ -42,7 +42,7 @@ import com.netflix.discovery.CacheRefreshedEvent;
 import com.netflix.discovery.shared.Applications;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.listen.Listenable;
-import org.apache.curator.framework.listen.ListenerContainer;
+import org.apache.curator.framework.listen.StandardListenerManager;
 import org.apache.curator.framework.recipes.cache.ChildData;
 import org.apache.curator.framework.recipes.cache.TreeCache;
 import org.apache.curator.framework.recipes.cache.TreeCacheEvent;
@@ -399,8 +399,8 @@ public class DubboServiceDiscoveryAutoConfiguration {
 			 */
 			List<TreeCacheListener> otherListeners = new LinkedList<>();
 
-			if (listenable instanceof ListenerContainer) {
-				ListenerContainer<TreeCacheListener> listenerContainer = (ListenerContainer) listenable;
+			if (listenable instanceof StandardListenerManager) {
+				StandardListenerManager<TreeCacheListener> listenerContainer = (StandardListenerManager) listenable;
 				listenerContainer.forEach(listener -> {
 					/**
 					 * Even though "listener" is an instance of
@@ -411,7 +411,7 @@ public class DubboServiceDiscoveryAutoConfiguration {
 					if (!(listener instanceof ZookeeperServiceWatch)) {
 						otherListeners.add(listener);
 					}
-					return null;
+//					return null;//yuhou.todo
 				});
 
 				// remove all TreeCacheListeners temporarily
