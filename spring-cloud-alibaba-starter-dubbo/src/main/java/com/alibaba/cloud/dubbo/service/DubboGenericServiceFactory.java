@@ -82,7 +82,7 @@ public class DubboGenericServiceFactory {
 		if (DubboMetadataService.class == serviceClass) {
 			referenceBean.getReferenceConfig().setRouter("-default,revisionRouter");
 		}
-		return (GenericService)referenceBean.getReferenceConfig().get();
+		return (GenericService)referenceBean.getObject();
 	}
 
 	private ReferenceBean<GenericService> build(ServiceRestMetadata serviceRestMetadata,
