@@ -106,7 +106,7 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.apache.dubbo.springboot.demo.consumer.ConsumerApplication</mainClass>
+                    <mainClass>com.yuhoutian.demo.consumer.ConsumerApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
