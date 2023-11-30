@@ -61,7 +61,7 @@ public class DubboMetadataAutoConfiguration {
 	private ObjectProvider<DubboServiceMetadataRepository> dubboServiceMetadataRepository;
 
 	//resolve circular references.yuhou.todo
-	@Lazy
+//	@Lazy
 	@Autowired
 	private MetadataResolver metadataResolver;
 

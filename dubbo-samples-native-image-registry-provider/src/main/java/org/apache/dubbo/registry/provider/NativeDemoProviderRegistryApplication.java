@@ -38,9 +38,4 @@ public class NativeDemoProviderRegistryApplication {
                 + (System.currentTimeMillis() - runtimeMXBean.getStartTime()) +" ms");
         new CountDownLatch(1).await();
     }
-
-    @Bean
-    public ApplicationConfig applicationConfig(){
-        return new ApplicationConfig();
-    }
 }
