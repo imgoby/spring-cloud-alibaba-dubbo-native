@@ -73,20 +73,20 @@
 
     <dependencyManagement>
         <dependencies>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-build-dependencies</artifactId>
-                <version>${spring-cloud-build.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <!-- Spring Dependencies -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- spring-cloud-build-dependencies需要在spring-boot-dependencies的后面,否则spring-boot的版本为3.0.0。正确需要3.0.5 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-build-dependencies</artifactId>
+                <version>${spring-cloud-build.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
