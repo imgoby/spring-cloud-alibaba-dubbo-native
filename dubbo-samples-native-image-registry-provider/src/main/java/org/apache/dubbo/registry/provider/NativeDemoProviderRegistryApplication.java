@@ -17,15 +17,18 @@
 
 package org.apache.dubbo.registry.provider;
 
+import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.FeignAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.util.concurrent.CountDownLatch;
 
-@SpringBootApplication(scanBasePackages = {"org.apache.dubbo.registry.provider"})
+@SpringBootApplication(scanBasePackages = {"org.apache.dubbo.registry.provider"},exclude = { FeignAutoConfiguration.class })
 @EnableDubbo(scanBasePackages = {"org.apache.dubbo.registry.provider"})
 public class NativeDemoProviderRegistryApplication {
 
@@ -35,5 +38,10 @@ public class NativeDemoProviderRegistryApplication {
         System.out.println("dubbo provider application started, The time taken to start the application is "
                 + (System.currentTimeMillis() - runtimeMXBean.getStartTime()) +" ms");
         new CountDownLatch(1).await();
+    }
+
+    @Bean
+    public ApplicationConfig applicationConfig(){
+        return new ApplicationConfig();
     }
 }
