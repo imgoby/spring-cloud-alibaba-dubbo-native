@@ -51,7 +51,7 @@ public class DubboMetadataServiceExporter {
 	private ObjectProvider<DubboMetadataService> dubboMetadataService;
 
 	//resolve circular references.yuhou.todo
-//	@Lazy
+	@Lazy
 	@Autowired
 	private Supplier<ProtocolConfig> protocolConfigSupplier;
 
