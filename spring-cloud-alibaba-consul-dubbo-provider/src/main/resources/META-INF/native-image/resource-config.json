@@ -6,6 +6,9 @@
       },
       {
         "pattern": "\\QMETA-INF/dubbo/default/actuator-endpoints.properties\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/dubbo/org.apache.dubbo.registry.RegistryFactory\\E"
       }
     ]
   }

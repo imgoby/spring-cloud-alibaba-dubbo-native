@@ -22,5 +22,17 @@
         "parameterTypes": [ ]
       }
     ]
+  },
+  {
+    "name": "com.alibaba.cloud.dubbo.registry.SpringCloudRegistryFactory",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [ ]
+      }
+    ]
   }
 ]
