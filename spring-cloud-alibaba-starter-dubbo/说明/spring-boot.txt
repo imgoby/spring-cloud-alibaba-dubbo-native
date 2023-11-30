@@ -1,0 +1,18 @@
+
+这样配置会导致spring-boot降低为3.0.0，应该反过来。
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-build-dependencies</artifactId>
+    <version>${spring-cloud-build.version}</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
+<!-- Spring Dependencies -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-dependencies</artifactId>
+    <version>${spring-boot.version}</version>
+    <type>pom</type>
+    <scope>import</scope>
+</dependency>
+
