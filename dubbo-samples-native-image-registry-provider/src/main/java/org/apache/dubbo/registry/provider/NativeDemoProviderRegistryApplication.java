@@ -28,7 +28,7 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.util.concurrent.CountDownLatch;
 
-@SpringBootApplication(scanBasePackages = {"org.apache.dubbo.registry.provider"},exclude = { FeignAutoConfiguration.class })
+@SpringBootApplication(scanBasePackages = {"org.apache.dubbo.registry.provider"})
 @EnableDubbo(scanBasePackages = {"org.apache.dubbo.registry.provider"})
 public class NativeDemoProviderRegistryApplication {
 
