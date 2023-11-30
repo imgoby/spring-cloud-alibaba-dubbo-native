@@ -1,0 +1,567 @@
+Xshell 6 (Build 0095)
+Copyright (c) 2002 NetSarang Computer, Inc. All rights reserved.
+
+Type `help' to learn how to use Xshell prompt.
+[D:\~]$
+
+Host 'localhost' resolved to ::1.
+Connecting to ::1:3599...
+Connection established.
+To escape to local shell, press 'Ctrl+Alt+]'.
+
+WARNING! The remote SSH server rejected X11 forwarding request.
+Last login: Thu Nov 30 09:35:46 2023 from 192.168.0.110
+[root@localhost ~]# cd spring-cloud-alibaba-graalvm/
+[root@localhost spring-cloud-alibaba-graalvm]# ls
+dubbo-samples-native-image-registry-consumer  dubbo-samples-spring-boot-interface  README.md                              spring-cloud-alibaba-consul-dubbo-consumer  spring-cloud-alibaba-storage-service
+dubbo-samples-native-image-registry-provider  dubbo-samples-spring-boot-provider   spring-cloud-alibaba-business-service  spring-cloud-alibaba-consul-dubbo-provider
+dubbo-samples-spring-boot-consumer            pom.xml                              spring-cloud-alibaba-consul-dubbo-api  spring-cloud-alibaba-starter-dubbo
+[root@localhost spring-cloud-alibaba-graalvm]# cd spring-cloud-alibaba-consul-dubbo-provider/
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# ls
+pom.xml  src  target
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# cd target/
+[root@localhost target]# ls
+classes            graalvm-reachability-metadata  spring-aot                                                 spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar.original
+dubbo-aot          maven-archiver                 spring-cloud-alibaba-consul-dubbo-provider                 spring-cloud-alibaba-consul-dubbo-provider.build_artifacts.txt
+generated-sources  maven-status                   spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar  spring-cloud-alibaba-consul-dubbo-provider.o
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider
+2023-11-30T20:05:51.065+08:00  INFO 8554 --- [           main] d.s.b.c.e.WelcomeLogoApplicationListener :  [DUBBO]
+
+ :: Dubbo (v3.3.0-beta.1) : https://github.com/apache/dubbo
+ :: Discuss group : dev@dubbo.apache.org
+, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T20:05:51.065+08:00  WARN 8554 --- [           main] c.a.nacos.client.logging.NacosLogging    : Load Logback Configuration of Nacos fail, message: Could not initialize Logback Nacos logging from classpath:nacos-logback.xml
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-11-30T20:05:51.071+08:00 ERROR 8554 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.io.UncheckedIOException: java.io.FileNotFoundException: class path resource [META-INF/dubbo/default/actuator-endpoints.properties] cannot be opened because it does not exist
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:41)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:26)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:20)
+	at org.springframework.context.aot.AotApplicationContextInitializer.initialize(AotApplicationContextInitializer.java:72)
+	at org.springframework.context.aot.AotApplicationContextInitializer.lambda$forInitializerClasses$0(AotApplicationContextInitializer.java:61)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:605)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:385)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at com.yuhoutian.demo.provider.ProviderApplication.main(ProviderApplication.java:33)
+Caused by: java.io.FileNotFoundException: class path resource [META-INF/dubbo/default/actuator-endpoints.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:211)
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:160)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:100)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:74)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.loadProperties(PropertiesLoaderUtils.java:60)
+	at org.springframework.core.io.support.ResourcePropertySource.<init>(ResourcePropertySource.java:67)
+	at org.springframework.core.io.support.DefaultPropertySourceFactory.createPropertySource(DefaultPropertySourceFactory.java:37)
+	at org.springframework.core.io.support.PropertySourceProcessor.processPropertySource(PropertySourceProcessor.java:87)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:38)
+	... 10 common frames omitted
+
+[root@localhost target]# cd ..
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# cd target/
+[root@localhost target]# ls
+classes            graalvm-reachability-metadata  spring-aot                                                 spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar.original
+dubbo-aot          maven-archiver                 spring-cloud-alibaba-consul-dubbo-provider                 spring-cloud-alibaba-consul-dubbo-provider.build_artifacts.txt
+generated-sources  maven-status                   spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar  spring-cloud-alibaba-consul-dubbo-provider.o
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider
+2023-11-30T21:06:56.175+08:00  INFO 9239 --- [           main] d.s.b.c.e.WelcomeLogoApplicationListener :  [DUBBO]
+
+ :: Dubbo (v3.3.0-beta.1) : https://github.com/apache/dubbo
+ :: Discuss group : dev@dubbo.apache.org
+, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T21:06:56.175+08:00  WARN 9239 --- [           main] c.a.nacos.client.logging.NacosLogging    : Load Logback Configuration of Nacos fail, message: Could not initialize Logback Nacos logging from classpath:nacos-logback.xml
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-11-30T21:06:56.181+08:00 ERROR 9239 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.io.UncheckedIOException: java.io.FileNotFoundException: class path resource [META-INF/dubbo/default/actuator-endpoints.properties] cannot be opened because it does not exist
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:41)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:26)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:20)
+	at org.springframework.context.aot.AotApplicationContextInitializer.initialize(AotApplicationContextInitializer.java:72)
+	at org.springframework.context.aot.AotApplicationContextInitializer.lambda$forInitializerClasses$0(AotApplicationContextInitializer.java:61)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:605)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:385)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at com.yuhoutian.demo.provider.ProviderApplication.main(ProviderApplication.java:33)
+Caused by: java.io.FileNotFoundException: class path resource [META-INF/dubbo/default/actuator-endpoints.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:211)
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:160)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:100)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:74)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.loadProperties(PropertiesLoaderUtils.java:60)
+	at org.springframework.core.io.support.ResourcePropertySource.<init>(ResourcePropertySource.java:67)
+	at org.springframework.core.io.support.DefaultPropertySourceFactory.createPropertySource(DefaultPropertySourceFactory.java:37)
+	at org.springframework.core.io.support.PropertySourceProcessor.processPropertySource(PropertySourceProcessor.java:87)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:38)
+	... 10 common frames omitted
+
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider ^C
+[root@localhost target]# cd ..
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# cd target/
+[root@localhost target]# ls
+classes            graalvm-reachability-metadata  spring-aot                                                 spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar.original
+dubbo-aot          maven-archiver                 spring-cloud-alibaba-consul-dubbo-provider                 spring-cloud-alibaba-consul-dubbo-provider.build_artifacts.txt
+generated-sources  maven-status                   spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar  spring-cloud-alibaba-consul-dubbo-provider.o
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider
+2023-11-30T21:17:27.397+08:00  INFO 9536 --- [           main] d.s.b.c.e.WelcomeLogoApplicationListener :  [DUBBO]
+
+ :: Dubbo (v3.3.0-beta.1) : https://github.com/apache/dubbo
+ :: Discuss group : dev@dubbo.apache.org
+, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T21:17:27.397+08:00  WARN 9536 --- [           main] c.a.nacos.client.logging.NacosLogging    : Load Logback Configuration of Nacos fail, message: Could not initialize Logback Nacos logging from classpath:nacos-logback.xml
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-11-30T21:17:27.403+08:00 ERROR 9536 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.io.UncheckedIOException: java.io.FileNotFoundException: class path resource [META-INF/dubbo/default/actuator-endpoints.properties] cannot be opened because it does not exist
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:41)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:26)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:20)
+	at org.springframework.context.aot.AotApplicationContextInitializer.initialize(AotApplicationContextInitializer.java:72)
+	at org.springframework.context.aot.AotApplicationContextInitializer.lambda$forInitializerClasses$0(AotApplicationContextInitializer.java:61)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:605)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:385)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at com.yuhoutian.demo.provider.ProviderApplication.main(ProviderApplication.java:33)
+Caused by: java.io.FileNotFoundException: class path resource [META-INF/dubbo/default/actuator-endpoints.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:211)
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:160)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:100)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:74)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.loadProperties(PropertiesLoaderUtils.java:60)
+	at org.springframework.core.io.support.ResourcePropertySource.<init>(ResourcePropertySource.java:67)
+	at org.springframework.core.io.support.DefaultPropertySourceFactory.createPropertySource(DefaultPropertySourceFactory.java:37)
+	at org.springframework.core.io.support.PropertySourceProcessor.processPropertySource(PropertySourceProcessor.java:87)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:38)
+	... 10 common frames omitted
+
+[root@localhost target]# cd ..
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# ls
+pom.xml  src  target
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# cd target/
+[root@localhost target]# ls
+classes            graalvm-reachability-metadata  spring-aot                                                 spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar.original
+dubbo-aot          maven-archiver                 spring-cloud-alibaba-consul-dubbo-provider                 spring-cloud-alibaba-consul-dubbo-provider.build_artifacts.txt
+generated-sources  maven-status                   spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar  spring-cloud-alibaba-consul-dubbo-provider.o
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider
+2023-11-30T21:27:31.076+08:00  INFO 9838 --- [           main] d.s.b.c.e.WelcomeLogoApplicationListener :  [DUBBO]
+
+ :: Dubbo (v3.3.0-beta.1) : https://github.com/apache/dubbo
+ :: Discuss group : dev@dubbo.apache.org
+, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T21:27:31.076+08:00  WARN 9838 --- [           main] c.a.nacos.client.logging.NacosLogging    : Load Logback Configuration of Nacos fail, message: Could not initialize Logback Nacos logging from classpath:nacos-logback.xml
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-11-30T21:27:31.081+08:00  INFO 9838 --- [           main] o.s.c.i.support.PropertySourceProcessor  : Properties location [classpath:/META-INF/dubbo/default/actuator-endpoints.properties] not resolvable: class path resource [META-INF/dubbo/default/actuator-endpoints.properties] cannot be opened because it does not exist
+2023-11-30T21:27:31.082+08:00 ERROR 9838 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.io.UncheckedIOException: java.io.FileNotFoundException: class path resource [META-INF/dubbo-endpoints-default.properties] cannot be opened because it does not exist
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:41)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:26)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:20)
+	at org.springframework.context.aot.AotApplicationContextInitializer.initialize(AotApplicationContextInitializer.java:72)
+	at org.springframework.context.aot.AotApplicationContextInitializer.lambda$forInitializerClasses$0(AotApplicationContextInitializer.java:61)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:605)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:385)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at com.yuhoutian.demo.provider.ProviderApplication.main(ProviderApplication.java:33)
+Caused by: java.io.FileNotFoundException: class path resource [META-INF/dubbo-endpoints-default.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:211)
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:160)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:100)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:74)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.loadProperties(PropertiesLoaderUtils.java:60)
+	at org.springframework.core.io.support.ResourcePropertySource.<init>(ResourcePropertySource.java:57)
+	at org.springframework.core.io.support.DefaultPropertySourceFactory.createPropertySource(DefaultPropertySourceFactory.java:37)
+	at org.springframework.core.io.support.PropertySourceProcessor.processPropertySource(PropertySourceProcessor.java:87)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:39)
+	... 10 common frames omitted
+
+[root@localhost target]# mkdir META-INF
+[root@localhost target]# vi META-INF/dubbo-endpoints-default.properties
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider
+2023-11-30T21:35:11.582+08:00  INFO 9845 --- [           main] d.s.b.c.e.WelcomeLogoApplicationListener :  [DUBBO]
+
+ :: Dubbo (v3.3.0-beta.1) : https://github.com/apache/dubbo
+ :: Discuss group : dev@dubbo.apache.org
+, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T21:35:11.583+08:00  WARN 9845 --- [           main] c.a.nacos.client.logging.NacosLogging    : Load Logback Configuration of Nacos fail, message: Could not initialize Logback Nacos logging from classpath:nacos-logback.xml
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-11-30T21:35:11.586+08:00  INFO 9845 --- [           main] o.s.c.i.support.PropertySourceProcessor  : Properties location [classpath:/META-INF/dubbo/default/actuator-endpoints.properties] not resolvable: class path resource [META-INF/dubbo/default/actuator-endpoints.properties] cannot be opened because it does not exist
+2023-11-30T21:35:11.587+08:00 ERROR 9845 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+java.io.UncheckedIOException: java.io.FileNotFoundException: class path resource [META-INF/dubbo-endpoints-default.properties] cannot be opened because it does not exist
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:41)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:26)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:20)
+	at org.springframework.context.aot.AotApplicationContextInitializer.initialize(AotApplicationContextInitializer.java:72)
+	at org.springframework.context.aot.AotApplicationContextInitializer.lambda$forInitializerClasses$0(AotApplicationContextInitializer.java:61)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:605)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:385)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at com.yuhoutian.demo.provider.ProviderApplication.main(ProviderApplication.java:33)
+Caused by: java.io.FileNotFoundException: class path resource [META-INF/dubbo-endpoints-default.properties] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:211)
+	at org.springframework.core.io.support.EncodedResource.getInputStream(EncodedResource.java:160)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:100)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.fillProperties(PropertiesLoaderUtils.java:74)
+	at org.springframework.core.io.support.PropertiesLoaderUtils.loadProperties(PropertiesLoaderUtils.java:60)
+	at org.springframework.core.io.support.ResourcePropertySource.<init>(ResourcePropertySource.java:57)
+	at org.springframework.core.io.support.DefaultPropertySourceFactory.createPropertySource(DefaultPropertySourceFactory.java:37)
+	at org.springframework.core.io.support.PropertySourceProcessor.processPropertySource(PropertySourceProcessor.java:87)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.processPropertySources(ProviderApplication__ApplicationContextInitializer.java:39)
+	... 10 common frames omitted
+
+[root@localhost target]# cd ..
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# cd target/
+[root@localhost target]# ls
+classes            graalvm-reachability-metadata  spring-aot                                                 spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar.original
+dubbo-aot          maven-archiver                 spring-cloud-alibaba-consul-dubbo-provider                 spring-cloud-alibaba-consul-dubbo-provider.build_artifacts.txt
+generated-sources  maven-status                   spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar  spring-cloud-alibaba-consul-dubbo-provider.o
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider
+2023-11-30T23:09:02.109+08:00  INFO 10239 --- [           main] d.s.b.c.e.WelcomeLogoApplicationListener :  [DUBBO]
+
+ :: Dubbo (v3.3.0-beta.1) : https://github.com/apache/dubbo
+ :: Discuss group : dev@dubbo.apache.org
+, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:09:02.112+08:00  WARN 10239 --- [           main] c.a.nacos.client.logging.NacosLogging    : Load Logback Configuration of Nacos fail, message: Could not initialize Logback Nacos logging from classpath:nacos-logback.xml
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-11-30T23:09:02.121+08:00 ERROR 10239 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.cglib.core.CodeGenerationException: java.lang.NoSuchMethodException-->org.apache.dubbo.spring.boot.autoconfigure.DubboAutoConfiguration$$SpringCGLIB$$0.CGLIB$SET_THREAD_CALLBACKS([Lorg.springframework.cglib.proxy.Callback;)
+	at org.springframework.cglib.proxy.Enhancer$EnhancerFactoryData.<init>(Enhancer.java:501)
+	at org.springframework.cglib.proxy.Enhancer.wrapCachedClass(Enhancer.java:801)
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.lambda$new$1(AbstractClassGenerator.java:104)
+	at org.springframework.cglib.core.internal.LoadingCache.lambda$createEntry$1(LoadingCache.java:52)
+	at java.base@17.0.5/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.springframework.cglib.core.internal.LoadingCache.createEntry(LoadingCache.java:57)
+	at org.springframework.cglib.core.internal.LoadingCache.get(LoadingCache.java:34)
+	at org.springframework.cglib.core.AbstractClassGenerator$ClassLoaderData.get(AbstractClassGenerator.java:126)
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:313)
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562)
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:138)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:109)
+	at org.springframework.context.annotation.ConfigurationClassUtils.initializeConfigurationClass(ConfigurationClassUtils.java:81)
+	at org.apache.dubbo.spring.boot.autoconfigure.DubboAutoConfiguration__BeanDefinitions.getDubboAutoConfigurationBeanDefinition(DubboAutoConfiguration__BeanDefinitions.java:21)
+	at com.yuhoutian.demo.provider.ProviderApplication__BeanFactoryRegistrations.registerBeanDefinitions(ProviderApplication__BeanFactoryRegistrations.java:560)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:27)
+	at com.yuhoutian.demo.provider.ProviderApplication__ApplicationContextInitializer.initialize(ProviderApplication__ApplicationContextInitializer.java:20)
+	at org.springframework.context.aot.AotApplicationContextInitializer.initialize(AotApplicationContextInitializer.java:72)
+	at org.springframework.context.aot.AotApplicationContextInitializer.lambda$forInitializerClasses$0(AotApplicationContextInitializer.java:61)
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:605)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:385)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:309)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at com.yuhoutian.demo.provider.ProviderApplication.main(ProviderApplication.java:33)
+Caused by: java.lang.NoSuchMethodException: org.apache.dubbo.spring.boot.autoconfigure.DubboAutoConfiguration$$SpringCGLIB$$0.CGLIB$SET_THREAD_CALLBACKS([Lorg.springframework.cglib.proxy.Callback;)
+	at java.base@17.0.5/java.lang.Class.getDeclaredMethod(DynamicHub.java:2675)
+	at org.springframework.cglib.proxy.Enhancer.getCallbacksSetter(Enhancer.java:901)
+	at org.springframework.cglib.proxy.Enhancer$EnhancerFactoryData.<init>(Enhancer.java:490)
+	... 25 common frames omitted
+
+[root@localhost target]# cd ..
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# cd target/
+[root@localhost target]# ls
+classes            graalvm-reachability-metadata  spring-aot                                                 spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar.original
+dubbo-aot          maven-archiver                 spring-cloud-alibaba-consul-dubbo-provider                 spring-cloud-alibaba-consul-dubbo-provider.build_artifacts.txt
+generated-sources  maven-status                   spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar  spring-cloud-alibaba-consul-dubbo-provider.o
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider
+2023-11-30T23:17:23.885+08:00  INFO 10539 --- [           main] d.s.b.c.e.WelcomeLogoApplicationListener :  [DUBBO]
+
+ :: Dubbo (v3.3.0-beta.1) : https://github.com/apache/dubbo
+ :: Discuss group : dev@dubbo.apache.org
+, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.887+08:00  WARN 10539 --- [           main] c.a.nacos.client.logging.NacosLogging    : Load Logback Configuration of Nacos fail, message: Could not initialize Logback Nacos logging from classpath:nacos-logback.xml
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-11-30T23:17:23.899+08:00  WARN 10539 --- [           main] c.a.nacos.client.logging.NacosLogging    : Load Logback Configuration of Nacos fail, message: Could not initialize Logback Nacos logging from classpath:nacos-logback.xml
+2023-11-30T23:17:23.900+08:00  INFO 10539 --- [           main] c.y.demo.provider.ProviderApplication    : Starting AOT-processed ProviderApplication using Java 17.0.5 with PID 10539 (/root/spring-cloud-alibaba-graalvm/spring-cloud-alibaba-consul-dubbo-provider/target/spring-cloud-alibaba-consul-dubbo-provider started by root in /root/spring-cloud-alibaba-graalvm/spring-cloud-alibaba-consul-dubbo-provider/target)
+2023-11-30T23:17:23.900+08:00  INFO 10539 --- [           main] c.y.demo.provider.ProviderApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-11-30T23:17:23.905+08:00  INFO 10539 --- [           main] o.apache.dubbo.rpc.model.FrameworkModel  :  [DUBBO] Dubbo Framework[1] is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.905+08:00  INFO 10539 --- [           main] o.a.d.c.r.GlobalResourcesRepository      :  [DUBBO] Creating global shared handler ..., dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.910+08:00  INFO 10539 --- [           main] o.a.dubbo.rpc.model.ApplicationModel     :  [DUBBO] Dubbo Application[1.0](unknown) is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.910+08:00  INFO 10539 --- [           main] org.apache.dubbo.rpc.model.ScopeModel    :  [DUBBO] Dubbo Module[1.0.0] is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.913+08:00  INFO 10539 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.913+08:00  INFO 10539 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.913+08:00  INFO 10539 --- [           main] o.a.d.c.utils.SerializeSecurityManager   :  [DUBBO] Serialize check serializable: true, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.914+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.925+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.926+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.973+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.979+08:00  INFO 10539 --- [           main] o.a.dubbo.rpc.model.ApplicationModel     :  [DUBBO] Dubbo Application[1.1](unknown) is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.980+08:00  INFO 10539 --- [           main] org.apache.dubbo.rpc.model.ScopeModel    :  [DUBBO] Dubbo Module[1.1.0] is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.980+08:00  INFO 10539 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.980+08:00  INFO 10539 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.981+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.981+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.981+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:23.981+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.001+08:00  INFO 10539 --- [           main] o.a.d.c.s.c.DubboSpringInitializer       :  [DUBBO] Use default application: Dubbo Application[1.1](unknown), dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.001+08:00  INFO 10539 --- [           main] org.apache.dubbo.rpc.model.ScopeModel    :  [DUBBO] Dubbo Module[1.1.1] is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.002+08:00  INFO 10539 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.002+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.002+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.002+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.002+08:00  INFO 10539 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.003+08:00  INFO 10539 --- [           main] o.a.d.c.s.c.DubboSpringInitializer       :  [DUBBO] Use default module model of target application: Dubbo Module[1.1.1], dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.003+08:00  INFO 10539 --- [           main] o.a.d.c.s.c.DubboSpringInitializer       :  [DUBBO] Bind Dubbo Module[1.1.1] to spring container: org.springframework.beans.factory.support.DefaultListableBeanFactory@6637c2f9, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.003+08:00  INFO 10539 --- [           main] .a.ServiceAnnotationWithAotPostProcessor :  [DUBBO] BeanNameGenerator bean can't be found in BeanFactory with name [org.springframework.context.annotation.internalConfigurationBeanNameGenerator], dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.004+08:00  INFO 10539 --- [           main] .a.ServiceAnnotationWithAotPostProcessor :  [DUBBO] BeanNameGenerator will be a instance of org.springframework.context.annotation.AnnotationBeanNameGenerator , it maybe a potential problem on bean name generation., dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:17:24.004+08:00  WARN 10539 --- [           main] .a.ServiceAnnotationWithAotPostProcessor :  [DUBBO] No class annotated by Dubbo @DubboService or @Service was found under package [com.yuhoutian.demo.provider], ignore re-scanned classes: 0, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219, error code: 5-28. This may be caused by No annotations were found on the class, go to https://dubbo.apache.org/faq/5/28 to find instructions.
+2023-11-30T23:17:24.005+08:00  INFO 10539 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=63906c2a-13c1-35fe-8ad3-e9fd7fd583ba
+2023-11-30T23:17:24.025+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.025+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'loadBalancerClientsDefaultsMappingsProvider' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration$$Lambda$c9313021521ea1119389b0f250bc9c7500526f3c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.025+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.commons.config.CommonsConfigAutoConfiguration' of type [org.springframework.cloud.commons.config.CommonsConfigAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.025+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultsBindHandlerAdvisor' of type [org.springframework.cloud.commons.config.DefaultsBindHandlerAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.027+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'dubbo.cloud-com.alibaba.cloud.dubbo.env.DubboCloudProperties' of type [com.alibaba.cloud.dubbo.env.DubboCloudProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.027+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.autoconfigure.DubboServiceAutoConfiguration' of type [com.alibaba.cloud.dubbo.autoconfigure.DubboServiceAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.028+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'dubboGenericServiceFactory' of type [com.alibaba.cloud.dubbo.service.DubboGenericServiceFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.028+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.util.JSONUtils' of type [com.alibaba.cloud.dubbo.util.JSONUtils] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.028+08:00  INFO 10539 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.util.DubboMetadataUtils' of type [com.alibaba.cloud.dubbo.util.DubboMetadataUtils] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:17:24.029+08:00  WARN 10539 --- [           main] w.s.c.ServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'targeterBeanPostProcessor': Unsatisfied dependency expressed through method 'targeterBeanPostProcessor' parameter 1: Error creating bean with name 'com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository': Unsatisfied dependency expressed through field 'dubboMetadataConfigServiceProxy': Error creating bean with name 'com.alibaba.cloud.dubbo.service.DubboMetadataServiceProxy': Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'com.alibaba.cloud.dubbo.autoconfigure.DubboMetadataAutoConfiguration': Unsatisfied dependency expressed through field 'metadataResolver': Error creating bean with name 'com.alibaba.cloud.dubbo.autoconfigure.DubboMetadataAutoConfiguration': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2023-11-30T23:17:24.029+08:00  INFO 10539 --- [           main] c.a.c.d.s.DubboGenericServiceFactory     : The Dubbo GenericService ReferenceBeans are destroying...
+2023-11-30T23:17:24.031+08:00 ERROR 10539 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   :
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   targeterBeanPostProcessor
+      ↓
+   com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository (field private com.alibaba.cloud.dubbo.service.DubboMetadataServiceProxy com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository.dubboMetadataConfigServiceProxy)
+      ↓
+   com.alibaba.cloud.dubbo.service.DubboMetadataServiceProxy
+┌─────┐
+|  com.alibaba.cloud.dubbo.autoconfigure.DubboMetadataAutoConfiguration (field private com.alibaba.cloud.dubbo.metadata.resolver.MetadataResolver com.alibaba.cloud.dubbo.autoconfigure.DubboMetadataAutoConfiguration.metadataResolver)
+└─────┘
+
+
+Action:
+
+Despite circular references being allowed, the dependency cycle between beans could not be broken. Update your application to remove the dependency cycle.
+
+[root@localhost target]# cd ..
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# ls
+cpom.xml  src  target
+[root@localhost spring-cloud-alibaba-consul-dubbo-provider]# cd target/
+[root@localhost target]# ls
+classes            graalvm-reachability-metadata  spring-aot                                                 spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar.original
+dubbo-aot          maven-archiver                 spring-cloud-alibaba-consul-dubbo-provider                 spring-cloud-alibaba-consul-dubbo-provider.build_artifacts.txt
+generated-sources  maven-status                   spring-cloud-alibaba-consul-dubbo-provider-2022.0.0.0.jar  spring-cloud-alibaba-consul-dubbo-provider.o
+[root@localhost target]# ./spring-cloud-alibaba-consul-dubbo-provider
+2023-11-30T23:33:59.028+08:00  INFO 11102 --- [           main] d.s.b.c.e.WelcomeLogoApplicationListener :  [DUBBO]
+
+ :: Dubbo (v3.3.0-beta.1) : https://github.com/apache/dubbo
+ :: Discuss group : dev@dubbo.apache.org
+, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.5)
+
+2023-11-30T23:33:59.241+08:00  INFO 11102 --- [           main] c.y.demo.provider.ProviderApplication    : Starting AOT-processed ProviderApplication using Java 17.0.5 with PID 11102 (/root/spring-cloud-alibaba-graalvm/spring-cloud-alibaba-consul-dubbo-provider/target/spring-cloud-alibaba-consul-dubbo-provider started by root in /root/spring-cloud-alibaba-graalvm/spring-cloud-alibaba-consul-dubbo-provider/target)
+2023-11-30T23:33:59.242+08:00  INFO 11102 --- [           main] c.y.demo.provider.ProviderApplication    : No active profile set, falling back to 1 default profile: "default"
+2023-11-30T23:33:59.256+08:00  INFO 11102 --- [           main] o.apache.dubbo.rpc.model.FrameworkModel  :  [DUBBO] Dubbo Framework[1] is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.257+08:00  INFO 11102 --- [           main] o.a.d.c.r.GlobalResourcesRepository      :  [DUBBO] Creating global shared handler ..., dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.429+08:00  INFO 11102 --- [           main] o.a.dubbo.rpc.model.ApplicationModel     :  [DUBBO] Dubbo Application[1.0](unknown) is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.429+08:00  INFO 11102 --- [           main] org.apache.dubbo.rpc.model.ScopeModel    :  [DUBBO] Dubbo Module[1.0.0] is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.608+08:00  INFO 11102 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.608+08:00  INFO 11102 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.618+08:00  INFO 11102 --- [           main] o.a.d.c.utils.SerializeSecurityManager   :  [DUBBO] Serialize check serializable: true, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.619+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.630+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.631+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.721+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.913+08:00  INFO 11102 --- [           main] o.a.dubbo.rpc.model.ApplicationModel     :  [DUBBO] Dubbo Application[1.1](unknown) is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.913+08:00  INFO 11102 --- [           main] org.apache.dubbo.rpc.model.ScopeModel    :  [DUBBO] Dubbo Module[1.1.0] is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.914+08:00  INFO 11102 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.915+08:00  INFO 11102 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.915+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.915+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.915+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.915+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.918+08:00  INFO 11102 --- [           main] o.a.d.c.s.c.DubboSpringInitializer       :  [DUBBO] Use default application: Dubbo Application[1.1](unknown), dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.918+08:00  INFO 11102 --- [           main] org.apache.dubbo.rpc.model.ScopeModel    :  [DUBBO] Dubbo Module[1.1.1] is created, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.918+08:00  INFO 11102 --- [           main] o.a.d.c.context.AbstractConfigManager    :  [DUBBO] Config settings: {dubbo.config.mode=STRICT, dubbo.config.ignore-duplicated-interface=false}, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.996+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.996+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize allow list from resource:/security/serialize.allowlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.996+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.997+08:00  INFO 11102 --- [           main] o.a.d.c.u.SerializeSecurityConfigurator  :  [DUBBO] Read serialize blocked list from resource:/security/serialize.blockedlist#1, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.997+08:00  INFO 11102 --- [           main] o.a.d.c.s.c.DubboSpringInitializer       :  [DUBBO] Use default module model of target application: Dubbo Module[1.1.1], dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.997+08:00  INFO 11102 --- [           main] o.a.d.c.s.c.DubboSpringInitializer       :  [DUBBO] Bind Dubbo Module[1.1.1] to spring container: org.springframework.beans.factory.support.DefaultListableBeanFactory@215d1502, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.997+08:00  INFO 11102 --- [           main] .a.ServiceAnnotationWithAotPostProcessor :  [DUBBO] BeanNameGenerator bean can't be found in BeanFactory with name [org.springframework.context.annotation.internalConfigurationBeanNameGenerator], dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:33:59.997+08:00  INFO 11102 --- [           main] .a.ServiceAnnotationWithAotPostProcessor :  [DUBBO] BeanNameGenerator will be a instance of org.springframework.context.annotation.AnnotationBeanNameGenerator , it maybe a potential problem on bean name generation., dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:34:00.019+08:00  WARN 11102 --- [           main] .a.ServiceAnnotationWithAotPostProcessor :  [DUBBO] No class annotated by Dubbo @DubboService or @Service was found under package [com.yuhoutian.demo.provider], ignore re-scanned classes: 0, dubbo version: 3.3.0-beta.1, current host: 192.168.0.219, error code: 5-28. This may be caused by No annotations were found on the class, go to https://dubbo.apache.org/faq/5/28 to find instructions.
+2023-11-30T23:34:00.042+08:00  INFO 11102 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5ea3e71b-b8b0-399b-bb31-a35943c48e28
+2023-11-30T23:34:00.195+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.200+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'loadBalancerClientsDefaultsMappingsProvider' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerDefaultMappingsProviderAutoConfiguration$$Lambda$c9313021521ea1119389b0f250bc9c7500526f3c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.201+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.commons.config.CommonsConfigAutoConfiguration' of type [org.springframework.cloud.commons.config.CommonsConfigAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.201+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'defaultsBindHandlerAdvisor' of type [org.springframework.cloud.commons.config.DefaultsBindHandlerAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.202+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'dubbo.cloud-com.alibaba.cloud.dubbo.env.DubboCloudProperties' of type [com.alibaba.cloud.dubbo.env.DubboCloudProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.203+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.autoconfigure.DubboServiceAutoConfiguration' of type [com.alibaba.cloud.dubbo.autoconfigure.DubboServiceAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.203+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'dubboGenericServiceFactory' of type [com.alibaba.cloud.dubbo.service.DubboGenericServiceFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.204+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.util.JSONUtils' of type [com.alibaba.cloud.dubbo.util.JSONUtils] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.204+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.util.DubboMetadataUtils' of type [com.alibaba.cloud.dubbo.util.DubboMetadataUtils] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.208+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'providerApplication' of type [com.yuhoutian.demo.provider.ProviderApplication$$SpringCGLIB$$0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.209+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'applicationConfig' of type [org.apache.dubbo.config.ApplicationConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.210+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.service.DubboMetadataServiceExporter' of type [com.alibaba.cloud.dubbo.service.DubboMetadataServiceExporter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.210+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.autoconfigure.DubboMetadataAutoConfiguration' of type [com.alibaba.cloud.dubbo.autoconfigure.DubboMetadataAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.210+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'metadataServiceInstanceSelector' of type [com.alibaba.cloud.dubbo.metadata.repository.RandomServiceInstanceSelector] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.211+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.consul.ConsulAutoConfiguration' of type [org.springframework.cloud.consul.ConsulAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.220+08:00  INFO 11102 --- [           main] o.h.validator.internal.util.Version      : HV000001: Hibernate Validator 8.0.0.Final
+2023-11-30T23:34:00.324+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'consulProperties' of type [org.springframework.cloud.consul.ConsulProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.325+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'consulRawClientBuilderSupplier' of type [org.springframework.cloud.consul.ConsulAutoConfiguration$$Lambda$c78f753eb5a6be2e20aa4199e46bdcb77731d3cc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.436+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'consulClient' of type [com.ecwid.consul.v1.ConsulClient] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.437+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.commons.util.UtilAutoConfiguration' of type [org.springframework.cloud.commons.util.UtilAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.466+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'inetUtilsProperties' of type [org.springframework.cloud.commons.util.InetUtilsProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.466+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'inetUtils' of type [org.springframework.cloud.commons.util.InetUtils] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.466+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.consul.discovery.ConsulDiscoveryClientConfiguration' of type [org.springframework.cloud.consul.discovery.ConsulDiscoveryClientConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.539+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'consulDiscoveryProperties' of type [org.springframework.cloud.consul.discovery.ConsulDiscoveryProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.540+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'consulDiscoveryClient' of type [org.springframework.cloud.consul.discovery.ConsulDiscoveryClient] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.561+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'server-org.springframework.boot.autoconfigure.web.ServerProperties' of type [org.springframework.boot.autoconfigure.web.ServerProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.561+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.discovery.simple.SimpleDiscoveryClientAutoConfiguration' of type [org.springframework.cloud.client.discovery.simple.SimpleDiscoveryClientAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.582+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'simpleDiscoveryProperties' of type [org.springframework.cloud.client.discovery.simple.SimpleDiscoveryProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.583+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'simpleDiscoveryClient' of type [org.springframework.cloud.client.discovery.simple.SimpleDiscoveryClient] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.583+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.discovery.composite.CompositeDiscoveryClientAutoConfiguration' of type [org.springframework.cloud.client.discovery.composite.CompositeDiscoveryClientAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.583+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'compositeDiscoveryClient' of type [org.springframework.cloud.client.discovery.composite.CompositeDiscoveryClient] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.583+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.service.DubboMetadataServiceProxy' of type [com.alibaba.cloud.dubbo.service.DubboMetadataServiceProxy] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.584+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository' of type [com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.596+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.service.parameter.RequestParamServiceParameterResolver' of type [com.alibaba.cloud.dubbo.service.parameter.RequestParamServiceParameterResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.597+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration' of type [org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.621+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration$StringHttpMessageConverterConfiguration' of type [org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration$StringHttpMessageConverterConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.622+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'stringHttpMessageConverter' of type [org.springframework.http.converter.StringHttpMessageConverter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.625+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.jackson-org.springframework.boot.autoconfigure.jackson.JacksonProperties' of type [org.springframework.boot.autoconfigure.jackson.JacksonProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.625+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$Jackson2ObjectMapperBuilderCustomizerConfiguration' of type [org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$Jackson2ObjectMapperBuilderCustomizerConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.626+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$ParameterNamesModuleConfiguration' of type [org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$ParameterNamesModuleConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.626+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'parameterNamesModule' of type [com.fasterxml.jackson.module.paramnames.ParameterNamesModule] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.626+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsonMixinModuleEntries' of type [org.springframework.boot.jackson.JsonMixinModuleEntries] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.626+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonMixinConfiguration' of type [org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonMixinConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.626+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsonMixinModule' of type [org.springframework.boot.jackson.JsonMixinModule] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.626+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration' of type [org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.633+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jsonComponentModule' of type [org.springframework.boot.jackson.JsonComponentModule] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.633+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'standardJacksonObjectMapperBuilderCustomizer' of type [org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$Jackson2ObjectMapperBuilderCustomizerConfiguration$StandardJackson2ObjectMapperBuilderCustomizer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.634+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperBuilderConfiguration' of type [org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperBuilderConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.644+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jacksonObjectMapperBuilder' of type [org.springframework.http.converter.json.Jackson2ObjectMapperBuilder] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.645+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperConfiguration' of type [org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.645+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'jacksonObjectMapper' of type [com.fasterxml.jackson.databind.ObjectMapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.645+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration$MappingJackson2HttpMessageConverterConfiguration' of type [org.springframework.boot.autoconfigure.http.JacksonHttpMessageConvertersConfiguration$MappingJackson2HttpMessageConverterConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.646+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'mappingJackson2HttpMessageConverter' of type [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.689+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'messageConverters' of type [org.springframework.boot.autoconfigure.http.HttpMessageConverters] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.689+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.service.parameter.RequestBodyServiceParameterResolver' of type [com.alibaba.cloud.dubbo.service.parameter.RequestBodyServiceParameterResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.690+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.service.parameter.RequestHeaderServiceParameterResolver' of type [com.alibaba.cloud.dubbo.service.parameter.RequestHeaderServiceParameterResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.691+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.service.parameter.PathVariableServiceParameterResolver' of type [com.alibaba.cloud.dubbo.service.parameter.PathVariableServiceParameterResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.691+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.service.DubboGenericServiceExecutionContextFactory' of type [com.alibaba.cloud.dubbo.service.DubboGenericServiceExecutionContextFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:00.691+08:00  INFO 11102 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.alibaba.cloud.dubbo.autoconfigure.DubboOpenFeignAutoConfiguration' of type [com.alibaba.cloud.dubbo.autoconfigure.DubboOpenFeignAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-11-30T23:34:01.081+08:00  INFO 11102 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9998 (http)
+2023-11-30T23:34:01.091+08:00  INFO 11102 --- [           main] o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-9998"]
+2023-11-30T23:34:01.121+08:00  INFO 11102 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-11-30T23:34:01.121+08:00  INFO 11102 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.7]
+2023-11-30T23:34:01.137+08:00  INFO 11102 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-11-30T23:34:01.137+08:00  INFO 11102 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1895 ms
+2023-11-30T23:34:01.220+08:00  INFO 11102 --- [           main] o.a.d.c.s.c.DubboConfigBeanInitializer   :  [DUBBO] loading dubbo config beans ..., dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:34:01.222+08:00  INFO 11102 --- [           main] o.a.d.c.s.c.DubboConfigBeanInitializer   :  [DUBBO] dubbo config beans are loaded., dubbo version: 3.3.0-beta.1, current host: 192.168.0.219
+2023-11-30T23:34:01.477+08:00  WARN 11102 --- [           main] w.s.c.ServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'feignTargeter': Proxy class defined by interfaces [interface org.springframework.cloud.openfeign.Targeter] not found. Generating proxy classes at runtime is not supported. Proxy classes need to be defined at image build time by specifying the list of interfaces that they implement. To define proxy classes use -H:DynamicProxyConfigurationFiles=<comma-separated-config-files> and -H:DynamicProxyConfigurationResources=<comma-separated-config-resources> options.
+2023-11-30T23:34:01.478+08:00  INFO 11102 --- [           main] c.a.c.d.s.DubboGenericServiceFactory     : The Dubbo GenericService ReferenceBeans are destroying...
+2023-11-30T23:34:01.478+08:00  INFO 11102 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-11-30T23:34:01.504+08:00 ERROR 11102 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'feignTargeter': Proxy class defined by interfaces [interface org.springframework.cloud.openfeign.Targeter] not found. Generating proxy classes at runtime is not supported. Proxy classes need to be defined at image build time by specifying the list of interfaces that they implement. To define proxy classes use -H:DynamicProxyConfigurationFiles=<comma-separated-config-files> and -H:DynamicProxyConfigurationResources=<comma-separated-config-resources> options.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:605)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:917)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:584)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:434)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:310)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1304)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1293)
+	at com.yuhoutian.demo.provider.ProviderApplication.main(ProviderApplication.java:33)
+Caused by: com.oracle.svm.core.jdk.UnsupportedFeatureError: Proxy class defined by interfaces [interface org.springframework.cloud.openfeign.Targeter] not found. Generating proxy classes at runtime is not supported. Proxy classes need to be defined at image build time by specifying the list of interfaces that they implement. To define proxy classes use -H:DynamicProxyConfigurationFiles=<comma-separated-config-files> and -H:DynamicProxyConfigurationResources=<comma-separated-config-resources> options.
+	at org.graalvm.nativeimage.builder/com.oracle.svm.core.util.VMError.unsupportedFeature(VMError.java:89)
+	at org.graalvm.nativeimage.builder/com.oracle.svm.core.reflect.proxy.DynamicProxySupport.getProxyClass(DynamicProxySupport.java:171)
+	at java.base@17.0.5/java.lang.reflect.Proxy.getProxyConstructor(Proxy.java:47)
+	at java.base@17.0.5/java.lang.reflect.Proxy.newProxyInstance(Proxy.java:1037)
+	at com.alibaba.cloud.dubbo.openfeign.TargeterBeanPostProcessor.postProcessAfterInitialization(TargeterBeanPostProcessor.java:75)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:434)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	... 15 common frames omitted
+
