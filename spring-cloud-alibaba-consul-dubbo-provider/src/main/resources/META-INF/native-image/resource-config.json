@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "\\QMETA-INF/dubbo-endpoints-default.properties\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/dubbo/default/actuator-endpoints.properties\\E"
+      }
+    ]
+  }
+}
