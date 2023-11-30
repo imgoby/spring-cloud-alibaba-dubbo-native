@@ -15,6 +15,9 @@
 spring:
   application:
     name: dubbo-samples-native-image-registry-provider
+#resolve circular references.yuhou.todo
+  main:
+    allow-circular-references: true
 dubbo:
   application:
     name: ${spring.application.name}

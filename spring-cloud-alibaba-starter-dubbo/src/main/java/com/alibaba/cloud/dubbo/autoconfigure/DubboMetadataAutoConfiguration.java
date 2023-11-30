@@ -42,6 +42,7 @@ import org.springframework.boot.context.event.ApplicationFailedEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.EventListener;
 
@@ -59,6 +60,8 @@ public class DubboMetadataAutoConfiguration {
 	@Autowired
 	private ObjectProvider<DubboServiceMetadataRepository> dubboServiceMetadataRepository;
 
+	//resolve circular references.yuhou.todo
+	@Lazy
 	@Autowired
 	private MetadataResolver metadataResolver;
 

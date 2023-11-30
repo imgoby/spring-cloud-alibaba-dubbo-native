@@ -1,0 +1,30 @@
+2023-11-30T09:38:53.800+08:00  INFO [dubbo-samples-native-image-registry-provider,,] 20711 --- [           main] c.a.c.d.s.DubboGenericServiceFactory     : The Dubbo GenericService ReferenceBeans are destroying...
+2023-11-30T09:38:53.803+08:00 ERROR [dubbo-samples-native-image-registry-provider,,] 20711 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   :
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   targeterBeanPostProcessor
+      ↓
+   com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository (field private com.alibaba.cloud.dubbo.service.DubboMetadataServiceProxy com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository.dubboMetadataConfigServiceProxy)
+      ↓
+   com.alibaba.cloud.dubbo.service.DubboMetadataServiceProxy
+┌─────┐
+|  com.alibaba.cloud.dubbo.autoconfigure.DubboMetadataAutoConfiguration (field private com.alibaba.cloud.dubbo.service.DubboMetadataServiceExporter com.alibaba.cloud.dubbo.autoconfigure.DubboMetadataAutoConfiguration.dubboMetadataConfigServiceExporter)
+↑     ↓
+|  com.alibaba.cloud.dubbo.service.DubboMetadataServiceExporter (field private java.util.function.Supplier com.alibaba.cloud.dubbo.service.DubboMetadataServiceExporter.protocolConfigSupplier)
+└─────┘
+
+
+Action:
+
+Despite circular references being allowed, the dependency cycle between beans could not be broken. Update your application to remove the dependency cycle.
+
+================================================
+解决方法：
+（1）增加@Lazy
