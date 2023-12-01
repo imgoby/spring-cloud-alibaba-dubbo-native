@@ -9,7 +9,11 @@
       },
       {
         "pattern": "\\QMETA-INF/dubbo/org.apache.dubbo.registry.RegistryFactory\\E"
+      },
+      {
+        "pattern": "\\QMETA-INF/dubbo/org.apache.dubbo.rpc.cluster.RouterFactory\\E"
       }
     ]
   }
 }
+
