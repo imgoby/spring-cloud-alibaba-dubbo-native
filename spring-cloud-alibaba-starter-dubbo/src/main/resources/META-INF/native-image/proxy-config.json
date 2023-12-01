@@ -3,5 +3,10 @@
     "interfaces": [
       "org.springframework.cloud.openfeign.Targeter"
     ]
+  },
+  {
+    "interfaces": [
+      "com.alibaba.dubbo.rpc.service.GenericService"
+    ]
   }
 ]
