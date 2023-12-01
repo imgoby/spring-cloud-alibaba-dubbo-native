@@ -61,10 +61,10 @@ public class DefaultHttpRequest implements HttpRequest {
 
 	@Override
 	public HttpMethod getMethod() {
-		return HttpMethod.resolve(getMethodValue());
+		return HttpMethod.valueOf(getMethodValue());
 	}
 
-	@Override
+//	@Override //yohou.todo
 	public String getMethodValue() {
 		return method;
 	}

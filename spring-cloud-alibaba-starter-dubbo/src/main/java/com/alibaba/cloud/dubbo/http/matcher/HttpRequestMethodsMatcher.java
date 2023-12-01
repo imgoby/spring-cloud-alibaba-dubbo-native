@@ -24,7 +24,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpRequest;
 import org.springframework.util.StringUtils;
 
-import static org.springframework.http.HttpMethod.resolve;
 
 /**
  * {@link HttpRequest} {@link HttpMethod methods} {@link HttpRequestMatcher matcher}.
@@ -45,7 +44,7 @@ public class HttpRequestMethodsMatcher extends AbstractHttpRequestMatcher {
 			if (!StringUtils.hasText(method)) {
 				continue;
 			}
-			HttpMethod httpMethod = resolve(method);
+			HttpMethod httpMethod = HttpMethod.valueOf(method);
 			httpMethods.add(httpMethod);
 		}
 		return httpMethods;

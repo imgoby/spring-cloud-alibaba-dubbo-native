@@ -8,5 +8,10 @@
     "interfaces": [
       "com.alibaba.dubbo.rpc.service.GenericService"
     ]
+  },
+  {
+    "interfaces": [
+      "com.alibaba.cloud.dubbo.service.DubboMetadataService"
+    ]
   }
 ]
