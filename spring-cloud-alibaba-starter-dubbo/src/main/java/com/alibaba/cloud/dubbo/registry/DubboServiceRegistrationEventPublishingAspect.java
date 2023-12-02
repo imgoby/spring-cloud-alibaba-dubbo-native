@@ -60,72 +60,72 @@ public class DubboServiceRegistrationEventPublishingAspect
 
 	@Before(value = REGISTER_POINTCUT_EXPRESSION_CONSUL, argNames = "registry, registration")
 	public void beforeRegisterConsul(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher.publishEvent(
-				new ServiceInstancePreRegisteredEvent(registry, registration));
+		beforeRegister(registry,registration);
 	}
-
 	@Before(value = REGISTER_POINTCUT_EXPRESSION_EUREKA, argNames = "registry, registration")
 	public void beforeRegisterEureka(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher.publishEvent(
-				new ServiceInstancePreRegisteredEvent(registry, registration));
+		beforeRegister(registry,registration);
 	}
-
 	@Before(value = REGISTER_POINTCUT_EXPRESSION_NACOS, argNames = "registry, registration")
 	public void beforeRegisterNacos(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher.publishEvent(
-				new ServiceInstancePreRegisteredEvent(registry, registration));
+		beforeRegister(registry,registration);
 	}
-
 	@Before(value = REGISTER_POINTCUT_EXPRESSION_ZOOKEEPER, argNames = "registry, registration")
 	public void beforeRegisterZookeeper(ServiceRegistry registry, Registration registration) {
+		beforeRegister(registry,registration);
+	}
+
+	private void beforeRegister(ServiceRegistry registry, Registration registration) {
 		applicationEventPublisher.publishEvent(
 				new ServiceInstancePreRegisteredEvent(registry, registration));
 	}
 
 	@Before(value = DEREGISTER_POINTCUT_EXPRESSION_CONSUL, argNames = "registry, registration")
 	public void beforeDeregisterConsul(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher.publishEvent(
-				new ServiceInstancePreDeregisteredEvent(registry, registration));
+		beforeDeregister(registry,registration);
 	}
 
 	@Before(value = DEREGISTER_POINTCUT_EXPRESSION_EUREKA, argNames = "registry, registration")
 	public void beforeDeregisterEureka(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher.publishEvent(
-				new ServiceInstancePreDeregisteredEvent(registry, registration));
+		beforeDeregister(registry,registration);
 	}
 
 	@Before(value = DEREGISTER_POINTCUT_EXPRESSION_NACOS, argNames = "registry, registration")
 	public void beforeDeregisterNacos(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher.publishEvent(
-				new ServiceInstancePreDeregisteredEvent(registry, registration));
+		beforeDeregister(registry,registration);
 	}
 
 	@Before(value = DEREGISTER_POINTCUT_EXPRESSION_ZOOKEEPER, argNames = "registry, registration")
 	public void beforeDeregisterZookeeper(ServiceRegistry registry, Registration registration) {
+		beforeDeregister(registry,registration);
+	}
+
+	private void beforeDeregister(ServiceRegistry registry, Registration registration) {
 		applicationEventPublisher.publishEvent(
 				new ServiceInstancePreDeregisteredEvent(registry, registration));
 	}
 
 	@After(value = REGISTER_POINTCUT_EXPRESSION_CONSUL, argNames = "registry, registration")
 	public void afterRegisterConsul(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher
-				.publishEvent(new ServiceInstanceRegisteredEvent(registration));
+		afterRegister(registry,registration);
 	}
 
 	@After(value = REGISTER_POINTCUT_EXPRESSION_NACOS, argNames = "registry, registration")
 	public void afterRegisterNacos(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher
-				.publishEvent(new ServiceInstanceRegisteredEvent(registration));
+		afterRegister(registry,registration);
 	}
 
 	@After(value = REGISTER_POINTCUT_EXPRESSION_EUREKA, argNames = "registry, registration")
 	public void afterRegisterEureka(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher
-				.publishEvent(new ServiceInstanceRegisteredEvent(registration));
+		afterRegister(registry,registration);
 	}
 
 	@After(value = REGISTER_POINTCUT_EXPRESSION_ZOOKEEPER, argNames = "registry, registration")
 	public void afterRegisterZookeeper(ServiceRegistry registry, Registration registration) {
+		afterRegister(registry,registration);
+	}
+
+	private void afterRegister(ServiceRegistry registry, Registration registration) {
 		applicationEventPublisher
 				.publishEvent(new ServiceInstanceRegisteredEvent(registration));
 	}
