@@ -74,7 +74,31 @@ public class DubboServiceRegistrationNonWebApplicationAutoConfiguration {
 	@Autowired
 	private DubboServiceMetadataRepository repository;
 
-	@Around("execution(* org.springframework.cloud.client.serviceregistry.Registration.getPort())")
+	@Around("execution(* org.springframework.cloud.consul.serviceregistry.ConsulAutoRegistration.getPort())")
+	public Object getPortConsulAutoRegistration(ProceedingJoinPoint pjp) throws Throwable {
+		return getPort(pjp);
+	}
+	@Around("execution(* org.springframework.cloud.consul.serviceregistry.ConsulRegistration.getPort())")
+	public Object getPortConsulRegistration(ProceedingJoinPoint pjp) throws Throwable {
+		return getPort(pjp);
+	}
+	@Around("execution(* com.alibaba.cloud.dubbo.registry.DelegatingRegistration.getPort())")
+	public Object getPortDelegatingRegistration(ProceedingJoinPoint pjp) throws Throwable {
+		return getPort(pjp);
+	}
+	@Around("execution(* org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.getPort())")
+	public Object getPortEurekaRegistration(ProceedingJoinPoint pjp) throws Throwable {
+		return getPort(pjp);
+	}
+	@Around("execution(* com.alibaba.cloud.nacos.registry.NacosRegistration.getPort())")
+	public Object getPortNacosRegistration(ProceedingJoinPoint pjp) throws Throwable {
+		return getPort(pjp);
+	}
+	@Around("execution(* org.springframework.cloud.zookeeper.serviceregistry.ServiceInstanceRegistration.getPort())")
+	public Object getPortServiceInstanceRegistration(ProceedingJoinPoint pjp) throws Throwable {
+		return getPort(pjp);
+	}
+
 	public Object getPort(ProceedingJoinPoint pjp) throws Throwable {
 		/**
 		 * move setServerPort from onApplicationStarted() to here for this issue :
