@@ -27,6 +27,7 @@ import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.cloud.client.serviceregistry.ServiceRegistry;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.stereotype.Component;
 
 /**
  * Dubbo Service Registration Event-Publishing Aspect.
@@ -37,6 +38,7 @@ import org.springframework.context.ApplicationEventPublisherAware;
  * @see ServiceInstancePreDeregisteredEvent
  */
 @Aspect
+@Component
 public class DubboServiceRegistrationEventPublishingAspect
 		implements ApplicationEventPublisherAware {
 
