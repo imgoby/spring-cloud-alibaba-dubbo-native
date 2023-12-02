@@ -53,7 +53,7 @@ sdk default java 22.3.r17-nik
 
 二、基于https://github.com/alibaba/spring-cloud-alibaba/releases/tag/2022.0.0.0 的源码改造项目顶层目录：
 
-注意：spring-boot 使用3.0.0。此版本对支持@Aspect在native-image下运行。
+注意：spring-boot 使用3.0.9。此版本对支持@Aspect在native-image下运行。
 （1）父项目
 ```xml
 <dependencyManagement>
