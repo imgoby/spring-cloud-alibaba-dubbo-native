@@ -69,6 +69,7 @@
         <module>spring-cloud-alibaba-consul-dubbo-api</module>
         <module>spring-cloud-alibaba-consul-dubbo-provider</module>
         <module>spring-cloud-alibaba-consul-dubbo-consumer</module>
+        <module>spring-cloud-alibaba-aspect-native-image</module>
     </modules>
 
     <dependencyManagement>
