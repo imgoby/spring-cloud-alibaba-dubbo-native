@@ -34,5 +34,53 @@
         "parameterTypes": [ ]
       }
     ]
+  },
+  {
+    "name": "java.sql.Date",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": ["long" ]
+      }
+    ]
+  },
+  {
+    "name": "java.sql.Time",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": ["long" ]
+      }
+    ]
+  },
+  {
+    "name": "java.sql.Timestamp",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": ["long" ]
+      }
+    ]
+  },
+  {
+    "name": "com.alibaba.com.caucho.hessian.io.ClassFactory",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [ ]
+      }
+    ]
   }
 ]
