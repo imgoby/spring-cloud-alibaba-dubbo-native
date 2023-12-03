@@ -27,6 +27,10 @@ import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.cloud.client.serviceregistry.ServiceRegistry;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.context.annotation.ImportRuntimeHints;
+import org.springframework.aot.hint.RuntimeHintsRegistrar;
+import org.springframework.aot.hint.RuntimeHints;
+import org.springframework.aot.hint.MemberCategory;
 
 /**
  * Dubbo Service Registration Event-Publishing Aspect.
@@ -37,95 +41,36 @@ import org.springframework.context.ApplicationEventPublisherAware;
  * @see ServiceInstancePreDeregisteredEvent
  */
 @Aspect
+@ImportRuntimeHints(DubboServiceRegistrationEventPublishingAspect.ServiceRegistryControllerRuntimeHints.class)
 public class DubboServiceRegistrationEventPublishingAspect
 		implements ApplicationEventPublisherAware {
 
 	/**
 	 * The pointcut expression for {@link ServiceRegistry#register(Registration)}.
 	 */
-	public static final String REGISTER_POINTCUT_EXPRESSION_CONSUL = "execution(* org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.register(*)) && target(registry) && args(registration)";
-//	public static final String REGISTER_POINTCUT_EXPRESSION_EUREKA = "execution(* org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.register(*)) && target(registry) && args(registration)";
-//	public static final String REGISTER_POINTCUT_EXPRESSION_NACOS = "execution(* com.alibaba.cloud.nacos.registry.NacosServiceRegistry.register(*)) && target(registry) && args(registration)";
-//	public static final String REGISTER_POINTCUT_EXPRESSION_ZOOKEEPER = "execution(* org.springframework.cloud.zookeeper.serviceregistry.ZookeeperServiceRegistry.register(*)) && target(registry) && args(registration)";
+	public static final String REGISTER_POINTCUT_EXPRESSION = "execution(* org.springframework.cloud.client.serviceregistry.ServiceRegistry.register(*)) && target(registry) && args(registration)";
 
 	/**
 	 * The pointcut expression for {@link ServiceRegistry#deregister(Registration)}.
 	 */
-	public static final String DEREGISTER_POINTCUT_EXPRESSION_CONSUL = "execution(* org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.deregister(*)) && target(registry) && args(registration)";
-//	public static final String DEREGISTER_POINTCUT_EXPRESSION_EUREKA = "execution(* org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.deregister(*)) && target(registry) && args(registration)";
-//	public static final String DEREGISTER_POINTCUT_EXPRESSION_NACOS = "execution(* com.alibaba.cloud.nacos.registry.NacosServiceRegistry.deregister(*)) && target(registry) && args(registration)";
-//	public static final String DEREGISTER_POINTCUT_EXPRESSION_ZOOKEEPER = "execution(* org.springframework.cloud.zookeeper.serviceregistry.ZookeeperServiceRegistry.deregister(*)) && target(registry) && args(registration)";
+	public static final String DEREGISTER_POINTCUT_EXPRESSION = "execution(* org.springframework.cloud.client.serviceregistry.ServiceRegistry.deregister(*)) && target(registry) && args(registration)";
 
 	private ApplicationEventPublisher applicationEventPublisher;
 
-	@Before(value = REGISTER_POINTCUT_EXPRESSION_CONSUL, argNames = "registry, registration")
-	public void beforeRegisterConsul(ServiceRegistry registry, Registration registration) {
-		beforeRegister(registry,registration);
-	}
-//	@Before(value = REGISTER_POINTCUT_EXPRESSION_EUREKA, argNames = "registry, registration")
-//	public void beforeRegisterEureka(ServiceRegistry registry, Registration registration) {
-//		beforeRegister(registry,registration);
-//	}
-//	@Before(value = REGISTER_POINTCUT_EXPRESSION_NACOS, argNames = "registry, registration")
-//	public void beforeRegisterNacos(ServiceRegistry registry, Registration registration) {
-//		beforeRegister(registry,registration);
-//	}
-//	@Before(value = REGISTER_POINTCUT_EXPRESSION_ZOOKEEPER, argNames = "registry, registration")
-//	public void beforeRegisterZookeeper(ServiceRegistry registry, Registration registration) {
-//		beforeRegister(registry,registration);
-//	}
-
-	private void beforeRegister(ServiceRegistry registry, Registration registration) {
+	@Before(value = REGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
+	public void beforeRegister(ServiceRegistry registry, Registration registration) {
 		applicationEventPublisher.publishEvent(
 				new ServiceInstancePreRegisteredEvent(registry, registration));
 	}
 
-	@Before(value = DEREGISTER_POINTCUT_EXPRESSION_CONSUL, argNames = "registry, registration")
-	public void beforeDeregisterConsul(ServiceRegistry registry, Registration registration) {
-		beforeDeregister(registry,registration);
-	}
-
-//	@Before(value = DEREGISTER_POINTCUT_EXPRESSION_EUREKA, argNames = "registry, registration")
-//	public void beforeDeregisterEureka(ServiceRegistry registry, Registration registration) {
-//		beforeDeregister(registry,registration);
-//	}
-//
-//	@Before(value = DEREGISTER_POINTCUT_EXPRESSION_NACOS, argNames = "registry, registration")
-//	public void beforeDeregisterNacos(ServiceRegistry registry, Registration registration) {
-//		beforeDeregister(registry,registration);
-//	}
-//
-//	@Before(value = DEREGISTER_POINTCUT_EXPRESSION_ZOOKEEPER, argNames = "registry, registration")
-//	public void beforeDeregisterZookeeper(ServiceRegistry registry, Registration registration) {
-//		beforeDeregister(registry,registration);
-//	}
-
-	private void beforeDeregister(ServiceRegistry registry, Registration registration) {
+	@Before(value = DEREGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
+	public void beforeDeregister(ServiceRegistry registry, Registration registration) {
 		applicationEventPublisher.publishEvent(
 				new ServiceInstancePreDeregisteredEvent(registry, registration));
 	}
 
-	@After(value = REGISTER_POINTCUT_EXPRESSION_CONSUL, argNames = "registry, registration")
-	public void afterRegisterConsul(ServiceRegistry registry, Registration registration) {
-		afterRegister(registry,registration);
-	}
-
-//	@After(value = REGISTER_POINTCUT_EXPRESSION_NACOS, argNames = "registry, registration")
-//	public void afterRegisterNacos(ServiceRegistry registry, Registration registration) {
-//		afterRegister(registry,registration);
-//	}
-//
-//	@After(value = REGISTER_POINTCUT_EXPRESSION_EUREKA, argNames = "registry, registration")
-//	public void afterRegisterEureka(ServiceRegistry registry, Registration registration) {
-//		afterRegister(registry,registration);
-//	}
-//
-//	@After(value = REGISTER_POINTCUT_EXPRESSION_ZOOKEEPER, argNames = "registry, registration")
-//	public void afterRegisterZookeeper(ServiceRegistry registry, Registration registration) {
-//		afterRegister(registry,registration);
-//	}
-
-	private void afterRegister(ServiceRegistry registry, Registration registration) {
+	@After(value = REGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
+	public void afterRegister(ServiceRegistry registry, Registration registration) {
 		applicationEventPublisher
 				.publishEvent(new ServiceInstanceRegisteredEvent(registration));
 	}
@@ -134,6 +79,14 @@ public class DubboServiceRegistrationEventPublishingAspect
 	public void setApplicationEventPublisher(
 			ApplicationEventPublisher applicationEventPublisher) {
 		this.applicationEventPublisher = applicationEventPublisher;
+	}
+
+	static class ServiceRegistryControllerRuntimeHints implements RuntimeHintsRegistrar {
+		@Override
+		public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
+			hints.reflection().registerType(org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.class,
+					MemberCategory.values());
+		}
 	}
 
 }
