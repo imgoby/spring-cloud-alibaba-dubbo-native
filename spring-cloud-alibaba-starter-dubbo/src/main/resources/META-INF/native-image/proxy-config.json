@@ -6,7 +6,7 @@
   },
   {
     "interfaces": [
-      "com.alibaba.dubbo.rpc.service.GenericService"
+      "org.apache.dubbo.rpc.service.GenericService"
     ]
   },
   {
