@@ -82,5 +82,29 @@
         "parameterTypes": [ ]
       }
     ]
+  },
+  {
+    "name": "org.springframework.boot.SpringApplication$AbandonedRunException",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [ ]
+      }
+    ]
+  },
+  {
+    "name": "com.alibaba.cloud.dubbo.service.IntrospectiveDubboMetadataService",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [ ]
+      }
+    ]
   }
 ]

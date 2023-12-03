@@ -12,6 +12,9 @@
       },
       {
         "pattern": "\\QMETA-INF/dubbo/org.apache.dubbo.rpc.cluster.RouterFactory\\E"
+      },
+      {
+        "pattern": "\\QDENY_CLASS\\E"
       }
     ]
   }

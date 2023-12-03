@@ -53,6 +53,7 @@ dubbo:
   protocol:
     name: dubbo
     port: -1
+    serialization: fastjson2
   cloud:
     subscribed-services: ''
   registry:
