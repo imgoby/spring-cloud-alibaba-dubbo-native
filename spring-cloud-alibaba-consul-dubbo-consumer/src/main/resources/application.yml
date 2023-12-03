@@ -46,7 +46,6 @@ dubbo:
   protocol:
     name: dubbo
     port: -1
-    serialization: fastjson2
   application:
     qos-enable: false
     #解决加了jasypt-spring-boot-starter启动报错的问题
