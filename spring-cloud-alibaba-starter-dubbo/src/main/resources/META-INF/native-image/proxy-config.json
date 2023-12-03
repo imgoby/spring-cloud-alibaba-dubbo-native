@@ -11,7 +11,28 @@
   },
   {
     "interfaces": [
+      "com.alibaba.dubbo.rpc.service.GenericService"
+    ]
+  },
+  {
+    "interfaces": [
       "com.alibaba.cloud.dubbo.service.DubboMetadataService"
+    ]
+  },
+  {
+    "interfaces": [
+      "com.alibaba.cloud.dubbo.service.DubboMetadataService",
+      "com.alibaba.dubbo.rpc.service.GenericService",
+      "org.apache.dubbo.rpc.service.GenericService",
+      "org.apache.dubbo.rpc.service.EchoService",
+      "org.apache.dubbo.rpc.service.Destroyable"
+    ]
+  },
+  {
+    "interfaces": [
+      "com.alibaba.dubbo.rpc.service.GenericService",
+      "org.apache.dubbo.rpc.service.EchoService",
+      "org.apache.dubbo.rpc.service.Destroyable"
     ]
   }
 ]

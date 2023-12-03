@@ -1,0 +1,5 @@
+
+Proxy classes need to be defined at image build time by specifying the list of interfaces that they implement
+解决方法:proxy,根据错误提示来设置interfaces中的元素，一个或多个
+
+https://www.graalvm.org/22.1/reference-manual/native-image/DynamicProxy/#:~:text=Dynamic%20proxy%20classes%20can%20be%20generated%20at%20native,provides%20two%20options%20for%20that%3A%20-H%3ADynamicProxyConfigurationFiles%3D%3Ccomma-separated-config-files%3E%20and%20-H%3ADynamicProxyConfigurationResources%3D%3Ccomma-separated-config-resources%3E.
