@@ -29,7 +29,7 @@ import com.alibaba.cloud.dubbo.bootstrap.DubboBootstrapStartCommandLineRunner;
 import com.alibaba.cloud.dubbo.bootstrap.DubboBootstrapWrapper;
 import com.alibaba.cloud.dubbo.bootstrap.event.DubboBootstrapStartedEvent;
 import com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository;
-import com.alibaba.cloud.dubbo.registry.*;
+import com.alibaba.cloud.dubbo.registry.DubboServiceRegistrationEventPublishingAspect;
 import com.alibaba.cloud.dubbo.registry.event.ServiceInstancePreDeregisteredEvent;
 import com.alibaba.cloud.dubbo.registry.event.ServiceInstancePreRegisteredEvent;
 import com.ecwid.consul.v1.agent.model.NewService;
@@ -78,9 +78,7 @@ import static org.springframework.util.ObjectUtils.isEmpty;
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
  */
 @Configuration(proxyBeanMethods = false)
-@Import({
-		DubboServiceRegistrationEventPublishingAspectConsul.class, DubboServiceRegistrationEventPublishingAspectEureka.class,
-		DubboServiceRegistrationEventPublishingAspectNacos.class, DubboServiceRegistrationEventPublishingAspectZookeeper.class,
+@Import({ DubboServiceRegistrationEventPublishingAspect.class,
 		DubboBootstrapStartCommandLineRunner.class })
 @ConditionalOnProperty(value = "spring.cloud.service-registry.auto-registration.enabled",
 		matchIfMissing = true)

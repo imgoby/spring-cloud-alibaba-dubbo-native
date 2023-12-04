@@ -22,7 +22,7 @@ import com.alibaba.cloud.dubbo.registry.event.ServiceInstanceRegisteredEvent;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+
 import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.cloud.client.serviceregistry.ServiceRegistry;
 import org.springframework.context.ApplicationEventPublisher;
@@ -37,19 +37,18 @@ import org.springframework.context.ApplicationEventPublisherAware;
  * @see ServiceInstancePreDeregisteredEvent
  */
 @Aspect
-@ConditionalOnClass(name = "org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry")
-public class DubboServiceRegistrationEventPublishingAspectConsul
+public class DubboServiceRegistrationEventPublishingAspect
 		implements ApplicationEventPublisherAware {
 
 	/**
 	 * The pointcut expression for {@link ServiceRegistry#register(Registration)}.
 	 */
-	public static final String REGISTER_POINTCUT_EXPRESSION = "execution(* org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.register(*)) && target(registry) && args(registration)";
+	public static final String REGISTER_POINTCUT_EXPRESSION = "execution(* org.springframework.cloud.client.serviceregistry.ServiceRegistry.register(*)) && target(registry) && args(registration)";
 
 	/**
 	 * The pointcut expression for {@link ServiceRegistry#deregister(Registration)}.
 	 */
-	public static final String DEREGISTER_POINTCUT_EXPRESSION = "execution(* org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.deregister(*)) && target(registry) && args(registration)";
+	public static final String DEREGISTER_POINTCUT_EXPRESSION = "execution(* org.springframework.cloud.client.serviceregistry.ServiceRegistry.deregister(*)) && target(registry) && args(registration)";
 
 	private ApplicationEventPublisher applicationEventPublisher;
 
