@@ -45,6 +45,27 @@ public class DubboServiceRegistrationEventPublishingAspect
 
 	private ApplicationEventPublisher applicationEventPublisher;
 
+	public void beforeRegister(ServiceRegistry registry, Registration registration) {
+		applicationEventPublisher.publishEvent(
+				new ServiceInstancePreRegisteredEvent(registry, registration));
+	}
+
+	public void beforeDeregister(ServiceRegistry registry, Registration registration) {
+		applicationEventPublisher.publishEvent(
+				new ServiceInstancePreDeregisteredEvent(registry, registration));
+	}
+
+	public void afterRegister(ServiceRegistry registry, Registration registration) {
+		applicationEventPublisher
+				.publishEvent(new ServiceInstanceRegisteredEvent(registration));
+	}
+
+	@Override
+	public void setApplicationEventPublisher(
+			ApplicationEventPublisher applicationEventPublisher) {
+		this.applicationEventPublisher = applicationEventPublisher;
+	}
+
 	@Configuration(proxyBeanMethods = false)
 	@Aspect
 	@ConditionalOnClass(name = "org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry")
@@ -77,7 +98,7 @@ public class DubboServiceRegistrationEventPublishingAspect
 
 		@Before(value = REGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
 		public void beforeRegister(ServiceRegistry registry, Registration registration) {
-			DubboServiceRegistrationEventPublishingAspect.this.beforeDeregister(registry,registration);
+			DubboServiceRegistrationEventPublishingAspect.this.beforeRegister(registry,registration);
 		}
 
 		@Before(value = DEREGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
@@ -100,7 +121,7 @@ public class DubboServiceRegistrationEventPublishingAspect
 
 		@Before(value = REGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
 		public void beforeRegister(ServiceRegistry registry, Registration registration) {
-			DubboServiceRegistrationEventPublishingAspect.this.beforeDeregister(registry,registration);
+			DubboServiceRegistrationEventPublishingAspect.this.beforeRegister(registry,registration);
 		}
 
 		@Before(value = DEREGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
@@ -123,7 +144,7 @@ public class DubboServiceRegistrationEventPublishingAspect
 
 		@Before(value = REGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
 		public void beforeRegister(ServiceRegistry registry, Registration registration) {
-			DubboServiceRegistrationEventPublishingAspect.this.beforeDeregister(registry,registration);
+			DubboServiceRegistrationEventPublishingAspect.this.beforeRegister(registry,registration);
 		}
 
 		@Before(value = DEREGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
@@ -137,25 +158,5 @@ public class DubboServiceRegistrationEventPublishingAspect
 		}
 	}
 
-	public void beforeRegister(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher.publishEvent(
-				new ServiceInstancePreRegisteredEvent(registry, registration));
-	}
-
-	public void beforeDeregister(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher.publishEvent(
-				new ServiceInstancePreDeregisteredEvent(registry, registration));
-	}
-
-	public void afterRegister(ServiceRegistry registry, Registration registration) {
-		applicationEventPublisher
-				.publishEvent(new ServiceInstanceRegisteredEvent(registration));
-	}
-
-	@Override
-	public void setApplicationEventPublisher(
-			ApplicationEventPublisher applicationEventPublisher) {
-		this.applicationEventPublisher = applicationEventPublisher;
-	}
 
 }
