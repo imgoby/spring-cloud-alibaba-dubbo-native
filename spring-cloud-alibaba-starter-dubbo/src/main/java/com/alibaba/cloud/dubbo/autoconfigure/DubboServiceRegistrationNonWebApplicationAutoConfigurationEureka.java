@@ -16,8 +16,6 @@
 
 package com.alibaba.cloud.dubbo.autoconfigure;
 
-import java.util.List;
-
 import com.alibaba.cloud.dubbo.metadata.repository.DubboServiceMetadataRepository;
 import com.alibaba.cloud.dubbo.registry.event.ServiceInstancePreRegisteredEvent;
 import com.ecwid.consul.v1.agent.model.NewService;
@@ -26,11 +24,11 @@ import org.apache.dubbo.config.spring.ServiceBean;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnNotWebApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -42,6 +40,8 @@ import org.springframework.cloud.consul.serviceregistry.ConsulRegistration;
 import org.springframework.cloud.zookeeper.serviceregistry.ServiceInstanceRegistration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
+
+import java.util.List;
 
 import static com.alibaba.cloud.dubbo.autoconfigure.DubboServiceRegistrationAutoConfiguration.CONSUL_AUTO_SERVICE_AUTO_CONFIGURATION_CLASS_NAME;
 import static com.alibaba.cloud.dubbo.autoconfigure.DubboServiceRegistrationAutoConfiguration.ZOOKEEPER_AUTO_SERVICE_AUTO_CONFIGURATION_CLASS_NAME;
@@ -57,7 +57,8 @@ import static com.alibaba.cloud.dubbo.autoconfigure.DubboServiceRegistrationAuto
 		matchIfMissing = true)
 @AutoConfigureAfter(DubboServiceRegistrationAutoConfiguration.class)
 @Aspect
-public class DubboServiceRegistrationNonWebApplicationAutoConfiguration {
+@ConditionalOnClass(name = "org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry")
+public class DubboServiceRegistrationNonWebApplicationAutoConfigurationEureka {
 
 	private static final String REST_PROTOCOL = "rest";
 
@@ -74,7 +75,7 @@ public class DubboServiceRegistrationNonWebApplicationAutoConfiguration {
 	@Autowired
 	private DubboServiceMetadataRepository repository;
 
-	@Around("execution(* org.springframework.cloud.client.serviceregistry.Registration.getPort())")
+	@Around("execution(* org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.getPort())")
 	public Object getPort(ProceedingJoinPoint pjp) throws Throwable {
 		/**
 		 * move setServerPort from onApplicationStarted() to here for this issue :
@@ -104,7 +105,7 @@ public class DubboServiceRegistrationNonWebApplicationAutoConfiguration {
 	 */
 	private void setServerPort() {
 		if (serverPort == null) {
-			synchronized (DubboServiceRegistrationNonWebApplicationAutoConfiguration.class) {
+			synchronized (DubboServiceRegistrationNonWebApplicationAutoConfigurationEureka.class) {
 				if (serverPort == null) {
 					for (List<URL> urls : repository.getAllExportedUrls().values()) {
 						urls.stream().filter(
