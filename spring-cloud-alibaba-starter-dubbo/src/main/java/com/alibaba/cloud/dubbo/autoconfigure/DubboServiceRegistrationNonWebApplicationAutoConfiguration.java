@@ -31,6 +31,7 @@ import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnNotWebApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -56,7 +57,6 @@ import static com.alibaba.cloud.dubbo.autoconfigure.DubboServiceRegistrationAuto
 @ConditionalOnProperty(value = "spring.cloud.service-registry.auto-registration.enabled",
 		matchIfMissing = true)
 @AutoConfigureAfter(DubboServiceRegistrationAutoConfiguration.class)
-@Aspect
 public class DubboServiceRegistrationNonWebApplicationAutoConfiguration {
 
 	private static final String REST_PROTOCOL = "rest";
@@ -74,7 +74,6 @@ public class DubboServiceRegistrationNonWebApplicationAutoConfiguration {
 	@Autowired
 	private DubboServiceMetadataRepository repository;
 
-	@Around("execution(* org.springframework.cloud.client.serviceregistry.Registration.getPort())")
 	public Object getPort(ProceedingJoinPoint pjp) throws Throwable {
 		/**
 		 * move setServerPort from onApplicationStarted() to here for this issue :
@@ -83,6 +82,46 @@ public class DubboServiceRegistrationNonWebApplicationAutoConfiguration {
 		 */
 		setServerPort();
 		return serverPort != null ? serverPort : pjp.proceed();
+	}
+
+	@Configuration(proxyBeanMethods = false)
+	@Aspect
+	@ConditionalOnClass(name = "org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry")
+	class ConsulConfiguration0 {
+		@Around("execution(* org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.getPort())")
+		public Object getPort(ProceedingJoinPoint pjp) throws Throwable {
+			return DubboServiceRegistrationNonWebApplicationAutoConfiguration.this.getPort(pjp);
+		}
+	}
+
+	@Configuration(proxyBeanMethods = false)
+	@Aspect
+	@ConditionalOnClass(name = "org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry")
+	class EurekaConfiguration {
+		@Around("execution(* org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry.getPort())")
+		public Object getPort(ProceedingJoinPoint pjp) throws Throwable {
+			return DubboServiceRegistrationNonWebApplicationAutoConfiguration.this.getPort(pjp);
+		}
+	}
+
+	@Configuration(proxyBeanMethods = false)
+	@Aspect
+	@ConditionalOnClass(name = "com.alibaba.cloud.nacos.registry.NacosServiceRegistry")
+	class NacosConfiguration {
+		@Around("execution(* com.alibaba.cloud.nacos.registry.NacosServiceRegistry.getPort())")
+		public Object getPort(ProceedingJoinPoint pjp) throws Throwable {
+			return DubboServiceRegistrationNonWebApplicationAutoConfiguration.this.getPort(pjp);
+		}
+	}
+
+	@Configuration(proxyBeanMethods = false)
+	@Aspect
+	@ConditionalOnClass(name = "org.springframework.cloud.zookeeper.serviceregistry.ZookeeperServiceRegistry")
+	class ZookeeperConfiguration0 {
+		@Around("execution(* org.springframework.cloud.zookeeper.serviceregistry.ZookeeperServiceRegistry.getPort())")
+		public Object getPort(ProceedingJoinPoint pjp) throws Throwable {
+			return DubboServiceRegistrationNonWebApplicationAutoConfiguration.this.getPort(pjp);
+		}
 	}
 
 	@EventListener(ApplicationStartedEvent.class)
