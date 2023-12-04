@@ -1,0 +1,5 @@
+@Aspect Pointcut内如果是interface，native-image下无法触发。
+解决方法：把几个子类各建一个@Aspect类。
+@ConditionalOnClass(name = "xxxx")
+如：
+DubboServiceRegistrationEventPublishingAspectConsul
