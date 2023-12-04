@@ -75,7 +75,7 @@ public class DubboServiceRegistrationEventPublishingAspect
 
 		@Before(value = REGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
 		public void beforeRegister(ServiceRegistry registry, Registration registration) {
-			DubboServiceRegistrationEventPublishingAspect.this.beforeDeregister(registry,registration);
+			DubboServiceRegistrationEventPublishingAspect.this.beforeRegister(registry,registration);
 		}
 
 		@Before(value = DEREGISTER_POINTCUT_EXPRESSION, argNames = "registry, registration")
