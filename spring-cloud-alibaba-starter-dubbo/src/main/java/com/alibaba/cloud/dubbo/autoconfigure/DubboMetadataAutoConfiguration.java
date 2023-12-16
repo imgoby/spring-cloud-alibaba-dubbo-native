@@ -60,19 +60,17 @@ public class DubboMetadataAutoConfiguration {
 	@Autowired
 	private ObjectProvider<DubboServiceMetadataRepository> dubboServiceMetadataRepository;
 
-	//resolve circular references.yuhou.todo
-	@Lazy
 	@Autowired
 	private MetadataResolver metadataResolver;
 
 	@Autowired
 	private DubboMetadataServiceExporter dubboMetadataConfigServiceExporter;
 
-	@Bean
-	@ConditionalOnMissingBean
-	public MetadataResolver metadataJsonResolver(ObjectProvider<Contract> contract) {
-		return new DubboServiceBeanMetadataResolver(contract);
-	}
+//	@Bean
+//	@ConditionalOnMissingBean
+//	public MetadataResolver metadataJsonResolver(ObjectProvider<Contract> contract) {
+//		return new DubboServiceBeanMetadataResolver(contract);
+//	}
 
 	@Bean
 	@ConditionalOnMissingBean
@@ -80,11 +78,11 @@ public class DubboMetadataAutoConfiguration {
 		return new RandomServiceInstanceSelector();
 	}
 
-	@Bean
-	public Supplier<ProtocolConfig> dubboProtocolConfigSupplier(
-			ObjectProvider<Collection<ProtocolConfig>> protocols) {
-		return new DubboProtocolConfigSupplier(protocols);
-	}
+//	@Bean
+//	public Supplier<ProtocolConfig> dubboProtocolConfigSupplier(
+//			ObjectProvider<Collection<ProtocolConfig>> protocols) {
+//		return new DubboProtocolConfigSupplier(protocols);
+//	}
 
 	// Event-Handling
 	@EventListener(ServiceBeanExportedEvent.class)

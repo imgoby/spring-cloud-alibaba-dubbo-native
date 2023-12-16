@@ -22,6 +22,7 @@ import java.util.function.Supplier;
 
 import org.apache.dubbo.config.ProtocolConfig;
 
+import org.apache.dubbo.rpc.model.ApplicationModel;
 import org.springframework.beans.factory.ObjectProvider;
 
 import static org.apache.dubbo.common.constants.CommonConstants.DEFAULT_PROTOCOL;
@@ -35,10 +36,13 @@ import static org.springframework.util.CollectionUtils.isEmpty;
 public class DubboProtocolConfigSupplier implements Supplier<ProtocolConfig> {
 
 	private final ObjectProvider<Collection<ProtocolConfig>> protocols;
-
+	private final ApplicationModel applicationModel;
 	public DubboProtocolConfigSupplier(
-			ObjectProvider<Collection<ProtocolConfig>> protocols) {
+			ObjectProvider<Collection<ProtocolConfig>> protocols, ApplicationModel applicationModel) {
 		this.protocols = protocols;
+		//yuhou.todo
+		//无计可施，增加applicationModel
+		this.applicationModel = applicationModel;
 	}
 
 	@Override
@@ -46,6 +50,11 @@ public class DubboProtocolConfigSupplier implements Supplier<ProtocolConfig> {
 		ProtocolConfig protocolConfig = null;
 		Collection<ProtocolConfig> protocols = this.protocols.getIfAvailable();
 
+		//yuhou.todo
+		//无计可施，增加applicationModel
+		if (protocols == null) {
+			protocols = applicationModel.getApplicationConfigManager().getProtocols();
+		}
 		if (!isEmpty(protocols)) {
 			for (ProtocolConfig protocol : protocols) {
 				String protocolName = protocol.getName();

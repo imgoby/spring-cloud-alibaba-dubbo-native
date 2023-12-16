@@ -8,3 +8,4 @@ com.alibaba.cloud.dubbo.autoconfigure.DubboServiceDiscoveryAutoConfiguration
 com.alibaba.cloud.dubbo.actuate.DubboMetadataEndpointAutoConfiguration
 com.alibaba.cloud.dubbo.context.DubboServiceRegistrationApplicationContextInitializer
 com.alibaba.cloud.dubbo.env.DubboNonWebApplicationEnvironmentPostProcessor
+com.alibaba.cloud.dubbo.autoconfigure.ExtractConfig

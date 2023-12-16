@@ -25,6 +25,7 @@ import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.ServiceConfig;
+import org.apache.dubbo.rpc.model.ApplicationModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,13 +46,11 @@ public class DubboMetadataServiceExporter {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
-	private ApplicationConfig applicationConfig;
+	private ApplicationModel applicationModel;
 
 	@Autowired
 	private ObjectProvider<DubboMetadataService> dubboMetadataService;
 
-	//resolve circular references.yuhou.todo
-	@Lazy
 	@Autowired
 	private Supplier<ProtocolConfig> protocolConfigSupplier;
 
@@ -79,7 +78,9 @@ public class DubboMetadataServiceExporter {
 			// Use current Spring application name as the Dubbo Service group
 			serviceConfig.setGroup(currentApplicationName);
 			serviceConfig.setRef(dubboMetadataService.getIfAvailable());
-			serviceConfig.setApplication(applicationConfig);
+			//yuhou.setScopeModel 取代 setApplication
+//			serviceConfig.setApplication(applicationConfig);
+			serviceConfig.setScopeModel(applicationModel.getDefaultModule());
 			serviceConfig.setProtocol(protocolConfigSupplier.get());
 
 			serviceConfig.export();
