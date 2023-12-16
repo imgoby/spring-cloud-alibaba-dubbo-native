@@ -17,11 +17,9 @@
 
 package com.yuhoutian.demo.consumer;
 
-import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableDubbo
@@ -31,10 +29,4 @@ public class ConsumerApplication {
         SpringApplication.run(ConsumerApplication.class, args);
     }
 
-
-    //yuhou.todo
-    @Bean
-    public ApplicationConfig applicationConfig(){
-        return new ApplicationConfig();
-    }
 }

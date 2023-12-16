@@ -17,11 +17,9 @@
 
 package org.apache.dubbo.registry.provider;
 
-import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
@@ -35,7 +33,7 @@ public class NativeDemoProviderRegistryApplication {
         SpringApplication.run(NativeDemoProviderRegistryApplication.class, args);
         RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
         System.out.println("dubbo provider application started, The time taken to start the application is "
-                + (System.currentTimeMillis() - runtimeMXBean.getStartTime()) +" ms");
+                + (System.currentTimeMillis() - runtimeMXBean.getStartTime()) + " ms");
         new CountDownLatch(1).await();
     }
 }
