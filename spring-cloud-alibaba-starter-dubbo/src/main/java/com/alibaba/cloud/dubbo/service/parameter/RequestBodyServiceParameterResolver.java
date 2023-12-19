@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Objects;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import com.alibaba.cloud.dubbo.http.HttpServerRequest;
 import com.alibaba.cloud.dubbo.http.converter.HttpMessageConverterHolder;

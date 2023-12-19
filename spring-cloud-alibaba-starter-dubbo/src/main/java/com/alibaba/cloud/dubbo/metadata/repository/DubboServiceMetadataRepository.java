@@ -27,7 +27,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import com.alibaba.cloud.dubbo.env.DubboCloudProperties;
 import com.alibaba.cloud.dubbo.http.matcher.RequestMetadataMatcher;
