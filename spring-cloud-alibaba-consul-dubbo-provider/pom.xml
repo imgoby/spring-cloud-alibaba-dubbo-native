@@ -19,6 +19,11 @@
             <artifactId>spring-cloud-alibaba-consul-dubbo-api</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>com.yuhoutian</groupId>
+            <artifactId>spring-cloud-alibaba-starter-dubbo</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <!-- dubbo -->
         <dependency>
@@ -64,11 +69,7 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-rpc-dubbo</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.yuhoutian</groupId>
-            <artifactId>spring-cloud-alibaba-starter-dubbo</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
