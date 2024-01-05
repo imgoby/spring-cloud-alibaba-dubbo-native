@@ -51,4 +51,15 @@ public class EventSimpleModel implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "EventSimpleModel{" +
+                "intId=" + intId +
+                ", longId=" + longId +
+                ", stringId='" + stringId + '\'' +
+                ", content='" + content + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }

@@ -18,6 +18,7 @@ package com.yuhoutian.stream.demo.controller;
 
 import com.yuhoutian.stream.demo.constants.EventType;
 import com.yuhoutian.stream.demo.constants.StreamTopicEvent;
+import com.yuhoutian.stream.demo.constants.StreamTopicHeader;
 import com.yuhoutian.stream.demo.model.EventSimpleModel;
 import com.yuhoutian.stream.demo.stream.StreamSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class StreamController {
         EventSimpleModel streamModel = new EventSimpleModel();
         streamModel.setIntId(1);
 
-        Message<EventSimpleModel> message = MessageBuilder.withPayload(streamModel).setHeader(StreamTopicEvent.EVENT_SIMPLE, EventType.HELLO).build();
+        Message<EventSimpleModel> message = MessageBuilder.withPayload(streamModel).setHeader(StreamTopicHeader.EVENT_TYPE, EventType.HELLO).build();
         return streamSource.eventSimple().send(message);
     }
 
