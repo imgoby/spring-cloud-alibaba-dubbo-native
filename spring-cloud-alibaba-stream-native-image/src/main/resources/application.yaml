@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: stream-demo
+  cloud:
+    function:
+      definition: EVENT_SIMPLE_INPUT
+    stream:
+      function:
+        bindings:
+          EVENT_SIMPLE_INPUT-in-0: EVENT_SIMPLE_INPUT0
+      bindings:
+        EVENT_SIMPLE_OUTPUT:
+          content-type: application/json
+          destination: EVENT_SIMPLE
+        EVENT_SIMPLE_INPUT0:
+          content-type: application/json
+          destination: EVENT_SIMPLE
+          group: ${spring.application.name}-EVENT_SIMPLE_INPUT
+      rocketmq:
+        binder:
+          name-server: 192.168.0.211:9876
+        bindings:
+          EVENT_SIMPLE_OUTPUT:
+            producer:
+              group: ${spring.application.name}-EVENT_SIMPLE_OUTPUT
+              sync: true
+              sendMessageTimeout: 60000
+              retryTimesWhenSendAsyncFailed: 3
+          #local
+          EVENT_SIMPLE_INPUT0:
+            consumer:
+              broadcasting: false
+              orderly: true
+
+server:
+  port: 9605

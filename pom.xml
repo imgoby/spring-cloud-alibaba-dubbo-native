@@ -70,6 +70,7 @@
         <module>spring-cloud-alibaba-consul-dubbo-provider</module>
         <module>spring-cloud-alibaba-consul-dubbo-consumer</module>
         <module>spring-cloud-alibaba-aspect-native-image</module>
+        <module>spring-cloud-alibaba-stream-native-image</module>
     </modules>
 
     <dependencyManagement>
