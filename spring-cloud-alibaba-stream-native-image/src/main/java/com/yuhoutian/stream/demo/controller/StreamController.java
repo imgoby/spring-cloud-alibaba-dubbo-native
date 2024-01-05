@@ -38,7 +38,7 @@ public class StreamController {
     private StreamSource streamSource;
 
     @GetMapping({"/stream/send"})
-    public boolean send(@RequestParam Integer itemId) {
+    public boolean send() {
         EventSimpleModel streamModel = new EventSimpleModel();
         streamModel.setIntId(1);
 
