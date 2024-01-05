@@ -19,8 +19,11 @@ package com.yuhoutian.demo.provider;
 
 import com.yuhoutian.demo.api.DemoService;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.dubbo.config.annotation.Method;
 
-@DubboService
+@DubboService(methods = {
+        @Method(name = "sayHello", retries = 1)
+})
 public class DemoServiceImpl implements DemoService {
 
     @Override

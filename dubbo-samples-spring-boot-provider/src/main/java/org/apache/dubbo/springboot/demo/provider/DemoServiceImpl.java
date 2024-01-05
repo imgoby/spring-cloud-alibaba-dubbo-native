@@ -21,9 +21,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.springboot.demo.DemoService;
 
-@DubboService(methods = {
-        @Method(name = "sayHello", retries = 1)
-})
+@DubboService
 public class DemoServiceImpl implements DemoService {
 
     @Override
