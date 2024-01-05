@@ -1,6 +1,11 @@
 [
   {
     "interfaces": [
+      "org.apache.dubbo.common.bytecode.ClassGenerator$DC"
+    ]
+  },
+  {
+    "interfaces": [
       "org.springframework.cloud.openfeign.Targeter"
     ]
   },
