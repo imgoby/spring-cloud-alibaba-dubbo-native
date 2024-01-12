@@ -24,6 +24,12 @@
             <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
         </dependency>
 
+        <!-- add dubbo-native -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-native</artifactId>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -42,6 +48,17 @@
                     <skip>false</skip>
                 </configuration>
             </plugin>
+
+            <!-- add dubbo-native -->
+            <plugin>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-maven-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                    <mainClass>com.yuhoutian.stream.demo.StreamApplication</mainClass>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
