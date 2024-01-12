@@ -58,6 +58,8 @@
     </properties>
 
     <modules>
+        <module>spring-cloud-alibaba-log4j2-native-image</module>
+        <module>spring-cloud-alibaba-stream-native-image</module>
         <module>spring-cloud-alibaba-starter-dubbo</module>
         <module>dubbo-samples-spring-boot-interface</module>
         <module>dubbo-samples-spring-boot-provider</module>
@@ -70,7 +72,6 @@
         <module>spring-cloud-alibaba-consul-dubbo-provider</module>
         <module>spring-cloud-alibaba-consul-dubbo-consumer</module>
         <module>spring-cloud-alibaba-aspect-native-image</module>
-        <module>spring-cloud-alibaba-stream-native-image</module>
     </modules>
 
     <dependencyManagement>
