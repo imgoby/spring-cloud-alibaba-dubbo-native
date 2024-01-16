@@ -24,6 +24,13 @@
             <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
         </dependency>
 
+        <!-- 与rocketmq 混用会有问题 -->
+        <dependency>
+            <groupId>com.yuhoutian</groupId>
+            <artifactId>spring-cloud-alibaba-starter-dubbo</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- add dubbo-native -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
