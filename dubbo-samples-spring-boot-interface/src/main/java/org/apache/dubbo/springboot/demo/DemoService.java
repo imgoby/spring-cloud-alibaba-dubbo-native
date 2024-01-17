@@ -18,5 +18,6 @@ package org.apache.dubbo.springboot.demo;
 
 public interface DemoService {
 
+    String sayHello(MyType type);
     String sayHello(String name);
 }

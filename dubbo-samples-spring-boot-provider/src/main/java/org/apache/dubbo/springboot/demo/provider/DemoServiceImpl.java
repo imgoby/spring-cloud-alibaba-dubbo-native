@@ -20,9 +20,15 @@ package org.apache.dubbo.springboot.demo.provider;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.springboot.demo.DemoService;
+import org.apache.dubbo.springboot.demo.MyType;
 
 @DubboService
 public class DemoServiceImpl implements DemoService {
+
+    @Override
+    public String sayHello(MyType type) {
+        return "Hello " + type.name();
+    }
 
     @Override
     public String sayHello(String name) {
