@@ -18,6 +18,7 @@ package com.yuhoutian.demo.provider;
 
 
 import com.yuhoutian.demo.api.DemoService;
+import com.yuhoutian.demo.api.MyType;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Method;
 
@@ -25,6 +26,11 @@ import org.apache.dubbo.config.annotation.Method;
         @Method(name = "sayHello", retries = 1)
 })
 public class DemoServiceImpl implements DemoService {
+
+    @Override
+    public String sayHello(MyType type) {
+        return "Hello " + type.name();
+    }
 
     @Override
     public String sayHello(String name) {

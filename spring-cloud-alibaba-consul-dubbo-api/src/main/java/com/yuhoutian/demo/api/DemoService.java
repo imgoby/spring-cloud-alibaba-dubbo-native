@@ -1,6 +1,7 @@
 package com.yuhoutian.demo.api;
 
 public interface DemoService {
+    String sayHello(MyType type);
     String sayHello(String name);
     String sayHello1(String name);
     String sayHello2(String name);
