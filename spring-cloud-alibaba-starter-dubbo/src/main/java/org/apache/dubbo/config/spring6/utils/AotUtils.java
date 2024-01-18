@@ -49,7 +49,9 @@ public class AotUtils {
 
                 Arrays.stream(registerType.getDeclaredFields()).forEach((field -> registerSerializationType(field.getType(), hints)));
 
-                registerSerializationType(registerType.getSuperclass(), hints);
+                if (registerType.getSuperclass() != null) {
+                    registerSerializationType(registerType.getSuperclass(), hints);
+                }
             }
         }
 
@@ -59,6 +61,6 @@ public class AotUtils {
         return cls.isPrimitive() || cls == Boolean.class || cls == Byte.class
                 || cls == Character.class || cls == Short.class || cls == Integer.class
                 || cls == Long.class || cls == Float.class || cls == Double.class
-                || cls == String.class || cls == Date.class || cls == Class.class;
+                || cls == String.class || cls == Date.class || cls == Class.class || cls.isEnum();
     }
 }
