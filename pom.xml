@@ -58,6 +58,7 @@
     </properties>
 
     <modules>
+        <module>spring-cloud-alibaba-json-native-image</module>
         <module>spring-cloud-alibaba-log4j2-native-image</module>
         <module>spring-cloud-alibaba-stream-native-image</module>
         <module>spring-cloud-alibaba-starter-dubbo</module>
