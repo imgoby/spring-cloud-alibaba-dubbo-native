@@ -16,6 +16,7 @@
 
 package com.yuhoutian.fst.demo.controller;
 
+import com.yuhoutian.fst.demo.model.FstModel;
 import lombok.extern.slf4j.Slf4j;
 import org.nustaq.serialization.FSTConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,15 @@ public class FstController {
         log.info("-----fst begin----");
         FSTConfiguration conf = FSTConfiguration.createDefaultConfiguration();
         log.info("-----fst begin----");
+        FstModel fstModel=new FstModel();
+        fstModel.setId(System.currentTimeMillis());
+        fstModel.setName("candy");
+        log.info("-----fst before serilize----");
+        byte[] bytes=conf.asByteArray(fstModel);
+        log.info("-----fst after serilize----");
+        FstModel original=(FstModel)conf.asObject(bytes);
+        log.info("-----fst after deserilize----");
+        log.info("original obj:"+original);
         return "OK";
     }
 }
