@@ -1,22 +1,6 @@
 {
   "types": [
     {
-      "name": "[F",
-      "targetConstructorClass": "java.lang.Object"
-    },
-    {
-      "name": "float[]",
-      "customTargetConstructorClass": "java.lang.Object"
-    },
-    {
-      "name": "java.lang.Float[]",
-      "customTargetConstructorClass": "java.lang.Object"
-    },
-    {
-      "name": "java.util.TimeZone",
-      "customTargetConstructorClass": "java.lang.Object"
-    },
-    {
       "name": "java.lang.Number"
     },
     {
