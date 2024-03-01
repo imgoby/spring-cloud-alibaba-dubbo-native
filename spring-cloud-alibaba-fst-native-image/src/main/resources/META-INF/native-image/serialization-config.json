@@ -17,6 +17,39 @@
       "customTargetConstructorClass": "java.lang.Object"
     },
     {
+      "name": "java.lang.Number"
+    },
+    {
+      "name": "java.text.Format"
+    },
+    {
+      "name": "java.text.DateFormat"
+    },
+    {
+      "name": "java.util.Calendar"
+    },
+    {
+      "name": "[Ljava.lang.Object;"
+    },
+
+
+
+    {
+      "name": "java.lang.String"
+    },
+    {
+      "name": "java.lang.Byte"
+    },
+    {
+      "name": "java.lang.Short"
+    },
+    {
+      "name": "java.lang.Integer"
+    },
+    {
+      "name": "java.lang.Long"
+    },
+    {
       "name": "java.lang.Float"
     },
     {
