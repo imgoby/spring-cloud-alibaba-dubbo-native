@@ -1,0 +1,148 @@
+{
+  "types": [
+    {
+      "name": "[F",
+      "targetConstructorClass": "java.lang.Object"
+    },
+    {
+      "name": "float[]",
+      "customTargetConstructorClass": "java.lang.Object"
+    },
+    {
+      "name": "java.lang.Float[]",
+      "customTargetConstructorClass": "java.lang.Object"
+    },
+    {
+      "name": "java.util.TimeZone",
+      "customTargetConstructorClass": "java.lang.Object"
+    },
+    {
+      "name": "java.lang.Float"
+    },
+    {
+      "name": "java.lang.Double"
+    },
+    {
+      "name": "java.math.BigDecimal"
+    },
+    {
+      "name": "java.math.BigInteger"
+    },
+    {
+      "name": "java.lang.Character"
+    },
+    {
+      "name": "java.lang.Boolean"
+    },
+    {
+      "name": "java.util.TreeMap"
+    },
+    {
+      "name": "java.util.HashMap"
+    },
+    {
+      "name": "java.util.ArrayList"
+    },
+    {
+      "name": "java.util.concurrent.ConcurrentHashMap"
+    },
+    {
+      "name": "java.net.URL"
+    },
+    {
+      "name": "java.util.Date"
+    },
+    {
+      "name": "java.sql.Date"
+    },
+    {
+      "name": "java.text.SimpleDateFormat"
+    },
+    {
+      "name": "java.util.TreeSet"
+    },
+    {
+      "name": "java.util.LinkedList"
+    },
+    {
+      "name": "java.util.SimpleTimeZone"
+    },
+    {
+      "name": "java.util.GregorianCalendar"
+    },
+    {
+      "name": "java.util.Vector"
+    },
+    {
+      "name": "java.util.Hashtable"
+    },
+    {
+      "name": "java.util.BitSet"
+    },
+    {
+      "name": "java.sql.Timestamp"
+    },
+    {
+      "name": "java.util.Locale"
+    },
+    {
+      "name": "java.lang.StringBuffer"
+    },
+    {
+      "name": "java.lang.StringBuilder"
+    },
+    {
+      "name": "java.lang.Object[]"
+    },
+    {
+      "name": "java.lang.Object[][]"
+    },
+    {
+      "name": "java.lang.Object[][][]"
+    },
+    {
+      "name": "byte[]"
+    },
+    {
+      "name": "byte[][]"
+    },
+    {
+      "name": "char[]"
+    },
+    {
+      "name": "char[][]"
+    },
+    {
+      "name": "java.lang.String[]"
+    },
+    {
+      "name": "java.lang.String[][]"
+    },
+    {
+      "name": "int[]"
+    },
+    {
+      "name": "int[][]"
+    },
+    {
+      "name": "float[]"
+    },
+    {
+      "name": "float[][]"
+    },
+    {
+      "name": "double[]"
+    },
+    {
+      "name": "double[][]"
+    },
+    {
+      "name": "long[]"
+    },
+    {
+      "name": "long[][]"
+    }
+  ],
+  "lambdaCapturingTypes": [],
+  "proxies": []
+}
