@@ -36,12 +36,14 @@ public class FstController {
         FstModel fstModel=new FstModel();
         fstModel.setId(System.currentTimeMillis());
         fstModel.setName("candy");
+        fstModel.setData("candy".getBytes());
         log.info("-----fst before serilize----");
         byte[] bytes=conf.asByteArray(fstModel);
         log.info("-----fst after serilize----");
         FstModel original=(FstModel)conf.asObject(bytes);
         log.info("-----fst after deserilize----");
         log.info("original obj:"+original);
+        log.info("original data:"+new String(original.getData()));
         return "OK";
     }
 }

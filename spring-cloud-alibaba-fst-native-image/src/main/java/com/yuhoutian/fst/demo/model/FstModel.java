@@ -8,4 +8,5 @@ import java.io.Serializable;
 public class FstModel implements Serializable {
     private long id;
     private String name;
+    private byte[] data;
 }
