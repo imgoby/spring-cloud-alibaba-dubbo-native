@@ -1,5 +1,11 @@
 {
   "types": [
+
+
+      {
+        "name": "[Ljava.lang.Object;"
+      },
+
     {
       "name": "java.lang.Number"
     },
