@@ -30,28 +30,10 @@ import java.lang.reflect.Constructor;
  */
 @SpringBootApplication
 @Slf4j
-public class FstApplication implements CommandLineRunner {
+public class FstApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(FstApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		Class clazz= float[].class;
-		Class curCl = clazz;
-		while (Serializable.class.isAssignableFrom(curCl)) {
-			curCl = curCl.getSuperclass();
-			log.info("---fff----curCl="+curCl);
-			if (curCl == null) {
-				log.info("---fff----curCl,return");
-				return ;
-			}
-		}
-
-		Constructor c = curCl.getDeclaredConstructor((Class[]) null);
-		log.info("------fff---newConstructorForSerialization 1"+clazz);
-		c = ReflectionFactory.getReflectionFactory().newConstructorForSerialization(clazz, c);
-		log.info("------fff--- newConstructorForSerialization2"+c);
-	}
 }
