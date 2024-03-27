@@ -256,6 +256,9 @@
                             <enabled>true</enabled>
                         </metadataRepository>
                         <requiredVersion>22.3</requiredVersion>
+                        <buildArgs>
+                            --add-opens=java.base/java.net=ALL-UNNAMED
+                        </buildArgs>
                     </configuration>
                     <executions>
                         <execution>
