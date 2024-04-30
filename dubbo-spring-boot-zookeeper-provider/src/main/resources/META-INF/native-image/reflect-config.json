@@ -1,0 +1,14 @@
+[
+  {
+    "name": "org.apache.dubbo.config.spring6.beans.factory.annotation.ServiceAnnotationWithAotPostProcessor",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [ "java.util.Collection" ]
+      }
+    ]
+  }
+]
