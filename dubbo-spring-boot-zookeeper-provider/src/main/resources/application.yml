@@ -1,6 +1,8 @@
 spring:
   application:
     name: dubbo-registry-zookeeper-provider-sample
+
+server:
   port: 5565
 
 
