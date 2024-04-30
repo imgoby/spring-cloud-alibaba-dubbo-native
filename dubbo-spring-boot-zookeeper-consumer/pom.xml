@@ -11,9 +11,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>dubbo-spring-boot-zookeeper-provider</artifactId>
-
+    <artifactId>dubbo-spring-boot-zookeeper-consumer</artifactId>
     <dependencies>
+
         <dependency>
             <groupId>com.yuhoutian</groupId>
             <artifactId>dubbo-spring-boot-zookeeper-api</artifactId>
@@ -98,4 +98,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -58,6 +58,9 @@
     </properties>
 
     <modules>
+        <module>dubbo-spring-boot-zookeeper-api</module>
+        <module>dubbo-spring-boot-zookeeper-provider</module>
+        <module>dubbo-spring-boot-zookeeper-consumer</module>
         <module>spring-cloud-alibaba-fst-native-image</module>
         <module>spring-cloud-alibaba-json-native-image</module>
         <module>spring-cloud-alibaba-log4j2-native-image</module>
