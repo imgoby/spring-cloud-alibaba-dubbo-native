@@ -1,5 +1,5 @@
 server:
-  port: 30010
+  port: 18000
 spring:
   application:
     name: integrated-gateway
@@ -21,30 +21,11 @@ spring:
         health-check-path: /actuator/info
     gateway:
       routes:
-        - id: placeOrder
-          uri: lb://integrated-order
+        - id: sail-web
+          uri: lb://sail-web
           predicates:
-            - Path=/order/create
-        - id: queryStorage
-          uri: lb://integrated-storage
-          predicates:
-            - Path=/storage/
-        - id: queryAccount
-          uri: lb://integrated-account
-          predicates:
-            - Path=/account/
-        - id: praiseItemRocketMQ
-          uri: lb://integrated-provider
-          predicates:
-            - Path=/praise/rocketmq
-        - id: praiseItemSentinel
-          uri: lb://integrated-provider
-          predicates:
-            - Path=/praise/sentinel
-        - id: queryPraise
-          uri: lb://integrated-consumer
-          predicates:
-            - Path=/praise/query
-
+            - Path=/redirect/**,/file/**,/shortlink/**,/admin/**,/client/**,/open/**,/monitor/**,/mqadmin/**
+          filters:
+            - StripPrefix=0
   config:
     import: optional:nacos:integrated-gateway.yaml
