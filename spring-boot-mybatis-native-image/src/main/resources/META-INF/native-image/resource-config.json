@@ -54,46 +54,7 @@
     }, 
     {
       "pattern":"\\Qorg/apache/ibatis/builder/xml/mybatis-3-mapper.dtd\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/config/ClassReflectConfig.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/config/MyBatisNativeConfiguration$MyBaitsRuntimeHintsRegistrar.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/config/MyBatisNativeConfiguration$MyBatisBeanFactoryInitializationAotProcessor.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/config/MyBatisNativeConfiguration$MyBatisMapperFactoryBeanPostProcessor.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/config/MyBatisNativeConfiguration$MyBatisMapperTypeUtils.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/config/MyBatisNativeConfiguration.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/controllers/SqliteController.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/mapper/\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/model/\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/service/Impl/PersonServiceImpl.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example/service/PersonService.class\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/example\\E"
-    }, 
+    },
     {
       "pattern":"\\Qorg/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration$AutoConfiguredMapperScannerRegistrar.class\\E"
     }, 
