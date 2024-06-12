@@ -78,6 +78,7 @@
         <module>spring-cloud-alibaba-consul-dubbo-consumer</module>
         <module>spring-cloud-alibaba-aspect-native-image</module>
         <module>spring-cloud-alibaba-gateway</module>
+        <module>spring-boot-mybatis-native-image</module>
     </modules>
 
     <dependencyManagement>
