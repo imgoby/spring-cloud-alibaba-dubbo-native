@@ -5,6 +5,7 @@
         <title>Freemarker</title>
     </head>
     <body>
-        Hello ${title}!${app}
+        Hello ${title}!${app}<br/>
+        contextPath:${request.contextPath}
     </body>
 </html>
