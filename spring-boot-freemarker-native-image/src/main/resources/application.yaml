@@ -8,8 +8,6 @@ spring:
     enabled: true
     # 是否缓存
     cache: false
-    # Content Type
-    content-type: text/html
     # 编码
     charset: utf-8
     # 模板后缀
