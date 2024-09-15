@@ -3,7 +3,8 @@
 
 
       {
-        "name": "[Ljava.lang.Object;"
+        "name": "[Ljava.lang.Object;",
+        "customTargetConstructorClass":"java.lang.Object"
       },
 
     {
@@ -163,8 +164,18 @@
     },
     {
       "name": "long[][]"
+    },
+    {
+      "name": "com.yuhoutian.fst.demo.model.FstModel"
     }
   ],
-  "lambdaCapturingTypes": [],
+  "lambdaCapturingTypes": [
+    {
+    "name": "cn.nvriot.platform.geocoding.web.TestController"
+    },
+    {
+      "name": "[Ljava.lang.Object;"
+    }
+  ],
   "proxies": []
 }
