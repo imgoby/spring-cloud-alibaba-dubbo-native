@@ -65,14 +65,27 @@ public class DubboProtocolConfigSupplier implements Supplier<ProtocolConfig> {
 			}
 
 			if (protocolConfig == null) { // If The ProtocolConfig bean named "dubbo" is
-											// absent, take first one of them
+				// absent, take first one of them
 				Iterator<ProtocolConfig> iterator = protocols.iterator();
 				protocolConfig = iterator.hasNext() ? iterator.next() : null;
 			}
 		}
 
+		/**
+		 * nativeImage情况下,DubboSpringInitializer有这个限制
+		 * if (!AotWithSpringDetector.useGeneratedArtifacts()) {
+		 *             DubboBeanUtils.registerCommonBeans(registry);
+		 *         }
+		 *
+		 * ,导致bean的初始化滞后。原因不明。applicationModel.getApplicationConfigManager().getProtocols()无法获取到dubbo相关配置
+		 * 应该是这样：<dubbo:protocol preferSerialization="hessian2,fastjson2" port="-1" name="dubbo" payload="31457280" />
+		 *
+		 */
 		if (protocolConfig == null) {
 			protocolConfig = new ProtocolConfig();
+			protocolConfig.setPort(-1);
+			protocolConfig.setPayload(31457280);
+			protocolConfig.setPreferSerialization("hessian2,fastjson2");
 			protocolConfig.setName(DEFAULT_PROTOCOL);
 		}
 

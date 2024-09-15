@@ -181,7 +181,7 @@ public class DubboServiceMetadataRepository
 	// =============================================================== //
 
 	private static <K, V> Map<K, V> getMap(Map<String, Map<K, V>> repository,
-			String key) {
+										   String key) {
 		return getOrDefault(repository, key, newHashMap());
 	}
 
@@ -285,7 +285,21 @@ public class DubboServiceMetadataRepository
 	 */
 	public Map<String, String> getDubboMetadataServiceMetadata() {
 
-		List<URL> dubboMetadataServiceURLs = dubboMetadataServiceExporter.export();
+		List<URL> dubboMetadataServiceURLs0 = dubboMetadataServiceExporter.export();
+
+		//goby,2024-07-15,加入修改IP为非docker网卡IP的功能。
+		//要关注ServiceConfig的buildUrl()，里面导致urls出现172.xx.取到docker网卡IP
+		List<URL> dubboMetadataServiceURLs = new ArrayList<>();
+		InetUtils.HostInfo hostInfo = inetUtils.findFirstNonLoopbackHostInfo();
+		String ipAddress = hostInfo.getIpAddress();
+		for (URL url : dubboMetadataServiceURLs0) {
+			URL actualURL = url;
+			if (!Objects.equals(url.getHost(), ipAddress)) {
+				actualURL = url.setHost(ipAddress);
+			}
+			dubboMetadataServiceURLs.add(actualURL);
+		}
+		//end
 
 		// remove the exported URLs of DubboMetadataService
 		removeDubboMetadataServiceURLs(dubboMetadataServiceURLs);
@@ -327,7 +341,7 @@ public class DubboServiceMetadataRepository
 	}
 
 	private void addDubboMetadataServiceURLsMetadata(Map<String, String> metadata,
-			List<URL> dubboMetadataServiceURLs) {
+													 List<URL> dubboMetadataServiceURLs) {
 		String dubboMetadataServiceURLsJSON = jsonUtils.toJSON(dubboMetadataServiceURLs);
 		metadata.put(METADATA_SERVICE_URLS_PROPERTY_NAME, dubboMetadataServiceURLsJSON);
 	}
@@ -413,7 +427,7 @@ public class DubboServiceMetadataRepository
 	}
 
 	public Integer getDubboProtocolPort(ServiceInstance serviceInstance,
-			String protocol) {
+										String protocol) {
 		return dubboMetadataUtils.getDubboProtocolPort(serviceInstance, protocol);
 	}
 
@@ -422,7 +436,7 @@ public class DubboServiceMetadataRepository
 	}
 
 	public List<URL> getExportedURLs(String serviceInterface, String group,
-			String version) {
+									 String version) {
 		if (group != null) {
 			List<URL> urls = new LinkedList<>();
 			if (CommonConstants.ANY_VALUE.equals(group)) {
@@ -510,7 +524,7 @@ public class DubboServiceMetadataRepository
 	 * @return {@link DubboRestServiceMetadata} if matched, or <code>null</code>
 	 */
 	public DubboRestServiceMetadata get(String serviceName,
-			RequestMetadata requestMetadata) {
+										RequestMetadata requestMetadata) {
 		return match(dubboRestServiceMetadataRepository, serviceName, requestMetadata);
 	}
 
@@ -527,7 +541,7 @@ public class DubboServiceMetadataRepository
 	}
 
 	private <T> T match(Map<String, Map<RequestMetadataMatcher, T>> repository,
-			String serviceName, RequestMetadata requestMetadata) {
+						String serviceName, RequestMetadata requestMetadata) {
 
 		Map<RequestMetadataMatcher, T> map = repository.get(serviceName);
 
