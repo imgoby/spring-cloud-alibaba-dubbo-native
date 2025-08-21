@@ -46,7 +46,7 @@
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
         <jacoco.version>0.8.8</jacoco.version>
         <native-maven-plugin.version>0.9.28</native-maven-plugin.version>
-        <dubbo.version>3.3.0-beta.2</dubbo.version>
+        <dubbo.version>3.3.5</dubbo.version>
         <zookeeper.version>3.8.1</zookeeper.version>
         <servlet_version>3.1.0</servlet_version>
 
