@@ -16,6 +16,7 @@
 
 package org.springframework.context.support;
 
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -112,6 +113,12 @@ final class PostProcessorRegistrationDelegate {
             }
             sortPostProcessors(currentRegistryProcessors, beanFactory);
             registryProcessors.addAll(currentRegistryProcessors);
+
+            try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
+                fos.write((Thread.currentThread().getName()+ "++++++++++++++++invokeBeanDefinitionRegistryPostProcessors1:"+currentRegistryProcessors+"\n").toString().getBytes());
+            } catch (Exception e) {
+            }
+
             invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry, beanFactory.getApplicationStartup());
             currentRegistryProcessors.clear();
 
@@ -125,6 +132,11 @@ final class PostProcessorRegistrationDelegate {
             }
             sortPostProcessors(currentRegistryProcessors, beanFactory);
             registryProcessors.addAll(currentRegistryProcessors);
+
+            try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
+                fos.write((Thread.currentThread().getName()+ "++++++++++++++++invokeBeanDefinitionRegistryPostProcessors2:"+currentRegistryProcessors+"\n").toString().getBytes());
+            } catch (Exception e) {
+            }
             invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry, beanFactory.getApplicationStartup());
             currentRegistryProcessors.clear();
 
@@ -142,6 +154,11 @@ final class PostProcessorRegistrationDelegate {
                 }
                 sortPostProcessors(currentRegistryProcessors, beanFactory);
                 registryProcessors.addAll(currentRegistryProcessors);
+
+                try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
+                    fos.write((Thread.currentThread().getName()+ "++++++++++++++++invokeBeanDefinitionRegistryPostProcessors3:"+currentRegistryProcessors+"\n").toString().getBytes());
+                } catch (Exception e) {
+                }
                 invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry, beanFactory.getApplicationStartup());
                 currentRegistryProcessors.clear();
             }
@@ -339,6 +356,12 @@ final class PostProcessorRegistrationDelegate {
             Collection<? extends BeanDefinitionRegistryPostProcessor> postProcessors, BeanDefinitionRegistry registry, ApplicationStartup applicationStartup) {
 
         for (BeanDefinitionRegistryPostProcessor postProcessor : postProcessors) {
+
+            try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
+                fos.write((Thread.currentThread().getName() + "++++++++++++++++postProcessor:" + postProcessor.toString() + "\n").toString().getBytes());
+            } catch (Exception e) {
+            }
+
             StartupStep postProcessBeanDefRegistry = applicationStartup.start("spring.context.beandef-registry.post-process")
                     .tag("postProcessor", postProcessor::toString);
             postProcessor.postProcessBeanDefinitionRegistry(registry);
