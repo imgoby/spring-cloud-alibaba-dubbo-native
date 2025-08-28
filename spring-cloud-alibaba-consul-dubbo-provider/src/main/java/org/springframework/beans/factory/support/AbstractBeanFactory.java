@@ -17,6 +17,7 @@
 package org.springframework.beans.factory.support;
 
 import java.beans.PropertyEditor;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -241,11 +242,21 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
             String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly)
             throws BeansException {
 
+        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
+            fos.write((Thread.currentThread().getName()+ "++++++++++++++++doGetBean1:"+requiredType+"\n").toString().getBytes());
+        } catch (Exception e) {
+        }
+
         String beanName = transformedBeanName(name);
         Object beanInstance;
 
         // Eagerly check singleton cache for manually registered singletons.
         Object sharedInstance = getSingleton(beanName);
+
+        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
+            fos.write((Thread.currentThread().getName()+ "++++++++++++++++doGetBean2:"+sharedInstance+"\n").toString().getBytes());
+        } catch (Exception e) {
+        }
         if (sharedInstance != null && args == null) {
             if (logger.isTraceEnabled()) {
                 if (isSingletonCurrentlyInCreation(beanName)) {
