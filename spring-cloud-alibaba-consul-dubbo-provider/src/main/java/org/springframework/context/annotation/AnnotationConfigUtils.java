@@ -143,9 +143,14 @@ public abstract class AnnotationConfigUtils {
     public static Set<BeanDefinitionHolder> registerAnnotationConfigProcessors(
             BeanDefinitionRegistry registry, @Nullable Object source) {
 
-
+        StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
         try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-            fos.write((Thread.currentThread().getName()+ "!!!!!!!!!registerAnnotationConfigProcessors:"+registry).toString().getBytes());
+            fos.write((Thread.currentThread().getName()+ "++++++++++++++++registerAnnotationConfigProcessors:"+registry+"\n").toString().getBytes());
+            for (StackTraceElement element : stackTraces) {
+                StringBuffer sb = new StringBuffer();
+                sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
+                fos.write((sb.toString() + "\n").toString().getBytes());
+            }
         } catch (Exception e) {
         }
 
