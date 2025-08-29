@@ -17,7 +17,6 @@
 package org.springframework.beans.factory.support;
 
 import java.beans.PropertyEditor;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,6 +33,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
+import org.springframework.MyLog;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeansException;
@@ -242,10 +242,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
             String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly)
             throws BeansException {
 
-        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-            fos.write((Thread.currentThread().getName()+ "++++++++++++++++doGetBean1:"+requiredType+"\n").toString().getBytes());
-        } catch (Exception e) {
-        }
+            MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++doGetBean1:"+requiredType+"\n").toString().getBytes());
 
         String beanName = transformedBeanName(name);
         Object beanInstance;
@@ -253,10 +250,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         // Eagerly check singleton cache for manually registered singletons.
         Object sharedInstance = getSingleton(beanName);
 
-        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-            fos.write((Thread.currentThread().getName()+ "++++++++++++++++doGetBean2:"+sharedInstance+"\n").toString().getBytes());
-        } catch (Exception e) {
-        }
+        MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++doGetBean2:"+sharedInstance+"\n").toString().getBytes());
         if (sharedInstance != null && args == null) {
             if (logger.isTraceEnabled()) {
                 if (isSingletonCurrentlyInCreation(beanName)) {

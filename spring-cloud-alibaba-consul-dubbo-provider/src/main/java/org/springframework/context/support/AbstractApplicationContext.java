@@ -16,7 +16,6 @@
 
 package org.springframework.context.support;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -29,6 +28,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.springframework.MyLog;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -587,10 +587,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
                 StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
 
-                try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-                    fos.write((Thread.currentThread().getName()+ "------------------invokeBeanFactoryPostProcessors\n").toString().getBytes());
-                } catch (Exception e) {
-                }
+                MyLog.getInstance().write((Thread.currentThread().getName()+ "------------------invokeBeanFactoryPostProcessors\n").toString().getBytes());
 
                 // Invoke factory processors registered as beans in the context.
                 invokeBeanFactoryPostProcessors(beanFactory);
@@ -611,10 +608,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
                 // Check for listener beans and register them.
                 registerListeners();
 
-                try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-                    fos.write((Thread.currentThread().getName()+ "------------------finishBeanFactoryInitialization\n").toString().getBytes());
-                } catch (Exception e) {
-                }
+                MyLog.getInstance().write((Thread.currentThread().getName()+ "------------------finishBeanFactoryInitialization\n").toString().getBytes());
 
                 // Instantiate all remaining (non-lazy-init) singletons.
                 finishBeanFactoryInitialization(beanFactory);
@@ -780,10 +774,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
      * <p>Must be called before singleton instantiation.
      */
     protected void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
-        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-            fos.write((Thread.currentThread().getName()+ "++++++++++++++++enter invokeBeanFactoryPostProcessors\n").toString().getBytes());
-        } catch (Exception e) {
-        }
+        MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++enter invokeBeanFactoryPostProcessors\n").toString().getBytes());
 
         PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());
 

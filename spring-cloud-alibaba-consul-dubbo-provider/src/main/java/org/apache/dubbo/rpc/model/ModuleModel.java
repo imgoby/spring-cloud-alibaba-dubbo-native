@@ -5,14 +5,12 @@
 
 package org.apache.dubbo.rpc.model;
 
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
 
+import org.springframework.MyLog;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.config.ModuleEnvironment;
 import org.apache.dubbo.common.context.ModuleExt;
@@ -75,15 +73,12 @@ public class ModuleModel extends ScopeModel {
         }
 
         StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
-        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-            fos.write((Thread.currentThread().getName()+ "=============================\n").toString().getBytes());
+            MyLog.getInstance().write((Thread.currentThread().getName()+ "=============================\n").toString().getBytes());
             for (StackTraceElement element : stackTraces) {
                 StringBuffer sb = new StringBuffer();
                 sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
-                fos.write((sb.toString() + "\n").toString().getBytes());
+                MyLog.getInstance().write((sb.toString() + "\n").toString().getBytes());
             }
-        } catch (Exception e) {
-        }
     }
 
     private void initModuleExt() {

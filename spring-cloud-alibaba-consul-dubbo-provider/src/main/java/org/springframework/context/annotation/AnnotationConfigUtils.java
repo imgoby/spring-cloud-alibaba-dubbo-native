@@ -16,12 +16,12 @@
 
 package org.springframework.context.annotation;
 
-import java.io.FileOutputStream;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.MyLog;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -144,15 +144,12 @@ public abstract class AnnotationConfigUtils {
             BeanDefinitionRegistry registry, @Nullable Object source) {
 
         StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
-        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-            fos.write((Thread.currentThread().getName()+ "++++++++++++++++registerAnnotationConfigProcessors:"+registry+"\n").toString().getBytes());
+            MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++registerAnnotationConfigProcessors:"+registry+"\n").toString().getBytes());
             for (StackTraceElement element : stackTraces) {
                 StringBuffer sb = new StringBuffer();
                 sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
-                fos.write((sb.toString() + "\n").toString().getBytes());
+                MyLog.getInstance().write((sb.toString() + "\n").toString().getBytes());
             }
-        } catch (Exception e) {
-        }
 
         DefaultListableBeanFactory beanFactory = unwrapDefaultListableBeanFactory(registry);
         if (beanFactory != null) {

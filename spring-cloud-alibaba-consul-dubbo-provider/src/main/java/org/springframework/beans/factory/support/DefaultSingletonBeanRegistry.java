@@ -16,7 +16,6 @@
 
 package org.springframework.beans.factory.support;
 
-import java.io.FileOutputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,6 +26,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.springframework.MyLog;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.BeanCreationNotAllowedException;
 import org.springframework.beans.factory.BeanCurrentlyInCreationException;
@@ -214,10 +214,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
      */
     public Object getSingleton(String beanName, ObjectFactory<?> singletonFactory) {
 
-        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-            fos.write((Thread.currentThread().getName()+ "++++++++++++++++getSingleton1:"+beanName+"\n").toString().getBytes());
-        } catch (Exception e) {
-        }
+        MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++getSingleton1:"+beanName+"\n").toString().getBytes());
 
         Assert.notNull(beanName, "Bean name must not be null");
         synchronized (this.singletonObjects) {
@@ -238,14 +235,14 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
                     this.suppressedExceptions = new LinkedHashSet<>();
                 }
 
-                try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-                    fos.write((Thread.currentThread().getName()+ "++++++++++++++++singletonFactory.getObject:\n").toString().getBytes());
-                } catch (Exception e) {
-                }
-
+          
                 try {
                     singletonObject = singletonFactory.getObject();
                     newSingleton = true;
+
+                    String tmp=("++++++++++++++++singletonObject:\n");
+                    MyLog.getInstance().write(tmp.getBytes());
+
                 }
                 catch (IllegalStateException ex) {
                     // Has the singleton object implicitly appeared in the meantime ->

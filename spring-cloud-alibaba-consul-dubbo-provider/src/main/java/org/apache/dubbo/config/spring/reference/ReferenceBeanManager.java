@@ -16,6 +16,7 @@
  */
 package org.apache.dubbo.config.spring.reference;
 
+import org.springframework.MyLog;
 import org.apache.dubbo.common.logger.ErrorTypeAwareLogger;
 import org.apache.dubbo.common.logger.LoggerFactory;
 import org.apache.dubbo.common.utils.Assert;
@@ -26,7 +27,6 @@ import org.apache.dubbo.config.spring.ReferenceBean;
 import org.apache.dubbo.config.spring.util.DubboBeanUtils;
 import org.apache.dubbo.rpc.model.ModuleModel;
 
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -146,15 +146,12 @@ public class ReferenceBeanManager implements ApplicationContextAware {
         moduleModel = DubboBeanUtils.getModuleModel(applicationContext);
 
         StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
-        try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-            fos.write((Thread.currentThread().getName()+ "++++++++++++++++getModuleModel:"+applicationContext+"\n").toString().getBytes());
+            MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++getModuleModel:"+applicationContext+"\n").toString().getBytes());
             for (StackTraceElement element : stackTraces) {
                 StringBuffer sb = new StringBuffer();
                 sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
-                fos.write((sb.toString() + "\n").toString().getBytes());
+                MyLog.getInstance().write((sb.toString() + "\n").toString().getBytes());
             }
-        } catch (Exception e) {
-        }
     }
 
     /**
@@ -205,10 +202,7 @@ public class ReferenceBeanManager implements ApplicationContextAware {
             // cache referenceConfig
             referenceConfigMap.put(referenceKey, referenceConfig);
 
-            try (FileOutputStream fos = new FileOutputStream("/tmp/log.log", true)) {
-                fos.write((Thread.currentThread().getName()+ "++++++++++++++++moduleModel:"+moduleModel+"\n").toString().getBytes());
-            } catch (Exception e) {
-            }
+                MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++moduleModel:"+moduleModel+"\n").toString().getBytes());
 
             // register ReferenceConfig
             moduleModel.getConfigManager().addReference(referenceConfig);
