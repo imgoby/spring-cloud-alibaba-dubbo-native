@@ -179,20 +179,32 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
      */
     @Nullable
     protected Object getSingleton(String beanName, boolean allowEarlyReference) {
+
         // Quick check for existing instance without full singleton lock
         Object singletonObject = this.singletonObjects.get(beanName);
+        MyLog.getInstance().write((Thread.currentThread().getName()+ "+++++getSingleton1:"+beanName+"##"+((singletonObject==null?"null":"object"))+"\n").toString().getBytes());
+
+
         if (singletonObject == null && isSingletonCurrentlyInCreation(beanName)) {
             singletonObject = this.earlySingletonObjects.get(beanName);
+            MyLog.getInstance().write((Thread.currentThread().getName()+ "+++++getSingleton2:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
+
             if (singletonObject == null && allowEarlyReference) {
                 synchronized (this.singletonObjects) {
                     // Consistent creation of early reference within full singleton lock
                     singletonObject = this.singletonObjects.get(beanName);
+                    MyLog.getInstance().write((Thread.currentThread().getName()+ "+++++getSingleton3:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
+
                     if (singletonObject == null) {
                         singletonObject = this.earlySingletonObjects.get(beanName);
+
+                        MyLog.getInstance().write((Thread.currentThread().getName()+ "+++++getSingleton4:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
                         if (singletonObject == null) {
                             ObjectFactory<?> singletonFactory = this.singletonFactories.get(beanName);
+                            MyLog.getInstance().write((Thread.currentThread().getName()+ "+++++getSingleton5:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
                             if (singletonFactory != null) {
                                 singletonObject = singletonFactory.getObject();
+                                MyLog.getInstance().write((Thread.currentThread().getName()+ "+++++getSingleton6:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
                                 this.earlySingletonObjects.put(beanName, singletonObject);
                                 this.singletonFactories.remove(beanName);
                             }
@@ -214,7 +226,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
      */
     public Object getSingleton(String beanName, ObjectFactory<?> singletonFactory) {
 
-        MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++getSingleton1:"+beanName+"\n").toString().getBytes());
+        MyLog.getInstance().write((Thread.currentThread().getName()+ "+++++getSingleton0:"+beanName+"\n").toString().getBytes());
 
         Assert.notNull(beanName, "Bean name must not be null");
         synchronized (this.singletonObjects) {
@@ -240,7 +252,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
                     singletonObject = singletonFactory.getObject();
                     newSingleton = true;
 
-                    String tmp=("++++++++++++++++singletonObject:\n");
+                    String tmp=("+++++singletonObject:\n");
                     MyLog.getInstance().write(tmp.getBytes());
 
                 }

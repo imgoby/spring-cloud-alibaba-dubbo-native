@@ -146,7 +146,7 @@ public class ReferenceBeanManager implements ApplicationContextAware {
         moduleModel = DubboBeanUtils.getModuleModel(applicationContext);
 
         StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
-            MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++getModuleModel:"+applicationContext+"\n").toString().getBytes());
+            MyLog.getInstance().write((Thread.currentThread().getName()+ "---getModuleModel:"+applicationContext+"\n").toString().getBytes());
             for (StackTraceElement element : stackTraces) {
                 StringBuffer sb = new StringBuffer();
                 sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());

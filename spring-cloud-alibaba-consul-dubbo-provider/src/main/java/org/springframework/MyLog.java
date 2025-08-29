@@ -9,7 +9,7 @@ public class MyLog {
 
     private MyLog(){
         try {
-            fos = new FileOutputStream("/tmp/log.log", true);
+            fos = new FileOutputStream("/tmp/log.log");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
