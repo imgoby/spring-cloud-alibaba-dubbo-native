@@ -2,6 +2,8 @@ package org.springframework;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MyLog {
     private static MyLog instance = new MyLog();
@@ -10,8 +12,10 @@ public class MyLog {
 
 
     private MyLog() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
+        String time = sdf.format(new Date());
         try {
-            fos = new FileOutputStream("/tmp/log.log");
+            fos = new FileOutputStream("/tmp/log." + time + ".log");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

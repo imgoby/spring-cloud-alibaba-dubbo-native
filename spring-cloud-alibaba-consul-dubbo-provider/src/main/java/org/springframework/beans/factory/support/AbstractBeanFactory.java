@@ -1673,7 +1673,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
         if (allowInit && mbd.isSingleton()) {
             try {
-                FactoryBean<?> factoryBean = doGetBean(FACTORY_BEAN_PREFIX + beanName, FactoryBean.class, null, true);
+                FactoryBean<?> factoryBean = doGetBean(FACTORY_BEAN_PREFIX + beanName, FactoryBean.class, null, true);//调用
                 Class<?> objectType = getTypeForFactoryBean(factoryBean);
                 return (objectType != null ? ResolvableType.forClass(objectType) : ResolvableType.NONE);
             }

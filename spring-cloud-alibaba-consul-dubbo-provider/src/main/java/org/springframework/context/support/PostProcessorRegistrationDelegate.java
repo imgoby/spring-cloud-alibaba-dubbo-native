@@ -126,16 +126,12 @@ final class PostProcessorRegistrationDelegate {
                 }
             }
 
-            boolean flag=false;
-            if(processedBeans.contains("refreshScope")){
-                MyLog.getInstance().open();
-                flag=true;
-            }
-            MyLog.getInstance().write(( "processedBeans2:"+processedBeans+"\n").toString().getBytes());
+
+            MyLog.getInstance().write(( "!!!processedBeans2:"+processedBeans+"\n").toString().getBytes());
             sortPostProcessors(currentRegistryProcessors, beanFactory);
             registryProcessors.addAll(currentRegistryProcessors);
 
-            MyLog.getInstance().write(( "invokeBeanDefinitionRegistryPostProcessors2:"+currentRegistryProcessors+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "!!!invokeBeanDefinitionRegistryPostProcessors2:"+currentRegistryProcessors+"\n").toString().getBytes());
             invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry, beanFactory.getApplicationStartup());
             currentRegistryProcessors.clear();
 
@@ -144,27 +140,49 @@ final class PostProcessorRegistrationDelegate {
             while (reiterate) {
                 reiterate = false;
                 postProcessorNames = beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
-                MyLog.getInstance().write(( "postProcessorNames:"+Arrays.asList(postProcessorNames)+"\n").toString().getBytes());
+                MyLog.getInstance().write(( "!!!postProcessorNames:"+Arrays.asList(postProcessorNames)+"\n").toString().getBytes());
+
+                List<String> tmpArr = new ArrayList<>();
+                for (String item : postProcessorNames) {
+                    tmpArr.add(item);
+                }
+
+                if(tmpArr.get(0).equals("serviceAnnotationBeanProcessor")){
+                    tmpArr.remove(0);
+                    tmpArr.add(3,"serviceAnnotationBeanProcessor");
+
+                    MyLog.getInstance().write(( "!!!postProcessorNames after:"+tmpArr+"\n").toString().getBytes());
+                    postProcessorNames=tmpArr.toArray(new String[tmpArr.size()]);
+                }
+
+
                 for (String ppName : postProcessorNames) {
-                    MyLog.getInstance().write(( "contains:"+ppName+"##"+processedBeans.contains(ppName)+"\n").toString().getBytes());
+                    MyLog.getInstance().write(( "!!!contains:"+ppName+"##"+processedBeans.contains(ppName)+"\n").toString().getBytes());
                     if (!processedBeans.contains(ppName)) {
-                        MyLog.getInstance().write(( "getBean:"+ppName+"\n").toString().getBytes());
+                        MyLog.getInstance().write(( "!!!getBean:"+ppName+"\n").toString().getBytes());
+
+                        if(ppName.equals("serviceAnnotationBeanProcessor")){
+                            MyLog.getInstance().open();
+                        }
+
                         BeanDefinitionRegistryPostProcessor xxx=beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class);
                         currentRegistryProcessors.add(xxx);
                         processedBeans.add(ppName);
                         reiterate = true;
+
+                        MyLog.getInstance().close();
                     }
                 }
                 sortPostProcessors(currentRegistryProcessors, beanFactory);
                 registryProcessors.addAll(currentRegistryProcessors);
 
-                MyLog.getInstance().write(( "invokeBeanDefinitionRegistryPostProcessors3:"+currentRegistryProcessors+"\n").toString().getBytes());
+                MyLog.getInstance().write(( "!!!invokeBeanDefinitionRegistryPostProcessors3:"+currentRegistryProcessors+"\n").toString().getBytes());
                 invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry, beanFactory.getApplicationStartup());
                 currentRegistryProcessors.clear();
             }
-            if(flag){
-                MyLog.getInstance().close();
-            }
+
+
+
 
             // Now, invoke the postProcessBeanFactory callback of all processors handled so far.
             invokeBeanFactoryPostProcessors(registryProcessors, beanFactory);
@@ -360,7 +378,7 @@ final class PostProcessorRegistrationDelegate {
 
         for (BeanDefinitionRegistryPostProcessor postProcessor : postProcessors) {
 
-            MyLog.getInstance().write(("invokeBeanDefinitionRegistryPostProcessors_in:" + postProcessor.toString() + "\n").toString().getBytes());
+            MyLog.getInstance().write(("!!!invokeBeanDefinitionRegistryPostProcessors_in:" + postProcessor.toString() + "\n").toString().getBytes());
 
             StartupStep postProcessBeanDefRegistry = applicationStartup.start("spring.context.beandef-registry.post-process")
                     .tag("postProcessor", postProcessor::toString);
@@ -377,7 +395,7 @@ final class PostProcessorRegistrationDelegate {
 
         for (BeanFactoryPostProcessor postProcessor : postProcessors) {
 
-            MyLog.getInstance().write(( "invokeBeanFactoryPostProcessors:"+postProcessor+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "!!!invokeBeanFactoryPostProcessors:"+postProcessor+"\n").toString().getBytes());
 
             StartupStep postProcessBeanFactory = beanFactory.getApplicationStartup().start("spring.context.bean-factory.post-process")
                     .tag("postProcessor", postProcessor::toString);
