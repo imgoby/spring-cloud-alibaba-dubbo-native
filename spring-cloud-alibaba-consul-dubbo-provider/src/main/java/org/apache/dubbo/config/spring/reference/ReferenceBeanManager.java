@@ -149,7 +149,7 @@ public class ReferenceBeanManager implements ApplicationContextAware {
             MyLog.getInstance().write(( "---getModuleModel:"+applicationContext+"\n").toString().getBytes());
             for (StackTraceElement element : stackTraces) {
                 StringBuffer sb = new StringBuffer();
-                sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
+                sb.append("---"+element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
                 MyLog.getInstance().write((sb.toString() + "\n").toString().getBytes());
             }
     }
@@ -202,7 +202,7 @@ public class ReferenceBeanManager implements ApplicationContextAware {
             // cache referenceConfig
             referenceConfigMap.put(referenceKey, referenceConfig);
 
-                MyLog.getInstance().write(( "++++++++++++++++moduleModel:"+moduleModel+"\n").toString().getBytes());
+                MyLog.getInstance().write(( "+moduleModel:"+moduleModel+"\n").toString().getBytes());
 
             // register ReferenceConfig
             moduleModel.getConfigManager().addReference(referenceConfig);

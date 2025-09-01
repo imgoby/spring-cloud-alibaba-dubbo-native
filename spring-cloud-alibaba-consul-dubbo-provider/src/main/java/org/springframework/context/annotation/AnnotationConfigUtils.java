@@ -144,10 +144,10 @@ public abstract class AnnotationConfigUtils {
             BeanDefinitionRegistry registry, @Nullable Object source) {
 
         StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
-            MyLog.getInstance().write(( "+++++registerAnnotationConfigProcessors:"+registry+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "registerAnnotationConfigProcessors:"+registry+"\n").toString().getBytes());
             for (StackTraceElement element : stackTraces) {
                 StringBuffer sb = new StringBuffer();
-                sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
+                sb.append("---"+element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
                 MyLog.getInstance().write((sb.toString() + "\n").toString().getBytes());
             }
 

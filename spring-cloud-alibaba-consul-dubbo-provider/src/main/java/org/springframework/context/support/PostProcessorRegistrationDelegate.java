@@ -109,10 +109,10 @@ final class PostProcessorRegistrationDelegate {
             sortPostProcessors(currentRegistryProcessors, beanFactory);
             registryProcessors.addAll(currentRegistryProcessors);
 
-            MyLog.getInstance().write(( "++++++++processedBeans1:"+processedBeans+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "processedBeans1:"+processedBeans+"\n").toString().getBytes());
 
 
-            MyLog.getInstance().write(( "++++++++invokeBeanDefinitionRegistryPostProcessors1:"+currentRegistryProcessors+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "invokeBeanDefinitionRegistryPostProcessors1:"+currentRegistryProcessors+"\n").toString().getBytes());
 
             invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry, beanFactory.getApplicationStartup());
             currentRegistryProcessors.clear();
@@ -131,11 +131,11 @@ final class PostProcessorRegistrationDelegate {
                 MyLog.getInstance().open();
                 flag=true;
             }
-            MyLog.getInstance().write(( "++++++++processedBeans2:"+processedBeans+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "processedBeans2:"+processedBeans+"\n").toString().getBytes());
             sortPostProcessors(currentRegistryProcessors, beanFactory);
             registryProcessors.addAll(currentRegistryProcessors);
 
-            MyLog.getInstance().write(( "++++++++invokeBeanDefinitionRegistryPostProcessors2:"+currentRegistryProcessors+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "invokeBeanDefinitionRegistryPostProcessors2:"+currentRegistryProcessors+"\n").toString().getBytes());
             invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry, beanFactory.getApplicationStartup());
             currentRegistryProcessors.clear();
 
@@ -144,11 +144,11 @@ final class PostProcessorRegistrationDelegate {
             while (reiterate) {
                 reiterate = false;
                 postProcessorNames = beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
-                MyLog.getInstance().write(( "++++++++postProcessorNames:"+Arrays.asList(postProcessorNames)+"\n").toString().getBytes());
+                MyLog.getInstance().write(( "postProcessorNames:"+Arrays.asList(postProcessorNames)+"\n").toString().getBytes());
                 for (String ppName : postProcessorNames) {
-                    MyLog.getInstance().write(( "++++++++contains:"+ppName+"##"+processedBeans.contains(ppName)+"\n").toString().getBytes());
+                    MyLog.getInstance().write(( "contains:"+ppName+"##"+processedBeans.contains(ppName)+"\n").toString().getBytes());
                     if (!processedBeans.contains(ppName)) {
-                        MyLog.getInstance().write(( "++++++++getBean:"+ppName+"\n").toString().getBytes());
+                        MyLog.getInstance().write(( "getBean:"+ppName+"\n").toString().getBytes());
                         BeanDefinitionRegistryPostProcessor xxx=beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class);
                         currentRegistryProcessors.add(xxx);
                         processedBeans.add(ppName);
@@ -158,7 +158,7 @@ final class PostProcessorRegistrationDelegate {
                 sortPostProcessors(currentRegistryProcessors, beanFactory);
                 registryProcessors.addAll(currentRegistryProcessors);
 
-                MyLog.getInstance().write(( "++++++++invokeBeanDefinitionRegistryPostProcessors3:"+currentRegistryProcessors+"\n").toString().getBytes());
+                MyLog.getInstance().write(( "invokeBeanDefinitionRegistryPostProcessors3:"+currentRegistryProcessors+"\n").toString().getBytes());
                 invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry, beanFactory.getApplicationStartup());
                 currentRegistryProcessors.clear();
             }
@@ -360,7 +360,7 @@ final class PostProcessorRegistrationDelegate {
 
         for (BeanDefinitionRegistryPostProcessor postProcessor : postProcessors) {
 
-            MyLog.getInstance().write((Thread.currentThread().getName() + "++++++++invokeBeanDefinitionRegistryPostProcessors:" + postProcessor.toString() + "\n").toString().getBytes());
+            MyLog.getInstance().write(("invokeBeanDefinitionRegistryPostProcessors_in:" + postProcessor.toString() + "\n").toString().getBytes());
 
             StartupStep postProcessBeanDefRegistry = applicationStartup.start("spring.context.beandef-registry.post-process")
                     .tag("postProcessor", postProcessor::toString);
@@ -377,7 +377,7 @@ final class PostProcessorRegistrationDelegate {
 
         for (BeanFactoryPostProcessor postProcessor : postProcessors) {
 
-            MyLog.getInstance().write(( "++++++++invokeBeanFactoryPostProcessors:"+postProcessor+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "invokeBeanFactoryPostProcessors:"+postProcessor+"\n").toString().getBytes());
 
             StartupStep postProcessBeanFactory = beanFactory.getApplicationStartup().start("spring.context.bean-factory.post-process")
                     .tag("postProcessor", postProcessor::toString);

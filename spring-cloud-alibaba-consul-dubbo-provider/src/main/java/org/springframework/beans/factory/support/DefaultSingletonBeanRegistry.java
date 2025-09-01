@@ -182,29 +182,29 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 
         // Quick check for existing instance without full singleton lock
         Object singletonObject = this.singletonObjects.get(beanName);
-        MyLog.getInstance().writeOnOpen(( "+++++getSingleton1:"+beanName+"##"+((singletonObject==null?"null":"object"))+"\n").toString().getBytes());
+        MyLog.getInstance().writeOnOpen(( "getSingleton1:"+beanName+"##"+((singletonObject==null?"null":"object"))+"\n").toString().getBytes());
 
 
         if (singletonObject == null && isSingletonCurrentlyInCreation(beanName)) {
             singletonObject = this.earlySingletonObjects.get(beanName);
-            MyLog.getInstance().writeOnOpen(( "+++++getSingleton2:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
+            MyLog.getInstance().writeOnOpen(( "getSingleton2:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
 
             if (singletonObject == null && allowEarlyReference) {
                 synchronized (this.singletonObjects) {
                     // Consistent creation of early reference within full singleton lock
                     singletonObject = this.singletonObjects.get(beanName);
-                    MyLog.getInstance().writeOnOpen(( "+++++getSingleton3:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
+                    MyLog.getInstance().writeOnOpen(( "getSingleton3:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
 
                     if (singletonObject == null) {
                         singletonObject = this.earlySingletonObjects.get(beanName);
 
-                        MyLog.getInstance().writeOnOpen(( "+++++getSingleton4:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
+                        MyLog.getInstance().writeOnOpen(( "getSingleton4:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
                         if (singletonObject == null) {
                             ObjectFactory<?> singletonFactory = this.singletonFactories.get(beanName);
-                            MyLog.getInstance().writeOnOpen(( "+++++getSingleton5:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
+                            MyLog.getInstance().writeOnOpen(( "getSingleton5:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
                             if (singletonFactory != null) {
                                 singletonObject = singletonFactory.getObject();
-                                MyLog.getInstance().writeOnOpen(( "+++++getSingleton6:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
+                                MyLog.getInstance().writeOnOpen(( "getSingleton6:"+beanName+"##"+(singletonObject==null?"null":"object")+"\n").toString().getBytes());
                                 this.earlySingletonObjects.put(beanName, singletonObject);
                                 this.singletonFactories.remove(beanName);
                             }
@@ -226,7 +226,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
      */
     public Object getSingleton(String beanName, ObjectFactory<?> singletonFactory) {
 
-        MyLog.getInstance().write(( "+++++getSingleton0:"+beanName+"\n").toString().getBytes());
+        MyLog.getInstance().write(( "getSingleton0:"+beanName+"\n").toString().getBytes());
 
         Assert.notNull(beanName, "Bean name must not be null");
         synchronized (this.singletonObjects) {
@@ -252,7 +252,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
                     singletonObject = singletonFactory.getObject();
                     newSingleton = true;
 
-                    String tmp=("+++++singletonObject:\n");
+                    String tmp=("singletonObject:\n");
                     MyLog.getInstance().write(tmp.getBytes());
 
                 }

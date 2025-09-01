@@ -242,7 +242,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
             String name, @Nullable Class<T> requiredType, @Nullable Object[] args, boolean typeCheckOnly)
             throws BeansException {
 
-            MyLog.getInstance().write(( "++++++++++++++++doGetBean1:"+requiredType+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "+doGetBean1:"+requiredType+"\n").toString().getBytes());
 
         String beanName = transformedBeanName(name);
         Object beanInstance;
@@ -250,7 +250,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         // Eagerly check singleton cache for manually registered singletons.
         Object sharedInstance = getSingleton(beanName);
 
-        MyLog.getInstance().write(( "++++++++++++++++doGetBean2:"+sharedInstance+"\n").toString().getBytes());
+        MyLog.getInstance().write(( "+doGetBean2:"+sharedInstance+"\n").toString().getBytes());
         if (sharedInstance != null && args == null) {
             if (logger.isTraceEnabled()) {
                 if (isSingletonCurrentlyInCreation(beanName)) {

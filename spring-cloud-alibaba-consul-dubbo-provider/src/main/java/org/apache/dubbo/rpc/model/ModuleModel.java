@@ -76,7 +76,7 @@ public class ModuleModel extends ScopeModel {
             MyLog.getInstance().write(( "=============================\n").toString().getBytes());
             for (StackTraceElement element : stackTraces) {
                 StringBuffer sb = new StringBuffer();
-                sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
+                sb.append("---"+element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
                 MyLog.getInstance().write((sb.toString() + "\n").toString().getBytes());
             }
     }
