@@ -587,7 +587,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
                 StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
 
-                MyLog.getInstance().write((Thread.currentThread().getName()+ "------invokeBeanFactoryPostProcessors\n").toString().getBytes());
+                MyLog.getInstance().write(( "------invokeBeanFactoryPostProcessors\n").toString().getBytes());
 
                 // Invoke factory processors registered as beans in the context.
                 invokeBeanFactoryPostProcessors(beanFactory);
@@ -608,7 +608,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
                 // Check for listener beans and register them.
                 registerListeners();
 
-                MyLog.getInstance().write((Thread.currentThread().getName()+ "-------finishBeanFactoryInitialization\n").toString().getBytes());
+                MyLog.getInstance().write(( "-------finishBeanFactoryInitialization\n").toString().getBytes());
 
                 // Instantiate all remaining (non-lazy-init) singletons.
                 finishBeanFactoryInitialization(beanFactory);
@@ -774,7 +774,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
      * <p>Must be called before singleton instantiation.
      */
     protected void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
-        MyLog.getInstance().write((Thread.currentThread().getName()+ "+++++++enter invokeBeanFactoryPostProcessors\n").toString().getBytes());
+        MyLog.getInstance().write(( "+++++++enter invokeBeanFactoryPostProcessors\n").toString().getBytes());
 
         PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());
 

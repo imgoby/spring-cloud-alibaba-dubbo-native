@@ -146,7 +146,7 @@ public class ReferenceBeanManager implements ApplicationContextAware {
         moduleModel = DubboBeanUtils.getModuleModel(applicationContext);
 
         StackTraceElement[] stackTraces = Thread.currentThread().getStackTrace();
-            MyLog.getInstance().write((Thread.currentThread().getName()+ "---getModuleModel:"+applicationContext+"\n").toString().getBytes());
+            MyLog.getInstance().write(( "---getModuleModel:"+applicationContext+"\n").toString().getBytes());
             for (StackTraceElement element : stackTraces) {
                 StringBuffer sb = new StringBuffer();
                 sb.append(element.getClassName()).append(".").append(element.getMethodName()).append(":").append(element.getLineNumber());
@@ -202,7 +202,7 @@ public class ReferenceBeanManager implements ApplicationContextAware {
             // cache referenceConfig
             referenceConfigMap.put(referenceKey, referenceConfig);
 
-                MyLog.getInstance().write((Thread.currentThread().getName()+ "++++++++++++++++moduleModel:"+moduleModel+"\n").toString().getBytes());
+                MyLog.getInstance().write(( "++++++++++++++++moduleModel:"+moduleModel+"\n").toString().getBytes());
 
             // register ReferenceConfig
             moduleModel.getConfigManager().addReference(referenceConfig);
