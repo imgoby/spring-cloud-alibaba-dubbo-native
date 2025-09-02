@@ -1,1 +1,11 @@
 https://www.zhihu.com/question/458157444/answer/1877215304
+
+1.下载编译工具：https://github.com/protocolbuffers/protobuf/releases
+
+2. 创建：message.proto
+
+3. 生成： protoc --java_out=. message.proto
+
+4. 在 Java 程序中使用 Protobuf
+
+5.编译和运行你的 Java 程序
