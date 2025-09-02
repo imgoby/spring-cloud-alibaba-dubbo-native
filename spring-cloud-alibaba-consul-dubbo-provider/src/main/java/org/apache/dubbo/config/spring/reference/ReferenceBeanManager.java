@@ -201,8 +201,12 @@ public class ReferenceBeanManager implements ApplicationContextAware {
 
             // cache referenceConfig
             referenceConfigMap.put(referenceKey, referenceConfig);
+            MyLog.getInstance().write(( "+moduleModel 1:"+moduleModel+"\n").toString().getBytes());
+            if(moduleModel==null){
+                moduleModel = DubboBeanUtils.getModuleModel(applicationContext);
+                MyLog.getInstance().write(( "+moduleModel 2:"+moduleModel+"\n").toString().getBytes());
+            }
 
-                MyLog.getInstance().write(( "+moduleModel:"+moduleModel+"\n").toString().getBytes());
 
             // register ReferenceConfig
             moduleModel.getConfigManager().addReference(referenceConfig);

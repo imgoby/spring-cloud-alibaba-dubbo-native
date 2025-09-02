@@ -250,7 +250,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         // Eagerly check singleton cache for manually registered singletons.
         Object sharedInstance = getSingleton(beanName);
 
-        MyLog.getInstance().write(( "+doGetBean2:"+sharedInstance+"\n").toString().getBytes());
+        MyLog.getInstance().write(( "+doGetBean2:"+(sharedInstance==null?"null":"object")+"\n").toString().getBytes());
         if (sharedInstance != null && args == null) {
             if (logger.isTraceEnabled()) {
                 if (isSingletonCurrentlyInCreation(beanName)) {
