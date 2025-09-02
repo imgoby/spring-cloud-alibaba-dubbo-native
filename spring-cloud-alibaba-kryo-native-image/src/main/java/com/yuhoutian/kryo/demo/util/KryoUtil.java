@@ -13,6 +13,7 @@ public class KryoUtil {
     private static final ThreadLocal<Kryo> kryos = ThreadLocal.withInitial(() -> {
         Kryo kryo = new Kryo();
         kryo.setReferences(true); // 支持对象引用
+        kryo.register(byte[].class); // 注册需要序列化的类
         kryo.register(KryoModel.class); // 注册需要序列化的类
         return kryo;
     });
