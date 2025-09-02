@@ -59,6 +59,12 @@ public final class PersonProto {
      */
     com.google.protobuf.ByteString
         getEmailBytes();
+
+    /**
+     * <code>bytes data = 4;</code>
+     * @return The data.
+     */
+    com.google.protobuf.ByteString getData();
   }
   /**
    * Protobuf type {@code com.yuhoutian.protobuf.demo.model.Person}
@@ -84,6 +90,7 @@ public final class PersonProto {
     private Person() {
       name_ = "";
       email_ = "";
+      data_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -188,6 +195,17 @@ public final class PersonProto {
       }
     }
 
+    public static final int DATA_FIELD_NUMBER = 4;
+    private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes data = 4;</code>
+     * @return The data.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getData() {
+      return data_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -211,6 +229,9 @@ public final class PersonProto {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(email_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 3, email_);
       }
+      if (!data_.isEmpty()) {
+        output.writeBytes(4, data_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -229,6 +250,10 @@ public final class PersonProto {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(email_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(3, email_);
+      }
+      if (!data_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, data_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -251,6 +276,8 @@ public final class PersonProto {
           != other.getId()) return false;
       if (!getEmail()
           .equals(other.getEmail())) return false;
+      if (!getData()
+          .equals(other.getData())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -268,6 +295,8 @@ public final class PersonProto {
       hash = (53 * hash) + getId();
       hash = (37 * hash) + EMAIL_FIELD_NUMBER;
       hash = (53 * hash) + getEmail().hashCode();
+      hash = (37 * hash) + DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getData().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -402,6 +431,7 @@ public final class PersonProto {
         name_ = "";
         id_ = 0;
         email_ = "";
+        data_ = com.google.protobuf.ByteString.EMPTY;
         return this;
       }
 
@@ -444,6 +474,9 @@ public final class PersonProto {
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.email_ = email_;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.data_ = data_;
+        }
       }
 
       @java.lang.Override
@@ -470,6 +503,9 @@ public final class PersonProto {
           email_ = other.email_;
           bitField0_ |= 0x00000004;
           onChanged();
+        }
+        if (!other.getData().isEmpty()) {
+          setData(other.getData());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -512,6 +548,11 @@ public final class PersonProto {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 26
+              case 34: {
+                data_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -705,6 +746,38 @@ public final class PersonProto {
         return this;
       }
 
+      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes data = 4;</code>
+       * @return The data.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getData() {
+        return data_;
+      }
+      /**
+       * <code>bytes data = 4;</code>
+       * @param value The data to set.
+       * @return This builder for chaining.
+       */
+      public Builder setData(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        data_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes data = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearData() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        data_ = getDefaultInstance().getData();
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.yuhoutian.protobuf.demo.model.Person)
     }
 
@@ -771,8 +844,9 @@ public final class PersonProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\022person_proto.proto\022!com.yuhoutian.prot" +
-      "obuf.demo.model\"1\n\006Person\022\014\n\004name\030\001 \001(\t\022" +
-      "\n\n\002id\030\002 \001(\005\022\r\n\005email\030\003 \001(\tb\006proto3"
+      "obuf.demo.model\"?\n\006Person\022\014\n\004name\030\001 \001(\t\022" +
+      "\n\n\002id\030\002 \001(\005\022\r\n\005email\030\003 \001(\t\022\014\n\004data\030\004 \001(\014" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -783,7 +857,7 @@ public final class PersonProto {
     internal_static_com_yuhoutian_protobuf_demo_model_Person_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_com_yuhoutian_protobuf_demo_model_Person_descriptor,
-        new java.lang.String[] { "Name", "Id", "Email", });
+        new java.lang.String[] { "Name", "Id", "Email", "Data", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

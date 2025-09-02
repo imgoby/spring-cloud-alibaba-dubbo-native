@@ -16,6 +16,7 @@
 
 package com.yuhoutian.protobuf.demo.controller;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.yuhoutian.protobuf.demo.model.PersonProto;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +41,7 @@ public class TestController {
                 .setName("John Doe")
                 .setId(1234)
                 .setEmail("johndoe@example.com")
+                .setData(ByteString.copyFrom("hello".getBytes()))
                 .build();
 
 
@@ -61,6 +63,7 @@ public class TestController {
         log.info("Name: " + personDecoded.getName());
         log.info("ID: " + personDecoded.getId());
         log.info("Email: " + personDecoded.getEmail());
+        log.info("Data: " + personDecoded.getData());
         return "OK";
     }
 
