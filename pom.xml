@@ -58,8 +58,8 @@
     </properties>
 
     <modules>
+        <module>spring-cloud-alibaba-kryo-native-image</module>
         <module>spring-cloud-alibaba-protobuf-native-image</module>
-<!--        <module>spring-cloud-alibaba-kryo-native-image</module>-->
 <!--        <module>spring-cloud-alibaba-thrift-native-image</module>-->
 <!--        <module>spring-cloud-alibaba-hessian-native-image</module>-->
 <!--        <module>spring-cloud-alibaba-avro-native-image</module>-->
