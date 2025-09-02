@@ -52,26 +52,6 @@ public class TestController {
         return "OK";
     }
 
-    //增加字段后
-    @GetMapping({"/write2"})
-    public String write2() throws Exception {
-        // 创建Person的实例并设置值
-        PersonProto.Person person = PersonProto.Person.newBuilder()
-                .setName("John Doe")
-                .setId(1234)
-                .setEmail("johndoe@example.com")
-                .build();
-
-
-        try (OutputStream os = new FileOutputStream("persion2.obj")) {
-            byte[] personBytes = person.toByteArray();
-            log.info("Serialized person size: " + personBytes.length);
-            os.write(personBytes);
-        }
-
-        return "OK";
-    }
-
     @GetMapping({"/read"})
     public String read() throws Exception {
         InputStream is = new FileInputStream("persion.obj");
@@ -84,15 +64,4 @@ public class TestController {
         return "OK";
     }
 
-    @GetMapping({"/read2"})
-    public String read2() throws Exception {
-        InputStream is = new FileInputStream("persion2.obj");
-        // 反序列化字节数组回Person对象
-        PersonProto.Person personDecoded = PersonProto.Person.parseFrom(is);
-        log.info("Decoded person: " + personDecoded);
-        log.info("Name: " + personDecoded.getName());
-        log.info("ID: " + personDecoded.getId());
-        log.info("Email: " + personDecoded.getEmail());
-        return "OK";
-    }
 }
