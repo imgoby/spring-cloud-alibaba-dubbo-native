@@ -17,11 +17,10 @@
 package com.yuhoutian.protobuf.demo.controller;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.yuhoutian.protobuf.demo.model.PersonProto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.yuhoutian.protobuf.demo.model.Message.Person;
 
 /**
  * @author TrevorLink
@@ -32,7 +31,7 @@ public class TestController {
     @GetMapping({"/test"})
     public String test() throws InvalidProtocolBufferException {
         // 创建Person的实例并设置值
-        Person person = Person.newBuilder()
+        PersonProto.Person person = PersonProto.Person.newBuilder()
                 .setName("John Doe")
                 .setId(1234)
                 .setEmail("johndoe@example.com")
@@ -43,7 +42,7 @@ public class TestController {
         System.out.println("Serialized person size: " + personBytes.length);
 
         // 反序列化字节数组回Person对象
-        Person personDecoded = Person.parseFrom(personBytes);
+        PersonProto.Person personDecoded = PersonProto.Person.parseFrom(personBytes);
         System.out.println("Decoded person: " + personDecoded);
         System.out.println("Name: " + personDecoded.getName());
         System.out.println("ID: " + personDecoded.getId());
