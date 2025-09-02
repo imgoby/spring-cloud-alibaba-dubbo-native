@@ -16,7 +16,7 @@
 
 package com.yuhoutian.protobuf.demo.controller;
 
-import com.yuhoutian.fst.demo.model.FstModel;
+import com.yuhoutian.protobuf.demo.model.FstModel;
 import lombok.extern.slf4j.Slf4j;
 import org.nustaq.serialization.FSTConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
