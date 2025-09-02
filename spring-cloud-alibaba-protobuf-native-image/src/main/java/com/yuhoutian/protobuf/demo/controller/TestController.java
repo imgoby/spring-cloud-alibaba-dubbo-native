@@ -22,14 +22,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
  * @author TrevorLink
  */
 @RestController
 @Slf4j
 public class TestController {
-    @GetMapping({"/test"})
-    public String test() throws InvalidProtocolBufferException {
+    @GetMapping({"/write"})
+    public String write() throws Exception {
         // 创建Person的实例并设置值
         PersonProto.Person person = PersonProto.Person.newBuilder()
                 .setName("John Doe")
@@ -37,16 +42,25 @@ public class TestController {
                 .setEmail("johndoe@example.com")
                 .build();
 
-        // 序列化到字节数组
-        byte[] personBytes = person.toByteArray();
-        System.out.println("Serialized person size: " + personBytes.length);
 
+        try (OutputStream os = new FileOutputStream("persion.obj")) {
+            byte[] personBytes = person.toByteArray();
+            log.info("Serialized person size: " + personBytes.length);
+            os.write(personBytes);
+        }
+
+        return "OK";
+    }
+
+    @GetMapping({"/read"})
+    public String read() throws Exception {
+        InputStream is = new FileInputStream("persion.obj");
         // 反序列化字节数组回Person对象
-        PersonProto.Person personDecoded = PersonProto.Person.parseFrom(personBytes);
-        System.out.println("Decoded person: " + personDecoded);
-        System.out.println("Name: " + personDecoded.getName());
-        System.out.println("ID: " + personDecoded.getId());
-        System.out.println("Email: " + personDecoded.getEmail());
+        PersonProto.Person personDecoded = PersonProto.Person.parseFrom(is);
+        log.info("Decoded person: " + personDecoded);
+        log.info("Name: " + personDecoded.getName());
+        log.info("ID: " + personDecoded.getId());
+        log.info("Email: " + personDecoded.getEmail());
         return "OK";
     }
 }
