@@ -1,0 +1,8 @@
+[
+  {
+    "name": "com.yuhoutian.kryo.demo.model.KryoModel",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  }
+]

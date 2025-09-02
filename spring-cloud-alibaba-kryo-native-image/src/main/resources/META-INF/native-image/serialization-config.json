@@ -1,0 +1,16 @@
+{
+  "types": [
+    {
+      "name": "com.yuhoutian.protobuf.demo.model.FstModel"
+    }
+  ],
+  "lambdaCapturingTypes": [
+    {
+    "name": "cn.nvriot.platform.geocoding.web.TestController"
+    },
+    {
+      "name": "[Ljava.lang.Object;"
+    }
+  ],
+  "proxies": []
+}
