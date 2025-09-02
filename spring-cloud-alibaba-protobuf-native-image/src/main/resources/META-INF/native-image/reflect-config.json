@@ -1,6 +1,12 @@
 [
   {
-    "name": "com.yuhoutian.protobuf.demo.model.FstModel",
+    "name": "com.yuhoutian.protobuf.demo.model.PersonProto$Person",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "com.yuhoutian.protobuf.demo.model.PersonProto$Person$Builder",
     "allDeclaredFields": true,
     "allDeclaredConstructors": true,
     "allDeclaredMethods": true
