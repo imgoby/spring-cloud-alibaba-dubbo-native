@@ -86,7 +86,7 @@ public class TestController {
 
     @GetMapping({"/read2"})
     public String read2() throws Exception {
-        InputStream is = new FileInputStream("persion.obj");
+        InputStream is = new FileInputStream("persion2.obj");
         // 反序列化字节数组回Person对象
         PersonProto.Person personDecoded = PersonProto.Person.parseFrom(is);
         log.info("Decoded person: " + personDecoded);
