@@ -6,6 +6,12 @@
     "allDeclaredMethods": true
   },
   {
+    "name": "com.yuhoutian.protobuf.demo.model.VersionObjectProto$VersionObject",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
     "name": "com.yuhoutian.protobuf.demo.model.PersonProto$Person$Builder",
     "allDeclaredFields": true,
     "allDeclaredConstructors": true,
