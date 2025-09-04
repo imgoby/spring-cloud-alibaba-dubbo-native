@@ -16,6 +16,7 @@
 
 package com.yuhoutian.protobuf.demo.controller;
 
+import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.yuhoutian.protobuf.demo.model.PersonProto;
@@ -34,6 +35,34 @@ import java.io.OutputStream;
 @RestController
 @Slf4j
 public class TestController {
+    @GetMapping({"/any"})
+    public String any() throws Exception {
+        // 创建Person的实例并设置值
+        PersonProto.Person person = PersonProto.Person.newBuilder()
+                .setName("John Doe")
+                .setId(1234)
+                .setEmail("johndoe@example.com")
+                .setData(ByteString.copyFrom("hello".getBytes()))
+                .build();
+
+        // 将Person对象序列化到Any类型中
+        Any any1 = Any.pack(person);
+
+        byte[] bs = any1.toByteArray();
+
+        Any any2=Any.parseFrom(bs);
+
+
+        PersonProto.Person personDecoded = any2.unpack(PersonProto.Person.class);
+
+        log.info("Decoded person: " + personDecoded);
+        log.info("Name: " + personDecoded.getName());
+        log.info("ID: " + personDecoded.getId());
+        log.info("Email: " + personDecoded.getEmail());
+        log.info("Data: " + personDecoded.getData());
+        return "OK";
+    }
+
     @GetMapping({"/write"})
     public String write() throws Exception {
         // 创建Person的实例并设置值
