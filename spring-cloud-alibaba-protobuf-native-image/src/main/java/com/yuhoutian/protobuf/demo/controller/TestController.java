@@ -18,6 +18,7 @@ package com.yuhoutian.protobuf.demo.controller;
 
 import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.StringValue;
 import com.yuhoutian.protobuf.demo.model.PersonProto;
 import com.yuhoutian.protobuf.demo.model.VersionObjectProto;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,28 @@ import java.io.OutputStream;
 @RestController
 @Slf4j
 public class TestController {
+
+    @GetMapping({"/simple"})
+    public String simple() throws Exception {
+        StringValue stringValue=StringValue.newBuilder().setValue("hello").build();
+
+        // 将Person对象序列化到Any类型中
+        Any any1 = Any.pack(stringValue);
+
+        byte[] bs = any1.toByteArray();
+
+
+        Any any2 = Any.parseFrom(bs);
+
+        //业务
+
+        StringValue personDecoded = any2.unpack(StringValue.class);
+
+        log.info("Decoded person: " + personDecoded.getValue());
+        return "OK";
+    }
+
+
     @GetMapping({"/any"})
     public String any() throws Exception {
         // 创建Person的实例并设置值
