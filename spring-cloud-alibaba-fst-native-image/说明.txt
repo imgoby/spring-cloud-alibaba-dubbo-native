@@ -1,0 +1,10 @@
+ Using java version 24.2.r24-nik
+
+问题： com.sun.tools.javac.code.TypeTag :: UNKNOWN
+
+方法：
+  <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
+        </dependency>
